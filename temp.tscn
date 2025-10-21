@@ -1,3 +1,8 @@
-[gd_scene format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=2 format=3 uid="uid://cegv7hhwbj0ou"]
+
+[ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/coin.blend" id="1_pippe"]
 
 [node name="Node3D" type="Node3D"]
+
+[node name="coin" parent="." instance=ExtResource("1_pippe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029400826, 0, 0.019253254)
