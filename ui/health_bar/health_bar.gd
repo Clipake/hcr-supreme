@@ -8,7 +8,6 @@ func _ready() -> void:
 	update_color(value) # Updates initial colors
 
 func update_color(value: float) -> void:
-	print("test")
 	var green = min(255, (255/50)*(value)) # i used desmos to find the right line
 	var red = min(255, (-255/50)*(value)+510) # same here
 	
