@@ -5,7 +5,6 @@ extends CharacterBody3D
 
 func initialize(start_pos: Vector3):
 	position = start_pos
-	print('start obstacle', start_pos)
 	velocity = Vector3(0, 0, speed)
 func _physics_process(_delta: float) -> void:
 	velocity = Vector3(0, 0, speed)

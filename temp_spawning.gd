@@ -25,6 +25,5 @@ func _on_timer_timeout() -> void:
 		available.remove_at(location_index)
 		obstacle.initialize(locations[location_index].global_position)
 		add_child(obstacle)
-		print('spawn_at', locations[location_index].global_position)
 		
 	pass # Replace with function body.
