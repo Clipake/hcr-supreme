@@ -1,16 +1,14 @@
-extends CharacterBody3D
+extends AnimatableBody3D
 
 
-@export var speed = 10
-
+@export var speed = -10
+var start = Vector3.ZERO
 func initialize(start_pos: Vector3):
-	position = start_pos
+	global_position = start_pos
+	start = start_pos
 	print('start obstacle', start_pos)
-	velocity = Vector3(0, 0, speed)
 func _physics_process(_delta: float) -> void:
-	velocity = Vector3(0, 0, speed)
-	move_and_slide()
-	
+	global_position += Vector3(0, 0, speed*_delta)
 	
 
 

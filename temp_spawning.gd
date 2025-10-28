@@ -17,13 +17,14 @@ func _process(delta: float) -> void:
 
 
 func _on_timer_timeout() -> void:	
-	var num_obstacles = randi_range(0, 3)
+	var num_obstacles = randi_range(1, 3)
+	var available = [0, 1, 2]
 	for i in range(num_obstacles):
 		var obstacle = obstacle_scene.instantiate()
-		var location_index = randi_range(0, 2)
-		
-		obstacle.initialize(locations[location_index].position)
-		
+		var location_index = randi_range(0, len(available)-1)
+		available.remove_at(location_index)
+		obstacle.initialize(locations[location_index].global_position)
 		add_child(obstacle)
+		print('spawn_at', locations[location_index].global_position)
 		
 	pass # Replace with function body.

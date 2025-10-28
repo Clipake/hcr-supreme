@@ -1,23 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmlvoeh7qsj1n"]
+[gd_scene load_steps=3 format=3 uid="uid://cmlvoeh7qsj1n"]
 
 [ext_resource type="Script" uid="uid://d2nhdql7wqnjv" path="res://obstacle.gd" id="1_sl1jc"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_q51th"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_iyses"]
+[ext_resource type="PackedScene" uid="uid://3v528pdt3rxf" path="res://obstacle_new.tscn" id="2_aubd6"]
 
 [node name="Obstacle" type="CharacterBody3D"]
 script = ExtResource("1_sl1jc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_q51th")
-
-[node name="Node3D" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
-mesh = SubResource("BoxMesh_iyses")
-
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
-aabb = AABB(-0.47377384, -0.46723732, -0.473191, 0.9475477, 0.93447465, 0.946382)
-
-[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[node name="AnimatableBody3D" parent="." instance=ExtResource("2_aubd6")]

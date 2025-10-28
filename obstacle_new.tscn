@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://3v528pdt3rxf"]
+
+[ext_resource type="Script" uid="uid://brcpn0rfxrl6s" path="res://obstacle_new.gd" id="1_uyw5p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q51th"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_iyses"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D"]
+script = ExtResource("1_uyw5p")
+speed = -9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_q51th")
+disabled = true
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("BoxMesh_iyses")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.47377384, -0.46723732, -0.473191, 0.9475477, 0.93447465, 0.946382)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
