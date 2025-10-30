@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c12omn3e0x2kr"]
+[gd_scene load_steps=9 format=3 uid="uid://c12omn3e0x2kr"]
 
 [ext_resource type="FontFile" uid="uid://cpeag4x8qdh26" path="res://assets/fonts/Instagram Sans/Instagram Sans Bold.ttf" id="1_xu1am"]
 [ext_resource type="FontFile" uid="uid://ym2kf6e0tthc" path="res://assets/fonts/Instagram Sans/Instagram Sans.ttf" id="2_nwi6w"]
+[ext_resource type="FontFile" uid="uid://b33tkubxajfji" path="res://assets/fonts/Instagram Sans/Instagram Sans Light.ttf" id="3_4fpvo"]
+[ext_resource type="FontFile" uid="uid://bapvk2ri2m1qw" path="res://assets/fonts/Instagram Sans/Instagram Sans Medium.ttf" id="4_t4yam"]
 
 [sub_resource type="Gradient" id="Gradient_xu1am"]
 offsets = PackedFloat32Array(0, 0.34745762, 0.6779661, 1)
@@ -32,121 +34,104 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BGPanel" type="Panel" parent="."]
+[node name="BGPanel" type="PanelContainer" parent="."]
 layout_mode = 0
 offset_left = -250.0
 offset_top = -300.0
 offset_right = 250.0
 offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_4fpvo")
 
-[node name="Title" type="Label" parent="BGPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BGPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 85
+
+[node name="Title" type="Label" parent="BGPanel/VBoxContainer"]
 custom_minimum_size = Vector2(200, 50)
-layout_mode = 0
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -132.5
-offset_top = 50.0
-offset_right = 132.5
-offset_bottom = 134.0
-grow_horizontal = 2
+layout_mode = 2
+size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("1_xu1am")
-theme_override_font_sizes/font_size = 64
-text = "You Lost!"
+theme_override_font_sizes/font_size = 40
+text = "Your Algorithm is FRIED!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Summary" type="HBoxContainer" parent="BGPanel"]
+[node name="Summary" type="HBoxContainer" parent="BGPanel/VBoxContainer"]
 custom_minimum_size = Vector2(450, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -225.0
-offset_top = -116.5
-offset_right = 225.0
-offset_bottom = 116.5
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/separation = 100
 alignment = 1
 
-[node name="Labels" type="VBoxContainer" parent="BGPanel/Summary"]
+[node name="Labels" type="VBoxContainer" parent="BGPanel/VBoxContainer/Summary"]
 layout_mode = 2
 
-[node name="RunTime" type="Label" parent="BGPanel/Summary/Labels"]
+[node name="RunTime" type="Label" parent="BGPanel/VBoxContainer/Summary/Labels"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xu1am")
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_nwi6w")
 theme_override_font_sizes/font_size = 36
 text = "Run Time:"
 vertical_alignment = 1
 
-[node name="CoinsCollected" type="Label" parent="BGPanel/Summary/Labels"]
+[node name="CoinsCollected" type="Label" parent="BGPanel/VBoxContainer/Summary/Labels"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xu1am")
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_nwi6w")
 theme_override_font_sizes/font_size = 36
 text = "Coins Collected:"
 vertical_alignment = 1
 
-[node name="DifficultyBonus" type="Label" parent="BGPanel/Summary/Labels"]
+[node name="DifficultyBonus" type="Label" parent="BGPanel/VBoxContainer/Summary/Labels"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_xu1am")
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("2_nwi6w")
 theme_override_font_sizes/font_size = 36
 text = "Difficulty Bonus:"
 vertical_alignment = 1
 
-[node name="Stats" type="VBoxContainer" parent="BGPanel/Summary"]
+[node name="Stats" type="VBoxContainer" parent="BGPanel/VBoxContainer/Summary"]
 layout_mode = 2
 
-[node name="RunTime" type="Label" parent="BGPanel/Summary/Stats"]
+[node name="RunTime" type="Label" parent="BGPanel/VBoxContainer/Summary/Stats"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_nwi6w")
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_4fpvo")
 theme_override_font_sizes/font_size = 36
 text = "0:00"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="CoinsCollected" type="Label" parent="BGPanel/Summary/Stats"]
+[node name="CoinsCollected" type="Label" parent="BGPanel/VBoxContainer/Summary/Stats"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_nwi6w")
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_4fpvo")
 theme_override_font_sizes/font_size = 36
 text = "0"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="DifficultyBonus" type="Label" parent="BGPanel/Summary/Stats"]
+[node name="DifficultyBonus" type="Label" parent="BGPanel/VBoxContainer/Summary/Stats"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_nwi6w")
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_4fpvo")
 theme_override_font_sizes/font_size = 36
 text = "1.0x"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Restart" type="Button" parent="BGPanel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -165.5
-offset_top = 200.0
-offset_right = 165.5
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Restart" type="Button" parent="BGPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("1_xu1am")
+theme_override_fonts/font = ExtResource("4_t4yam")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_xu1am")
 text = "New Reels Account"
