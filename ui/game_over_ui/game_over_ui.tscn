@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c12omn3e0x2kr"]
+[gd_scene load_steps=15 format=3 uid="uid://c12omn3e0x2kr"]
 
-[ext_resource type="FontFile" uid="uid://cpeag4x8qdh26" path="res://assets/fonts/Instagram Sans/Instagram Sans Bold.ttf" id="1_xu1am"]
-[ext_resource type="FontFile" uid="uid://ym2kf6e0tthc" path="res://assets/fonts/Instagram Sans/Instagram Sans.ttf" id="2_nwi6w"]
-[ext_resource type="FontFile" uid="uid://b33tkubxajfji" path="res://assets/fonts/Instagram Sans/Instagram Sans Light.ttf" id="3_4fpvo"]
-[ext_resource type="FontFile" uid="uid://bapvk2ri2m1qw" path="res://assets/fonts/Instagram Sans/Instagram Sans Medium.ttf" id="4_t4yam"]
+[ext_resource type="Script" uid="uid://fyhx4loxvbfm" path="res://ui/game_over_ui/game_over_ui.gd" id="1_wdabr"]
+[ext_resource type="FontFile" uid="uid://cpeag4x8qdh26" path="res://assets/fonts/Instagram Sans/Instagram Sans Bold.ttf" id="2_komnj"]
+[ext_resource type="FontFile" uid="uid://ym2kf6e0tthc" path="res://assets/fonts/Instagram Sans/Instagram Sans.ttf" id="3_gx0wf"]
+[ext_resource type="FontFile" uid="uid://b33tkubxajfji" path="res://assets/fonts/Instagram Sans/Instagram Sans Light.ttf" id="4_rb8hv"]
+[ext_resource type="FontFile" uid="uid://bapvk2ri2m1qw" path="res://assets/fonts/Instagram Sans/Instagram Sans Medium.ttf" id="5_a0lfd"]
 
 [sub_resource type="Gradient" id="Gradient_xu1am"]
 offsets = PackedFloat32Array(0, 0.34745762, 0.6779661, 1)
@@ -24,6 +25,31 @@ corner_radius_top_right = 16
 corner_radius_bottom_right = 16
 corner_radius_bottom_left = 16
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdabr"]
+bg_color = Color(0.24383616, 0.27300194, 0.7088674, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_komnj"]
+bg_color = Color(0.2763565, 0.3080583, 0.76990825, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx0wf"]
+bg_color = Color(0.24383616, 0.27300194, 0.7088674, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rb8hv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a0lfd"]
+
 [node name="GameOverUI" type="Control"]
 layout_mode = 3
 anchors_preset = 8
@@ -33,6 +59,7 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wdabr")
 
 [node name="BGPanel" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -52,7 +79,7 @@ theme_override_constants/separation = 85
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_fonts/font = ExtResource("1_xu1am")
+theme_override_fonts/font = ExtResource("2_komnj")
 theme_override_font_sizes/font_size = 40
 text = "Your Algorithm is FRIED!"
 horizontal_alignment = 1
@@ -71,7 +98,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_nwi6w")
+theme_override_fonts/font = ExtResource("3_gx0wf")
 theme_override_font_sizes/font_size = 36
 text = "Run Time:"
 vertical_alignment = 1
@@ -80,7 +107,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_nwi6w")
+theme_override_fonts/font = ExtResource("3_gx0wf")
 theme_override_font_sizes/font_size = 36
 text = "Coins Collected:"
 vertical_alignment = 1
@@ -89,7 +116,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_nwi6w")
+theme_override_fonts/font = ExtResource("3_gx0wf")
 theme_override_font_sizes/font_size = 36
 text = "Difficulty Bonus:"
 vertical_alignment = 1
@@ -101,7 +128,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("3_4fpvo")
+theme_override_fonts/font = ExtResource("4_rb8hv")
 theme_override_font_sizes/font_size = 36
 text = "0:00"
 horizontal_alignment = 2
@@ -111,7 +138,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("3_4fpvo")
+theme_override_fonts/font = ExtResource("4_rb8hv")
 theme_override_font_sizes/font_size = 36
 text = "0"
 horizontal_alignment = 2
@@ -121,7 +148,7 @@ vertical_alignment = 1
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("3_4fpvo")
+theme_override_fonts/font = ExtResource("4_rb8hv")
 theme_override_font_sizes/font_size = 36
 text = "1.0x"
 horizontal_alignment = 2
@@ -131,7 +158,14 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("4_t4yam")
+theme_override_fonts/font = ExtResource("5_a0lfd")
 theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxFlat_xu1am")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wdabr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_komnj")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_gx0wf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rb8hv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a0lfd")
 text = "New Reels Account"
+
+[connection signal="button_up" from="BGPanel/VBoxContainer/Restart" to="." method="_on_restart"]
