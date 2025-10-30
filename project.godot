@@ -18,4 +18,3 @@ config/icon="res://icon.svg"
 [autoload]
 
 Events="*res://scripts/global/Events.gd"
-temporary="res://scripts/ui/game_over_ui/temp_showcase.gd"
