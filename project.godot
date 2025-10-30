@@ -14,3 +14,8 @@ config/name="HCR Supreme"
 run/main_scene="uid://cegv7hhwbj0ou"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Events="*res://scripts/global/Events.gd"
+temporary="res://scripts/ui/game_over_ui/temp_showcase.gd"

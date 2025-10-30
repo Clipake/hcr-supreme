@@ -3,23 +3,13 @@ An abstraction layer for the game over UI made for easy control over the game ov
 """
 extends Control
 
-signal restart # Emitted when player releases the restart button
-
 
 func _ready() -> void:
-	# DEVELOPMENT FUNCTION ONLY; NOT FOR PRODUCTION
-	var run_time = 500; var coins = 954_783_000; var diff = 2.67
-	
-	set_run_time(run_time)
-	set_coins_collected(coins)
-	set_difficulty_bonus(diff)
-	set_total(((run_time*10)+coins)*diff)
-	restart.connect(temp)
-	
-	
-func temp() -> void:
-	# DEVELOPMENT FUNCTION ONLY; NOT FOR PRODUCTION
-	print("Restart button triggered and detected via abstraction system!")
+	# Connecting to signal bus
+	Events.set_run_time.connect(set_run_time)
+	Events.set_coins_collected.connect(set_coins_collected)
+	Events.set_difficulty_bonus.connect(set_difficulty_bonus)
+	Events.set_total.connect(set_total)
 
 
 func set_run_time(run_time: int) -> void:
@@ -59,12 +49,15 @@ func set_total(total: int) -> void:
 	var label: Label = $'BGPanel/VBoxContainer/Summary/Stats/Total'
 	label.text = _format_number(total)
 
-
-func _on_restart() -> void:
-	"""
-	Helper function that connects to the restart button's button_up() signal
-	"""
-	restart.emit()
+"""
+Helper functions to connect UI buttons to signal bus
+"""
+func _on_restart_game() -> void:
+	Events.restart_game.emit()
+func _on_open_home() -> void:
+	Events.open_home.emit()
+func _on_open_shop() -> void:
+	Events.open_shop.emit()
 
 
 func _format_number(number: float) -> String:

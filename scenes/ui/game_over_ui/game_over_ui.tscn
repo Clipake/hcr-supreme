@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://c12omn3e0x2kr"]
+[gd_scene load_steps=23 format=3 uid="uid://c12omn3e0x2kr"]
 
-[ext_resource type="Script" uid="uid://fyhx4loxvbfm" path="res://ui/game_over_ui/game_over_ui.gd" id="1_wdabr"]
+[ext_resource type="Script" uid="uid://fyhx4loxvbfm" path="res://scripts/ui/game_over_ui/game_over_ui.gd" id="1_wdabr"]
 [ext_resource type="FontFile" uid="uid://cpeag4x8qdh26" path="res://assets/fonts/Instagram Sans/Instagram Sans Bold.ttf" id="2_komnj"]
 [ext_resource type="FontFile" uid="uid://ym2kf6e0tthc" path="res://assets/fonts/Instagram Sans/Instagram Sans.ttf" id="3_gx0wf"]
 [ext_resource type="FontFile" uid="uid://b33tkubxajfji" path="res://assets/fonts/Instagram Sans/Instagram Sans Light.ttf" id="4_rb8hv"]
@@ -22,33 +22,57 @@ texture = SubResource("GradientTexture2D_nwi6w")
 bg_color = Color(0.31764707, 0.35686275, 0.83137256, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wdabr"]
 bg_color = Color(0.24383616, 0.27300194, 0.7088674, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_komnj"]
 bg_color = Color(0.2763565, 0.3080583, 0.76990825, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gx0wf"]
 bg_color = Color(0.24383616, 0.27300194, 0.7088674, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rb8hv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a0lfd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rb8hv"]
+bg_color = Color(0.31764707, 0.35686275, 0.83137256, 1)
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a0lfd"]
+bg_color = Color(0.24383616, 0.27300194, 0.7088674, 1)
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yukr1"]
+bg_color = Color(0.2763565, 0.3080583, 0.76990825, 1)
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y3dac"]
+bg_color = Color(0.24383616, 0.27300194, 0.7088674, 1)
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0x65j"]
+bg_color = Color(0.31764707, 0.35686275, 0.83137256, 1)
+corner_radius_bottom_right = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe338"]
+bg_color = Color(0.24383616, 0.27300194, 0.7088674, 1)
+corner_radius_bottom_right = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksltf"]
+bg_color = Color(0.2763565, 0.3080583, 0.76990825, 1)
+corner_radius_bottom_right = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1800l"]
+bg_color = Color(0.24383616, 0.27300194, 0.7088674, 1)
+corner_radius_bottom_right = 16
 
 [node name="GameOverUI" type="Control"]
 layout_mode = 3
@@ -173,7 +197,10 @@ text = "0,000"
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Restart" type="Button" parent="BGPanel/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="BGPanel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Restart" type="Button" parent="BGPanel/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -187,4 +214,39 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_rb8hv")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a0lfd")
 text = "New Reels Account"
 
-[connection signal="button_up" from="BGPanel/VBoxContainer/Restart" to="." method="_on_restart"]
+[node name="HBoxContainer" type="HBoxContainer" parent="BGPanel/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Home" type="Button" parent="BGPanel/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_a0lfd")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_rb8hv")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a0lfd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yukr1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_y3dac")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rb8hv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a0lfd")
+text = "Home"
+
+[node name="Shop" type="Button" parent="BGPanel/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_a0lfd")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_0x65j")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_fe338")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ksltf")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_1800l")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_rb8hv")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_a0lfd")
+text = "Shop"
+
+[connection signal="button_up" from="BGPanel/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_game"]
+[connection signal="button_down" from="BGPanel/VBoxContainer/VBoxContainer/HBoxContainer/Home" to="." method="_on_open_home"]
+[connection signal="button_down" from="BGPanel/VBoxContainer/VBoxContainer/HBoxContainer/Shop" to="." method="_on_open_shop"]
