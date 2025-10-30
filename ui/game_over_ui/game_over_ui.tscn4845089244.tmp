@@ -73,9 +73,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_4fpvo")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 50
+theme_override_constants/separation = 85
 
 [node name="Title" type="Label" parent="BGPanel/VBoxContainer"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("2_komnj")
@@ -87,11 +88,11 @@ vertical_alignment = 1
 [node name="Summary" type="HBoxContainer" parent="BGPanel/VBoxContainer"]
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
+theme_override_constants/separation = 100
 alignment = 1
 
 [node name="Labels" type="VBoxContainer" parent="BGPanel/VBoxContainer/Summary"]
 layout_mode = 2
-size_flags_horizontal = 0
 
 [node name="RunTime" type="Label" parent="BGPanel/VBoxContainer/Summary/Labels"]
 custom_minimum_size = Vector2(0, 75)
@@ -120,18 +121,8 @@ theme_override_font_sizes/font_size = 36
 text = "Difficulty Bonus:"
 vertical_alignment = 1
 
-[node name="Total" type="Label" parent="BGPanel/VBoxContainer/Summary/Labels"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_fonts/font = ExtResource("2_komnj")
-theme_override_font_sizes/font_size = 36
-text = "Total:"
-vertical_alignment = 1
-
 [node name="Stats" type="VBoxContainer" parent="BGPanel/VBoxContainer/Summary"]
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="RunTime" type="Label" parent="BGPanel/VBoxContainer/Summary/Stats"]
 custom_minimum_size = Vector2(0, 75)
@@ -160,16 +151,6 @@ size_flags_horizontal = 8
 theme_override_fonts/font = ExtResource("4_rb8hv")
 theme_override_font_sizes/font_size = 36
 text = "1.0x"
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="Total" type="Label" parent="BGPanel/VBoxContainer/Summary/Stats"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_fonts/font = ExtResource("2_komnj")
-theme_override_font_sizes/font_size = 36
-text = "0,000"
 horizontal_alignment = 2
 vertical_alignment = 1
 
