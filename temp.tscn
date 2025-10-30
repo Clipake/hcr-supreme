@@ -1,33 +1,39 @@
-[gd_scene load_steps=7 format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=11 format=3 uid="uid://cegv7hhwbj0ou"]
 
-[ext_resource type="Script" uid="uid://bevchg1iuqg06" path="res://temp_spawning.gd" id="1_f68d1"]
-[ext_resource type="Script" uid="uid://d2et0n2c0tsps" path="res://camera_3d.gd" id="2_k81e3"]
-[ext_resource type="PackedScene" uid="uid://3v528pdt3rxf" path="res://obstacle_new.tscn" id="2_q51th"]
-[ext_resource type="Script" uid="uid://61pikdynxeah" path="res://spawnable.gd" id="4_h2clf"]
+[ext_resource type="Script" uid="uid://bevchg1iuqg06" path="res://scripts/temp_spawning.gd" id="1_f68d1"]
+[ext_resource type="Script" uid="uid://d2et0n2c0tsps" path="res://scripts/camera_3d.gd" id="2_k81e3"]
+[ext_resource type="PackedScene" uid="uid://3v528pdt3rxf" path="res://scenes/obstacle_new.tscn" id="2_q51th"]
+[ext_resource type="Script" uid="uid://61pikdynxeah" path="res://scripts/spawnable.gd" id="4_h2clf"]
+[ext_resource type="Texture2D" uid="uid://bny8jp4qv1vgg" path="res://assets/qwantani_noon_puresky_1k.exr" id="5_h2clf"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_q51th"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2clf"]
 albedo_color = Color(0.5429866, 0.80717915, 0.7696345, 1)
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_q51th"]
+panorama = ExtResource("5_h2clf")
+energy_multiplier = 1.51
+
+[sub_resource type="Sky" id="Sky_iyses"]
+sky_material = SubResource("PanoramaSkyMaterial_q51th")
+radiance_size = 1
+
+[sub_resource type="Environment" id="Environment_f68d1"]
+background_mode = 2
+background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
+sky = SubResource("Sky_iyses")
+
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_f68d1")
 obstacle_scene = ExtResource("2_q51th")
+speed = -11
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.9998767, -0.01570728, -7.870837e-08, -0.014141594, 0.9002077, 0.4352311, -0.0068362257, 0.4351774, -0.9003188, -0.37297666, 1.2076778, -2.0126777)
+transform = Transform3D(-0.9998767, -0.015707282, -7.837121e-08, -0.012246481, 0.7795698, 0.6261956, -0.00983577, 0.62611836, -0.77966595, -0.37297666, 2.2900481, -2.0126777)
 near = 0.001
 far = 3935.05
 script = ExtResource("2_k81e3")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.81373036, 0, -0.58124274, 0, 1, 0, 0.58124274, 0, 0.81373036, -3.0039992, 0, 3.779026)
-light_energy = 6.09
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_specular = 0.178
-spot_range = 6.9154353
-spot_angle = 12.084432
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.47123778, -0.42382813, 8.890312)
@@ -35,7 +41,7 @@ size = Vector3(4.610962, 0.15234375, 21.799835)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.9491951, 0.31468832, 0, -0.31468832, 0.9491951, 0.5106368, 1.3283353, 5.9175563)
-light_energy = 0.644
+light_energy = 1.056
 
 [node name="Spawnable" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7375386, 0, -0.4601493)
@@ -61,5 +67,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_h2clf")
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f68d1")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
