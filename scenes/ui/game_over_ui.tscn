@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c12omn3e0x2kr"]
 
-[ext_resource type="Script" uid="uid://fyhx4loxvbfm" path="res://scripts/ui/game_over_ui/game_over_ui.gd" id="1_wdabr"]
+[ext_resource type="Script" uid="uid://fyhx4loxvbfm" path="res://scripts/ui/game_over_ui.gd" id="1_wdabr"]
 [ext_resource type="FontFile" uid="uid://cpeag4x8qdh26" path="res://assets/fonts/Instagram Sans/Instagram Sans Bold.ttf" id="2_komnj"]
 [ext_resource type="FontFile" uid="uid://ym2kf6e0tthc" path="res://assets/fonts/Instagram Sans/Instagram Sans.ttf" id="3_gx0wf"]
 [ext_resource type="FontFile" uid="uid://b33tkubxajfji" path="res://assets/fonts/Instagram Sans/Instagram Sans Light.ttf" id="4_rb8hv"]
