@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var obstacle_scene: PackedScene
-@export var speed = -10
+@export var speed = 10
 @onready var timer = $Timer
 @export var DISTANCE = 10
 
@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 var tick_counter = 0
 func _physics_process(delta: float) -> void:
 	tick_counter += delta
-	speed -= tick_counter/1000*0.1
+	speed += tick_counter/1000*0.1
 	timer.wait_time = float(DISTANCE)/(-speed)
 	
 var chances = {
