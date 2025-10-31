@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://qn4mowvn0vmt"]
+
+[ext_resource type="Script" uid="uid://du5p20xxyny22" path="res://player_movement.gd" id="1_q0xif"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pippe"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pippe"]
+
+[sub_resource type="Skin" id="Skin_pippe"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_q0xif")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pippe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
+mesh = SubResource("SphereMesh_pippe")
+skin = SubResource("Skin_pippe")
+skeleton = NodePath("../..")
+
+[node name="PositionLeft" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7078726, 0, 0)
+
+[node name="PositionMiddle" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="PositionRight" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3844118, 0, 0)
