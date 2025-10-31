@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=3 format=3 uid="uid://cegv7hhwbj0ou"]
 
 [ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/coin.blend" id="1_pippe"]
+[ext_resource type="PackedScene" uid="uid://ctd5ghnpyrd4p" path="res://ui/health_bar/health_bar.tscn" id="2_ufh25"]
 
 [node name="Node3D" type="Node3D"]
 
 [node name="coin" parent="." instance=ExtResource("1_pippe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029400826, 0, 0.019253254)
+
+[node name="HealthBar" parent="." instance=ExtResource("2_ufh25")]
+
+[connection signal="value_changed" from="HealthBar" to="HealthBar" method="update_color"]
