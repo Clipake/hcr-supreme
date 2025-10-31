@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmlvoeh7qsj1n"]
+
+[ext_resource type="Script" uid="uid://d2nhdql7wqnjv" path="res://scripts/obstacle.gd" id="1_sl1jc"]
+[ext_resource type="PackedScene" uid="uid://3v528pdt3rxf" path="res://scenes/obstacle_new.tscn" id="2_aubd6"]
+
+[node name="Obstacle" type="CharacterBody3D"]
+script = ExtResource("1_sl1jc")
+
+[node name="AnimatableBody3D" parent="." instance=ExtResource("2_aubd6")]
