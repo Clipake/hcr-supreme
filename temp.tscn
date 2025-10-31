@@ -1,13 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=5 format=3 uid="uid://cegv7hhwbj0ou"]
 
-[ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/coin.blend" id="1_pippe"]
-[ext_resource type="PackedScene" uid="uid://ctd5ghnpyrd4p" path="res://ui/health_bar/health_bar.tscn" id="2_ufh25"]
+[ext_resource type="Script" uid="uid://du5p20xxyny22" path="res://player_movement.gd" id="2_ufh25"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pippe"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pippe"]
+
+[sub_resource type="Skin" id="Skin_pippe"]
 
 [node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.40569496)
 
-[node name="coin" parent="." instance=ExtResource("1_pippe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029400826, 0, 0.019253254)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0015859604, -2.3841858e-07, 4.5727253)
 
-[node name="HealthBar" parent="." instance=ExtResource("2_ufh25")]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.008825064)
 
-[connection signal="value_changed" from="HealthBar" to="HealthBar" method="update_color"]
+[node name="Player" type="CharacterBody3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.479597)
+script = ExtResource("2_ufh25")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
+shape = SubResource("SphereShape3D_pippe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player/CollisionShape3D"]
+mesh = SubResource("SphereMesh_pippe")
+skin = SubResource("Skin_pippe")
+skeleton = NodePath("../..")
+
+[node name="PositionLeft" type="Node3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7078726, 0, 0)
+
+[node name="PositionMiddle" type="Node3D" parent="Player"]
+unique_name_in_owner = true
+
+[node name="PositionRight" type="Node3D" parent="Player"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3844118, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36404288, -1.5662276, 0.6159358)
+use_collision = true
+size = Vector3(8.562012, 0.43066406, 4.237732)
