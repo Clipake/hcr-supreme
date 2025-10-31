@@ -1,8 +1,54 @@
-[gd_scene load_steps=2 format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=8 format=3 uid="uid://cegv7hhwbj0ou"]
 
 [ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/coin.blend" id="1_pippe"]
+[ext_resource type="Script" uid="uid://c2haqovefgnwu" path="res://area_3d.gd" id="2_f68d1"]
+[ext_resource type="Script" uid="uid://dtnnv8b1woda3" path="res://character_body_3d.gd" id="2_ufh25"]
+[ext_resource type="Script" uid="uid://ckqa5robjdfw2" path="res://area_3d_2.gd" id="4_f68d1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k81e3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f68d1"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_k81e3"]
+height = 0.07354736
 
 [node name="Node3D" type="Node3D"]
 
-[node name="coin" parent="." instance=ExtResource("1_pippe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.029400826, 0, 0.019253254)
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33205414, -1.3283386, -1.3717041)
+size = Vector3(23.862656, 0.7861328, 70.85913)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.9999507, 0.0066976156, -0.007332254, 0, 0.73833764, 0.67443126, 0.009930761, -0.674398, 0.7383012, 0.007515073, 2.5791016, 6.474886)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.930359, 1.9008179, 0.5469971)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
+script = ExtResource("2_ufh25")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("2_f68d1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+shape = SubResource("SphereShape3D_k81e3")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+visibility_parent = NodePath("../CSGSphere3D")
+shape = SubResource("SphereShape3D_f68d1")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+
+[node name="coin" parent="CharacterBody3D2" instance=ExtResource("1_pippe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9539976, 0.5911865, -2.5221286)
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D2"]
+script = ExtResource("4_f68d1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
+transform = Transform3D(2.2, 0, 0, 0, 0.02019656, 2.1999073, 0, -2.1999073, 0.02019656, 1.9539976, 0.5911865, -2.5221286)
+shape = SubResource("CylinderShape3D_k81e3")
+debug_color = Color(0, 0, 0, 0.41960785)
