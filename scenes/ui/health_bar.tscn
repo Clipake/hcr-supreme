@@ -10,4 +10,4 @@ value = 67.0
 show_percentage = false
 script = ExtResource("1_3vlme")
 
-[connection signal="value_changed" from="." to="." method="update_color"]
+[connection signal="value_changed" from="." to="." method="set_health"]
