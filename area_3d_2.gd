@@ -1,11 +1,10 @@
-extends Area3D
+extends Node3D
 
 func _ready():
-	body_entered.connect(_on_body_entered)
-
+	pass
 func _on_body_entered(body):
 	# Check if the player is the one touching
 	print("hi")
-	if body.name == CharacterBody3D:
+	if body.is_in_group("player"):
 		print("Coin collected!")
 		queue_free()  # Remove coin from scene

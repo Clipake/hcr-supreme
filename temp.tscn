@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=9 format=3 uid="uid://cegv7hhwbj0ou"]
 
 [ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/coin.blend" id="1_pippe"]
-[ext_resource type="Script" uid="uid://c2haqovefgnwu" path="res://area_3d.gd" id="2_f68d1"]
-[ext_resource type="Script" uid="uid://dtnnv8b1woda3" path="res://character_body_3d.gd" id="2_ufh25"]
-[ext_resource type="Script" uid="uid://ckqa5robjdfw2" path="res://area_3d_2.gd" id="4_f68d1"]
+[ext_resource type="Script" path="res://area_3d.gd" id="2_f68d1"]
+[ext_resource type="Script" path="res://character_body_3d.gd" id="2_ufh25"]
+[ext_resource type="Script" path="res://area_3d_2.gd" id="4_f68d1"]
+[ext_resource type="PackedScene" uid="uid://kuoaldv6pbia" path="res://coin.tscn" id="5_h2clf"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k81e3"]
 
@@ -45,10 +46,14 @@ shape = SubResource("SphereShape3D_f68d1")
 [node name="coin" parent="CharacterBody3D2" instance=ExtResource("1_pippe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9539976, 0.5911865, -2.5221286)
 
-[node name="Area3D" type="Area3D" parent="CharacterBody3D2"]
+[node name="Area3D" type="Area3D" parent="CharacterBody3D2/coin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9539976, -0.5911865, 2.5221286)
 script = ExtResource("4_f68d1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
 transform = Transform3D(2.2, 0, 0, 0, 0.02019656, 2.1999073, 0, -2.1999073, 0.02019656, 1.9539976, 0.5911865, -2.5221286)
 shape = SubResource("CylinderShape3D_k81e3")
 debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="coin2" parent="CharacterBody3D2" instance=ExtResource("5_h2clf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5165238, 2.3841858e-07, 0.722847)
