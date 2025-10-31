@@ -1,59 +1,84 @@
-[gd_scene load_steps=9 format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=11 format=3 uid="uid://cegv7hhwbj0ou"]
 
-[ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/coin.blend" id="1_pippe"]
-[ext_resource type="Script" path="res://area_3d.gd" id="2_f68d1"]
-[ext_resource type="Script" path="res://character_body_3d.gd" id="2_ufh25"]
-[ext_resource type="Script" path="res://area_3d_2.gd" id="4_f68d1"]
-[ext_resource type="PackedScene" uid="uid://kuoaldv6pbia" path="res://coin.tscn" id="5_h2clf"]
+[ext_resource type="Script" uid="uid://bevchg1iuqg06" path="res://scripts/temp_spawning.gd" id="1_f68d1"]
+[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="2_k81e3"]
+[ext_resource type="PackedScene" uid="uid://3v528pdt3rxf" path="res://scenes/obstacle_new.tscn" id="2_q51th"]
+[ext_resource type="Texture2D" uid="uid://bny8jp4qv1vgg" path="res://assets/qwantani_noon_puresky_1k.exr" id="5_h2clf"]
+[ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player.tscn" id="5_q51th"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_k81e3"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_q51th"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_f68d1"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2clf"]
+albedo_color = Color(0.5429866, 0.80717915, 0.7696345, 1)
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_k81e3"]
-height = 0.07354736
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_q51th"]
+panorama = ExtResource("5_h2clf")
+energy_multiplier = 1.51
+
+[sub_resource type="Sky" id="Sky_iyses"]
+sky_material = SubResource("PanoramaSkyMaterial_q51th")
+radiance_size = 1
+
+[sub_resource type="Environment" id="Environment_f68d1"]
+background_mode = 2
+background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
+sky = SubResource("Sky_iyses")
 
 [node name="Node3D" type="Node3D"]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33205414, -1.3283386, -1.3717041)
-size = Vector3(23.862656, 0.7861328, 70.85913)
+script = ExtResource("1_f68d1")
+obstacle_scene = ExtResource("2_q51th")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.9999507, 0.0066976156, -0.007332254, 0, 0.73833764, 0.67443126, 0.009930761, -0.674398, 0.7383012, 0.007515073, 2.5791016, 6.474886)
+transform = Transform3D(0.9998767, 0.015707226, 1.4328592e-07, -0.01224648, 0.77956975, 0.62619567, 0.009835686, -0.6261184, 0.77966595, 0.55039877, 2.2900481, 4.020508)
+near = 0.001
+far = 3935.05
+script = ExtResource("2_k81e3")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.930359, 1.9008179, 0.5469971)
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.2600934, -0.42382813, -6.8824816)
+use_collision = true
+size = Vector3(4.610962, 0.15234375, 21.799835)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
-script = ExtResource("2_ufh25")
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-1, 2.7510927e-08, -8.298127e-08, 0, 0.9491951, 0.31468832, 8.742278e-08, 0.31468832, -0.9491951, -0.33321542, 1.3283353, -3.9097257)
+light_energy = 1.056
 
-[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-script = ExtResource("2_f68d1")
+[node name="SpawnLocations" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.21114516, -2.3841858e-07, -15.611821)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
-shape = SubResource("SphereShape3D_k81e3")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 0.91445136, 0, 0)
+mesh = SubResource("CylinderMesh_q51th")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2clf")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="CharacterBody3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, -0.39762688, 0, 0)
+mesh = SubResource("CylinderMesh_q51th")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2clf")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-visibility_parent = NodePath("../CSGSphere3D")
-shape = SubResource("SphereShape3D_f68d1")
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, -1.821, 0, 0)
+mesh = SubResource("CylinderMesh_q51th")
+surface_material_override/0 = SubResource("StandardMaterial3D_h2clf")
 
-[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
+[node name="Timer" type="Timer" parent="."]
+autostart = true
 
-[node name="coin" parent="CharacterBody3D2" instance=ExtResource("1_pippe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9539976, 0.5911865, -2.5221286)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f68d1")
 
-[node name="Area3D" type="Area3D" parent="CharacterBody3D2/coin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9539976, -0.5911865, 2.5221286)
-script = ExtResource("4_f68d1")
+[node name="Player" parent="." instance=ExtResource("5_q51th")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.1774219, 0, 2.0078306)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2"]
-transform = Transform3D(2.2, 0, 0, 0, 0.02019656, 2.1999073, 0, -2.1999073, 0.02019656, 1.9539976, 0.5911865, -2.5221286)
-shape = SubResource("CylinderShape3D_k81e3")
-debug_color = Color(0, 0, 0, 0.41960785)
+[node name="PositionLeft" parent="Player" index="1"]
+transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, -1.7078726, 0, 0)
 
-[node name="coin2" parent="CharacterBody3D2" instance=ExtResource("5_h2clf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5165238, 2.3841858e-07, 0.722847)
+[node name="PositionMiddle" parent="Player" index="2"]
+transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 5.9604645e-08, 0, 0)
+
+[node name="PositionRight" parent="Player" index="3"]
+transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 1.3844118, 0, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+
+[editable path="Player"]

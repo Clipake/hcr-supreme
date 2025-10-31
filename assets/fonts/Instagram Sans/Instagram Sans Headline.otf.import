@@ -1,0 +1,36 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bvmf422g60cmg"
+path="res://.godot/imported/Instagram Sans Headline.otf-3ab07b336d0ecd8d49ac93e9e36dc360.fontdata"
+
+[deps]
+
+source_file="res://assets/fonts/Instagram Sans/Instagram Sans Headline.otf"
+dest_files=["res://.godot/imported/Instagram Sans Headline.otf-3ab07b336d0ecd8d49ac93e9e36dc360.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+modulate_color_glyphs=false
+hinting=1
+subpixel_positioning=4
+keep_rounding_remainders=true
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
