@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ctd5ghnpyrd4p"]
 
-[ext_resource type="Script" uid="uid://435k37efouph" path="res://ui/health_bar/health_bar.gd" id="1_3vlme"]
+[ext_resource type="Script" uid="uid://435k37efouph" path="res://scripts/ui/health_bar.gd" id="1_3vlme"]
 
 [node name="HealthBar" type="ProgressBar"]
 z_index = 1
@@ -9,3 +9,5 @@ offset_bottom = 26.0
 value = 67.0
 show_percentage = false
 script = ExtResource("1_3vlme")
+
+[connection signal="value_changed" from="." to="." method="update_color"]
