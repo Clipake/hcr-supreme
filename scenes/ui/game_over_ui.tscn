@@ -1,15 +1,17 @@
-[gd_scene load_steps=25 format=3 uid="uid://c12omn3e0x2kr"]
+[gd_scene load_steps=26 format=3 uid="uid://c12omn3e0x2kr"]
 
 [ext_resource type="Script" uid="uid://fyhx4loxvbfm" path="res://scripts/ui/game_over_ui.gd" id="1_wdabr"]
 [ext_resource type="Shader" uid="uid://tmvuekddslvs" path="res://scripts/ui/game_over_ui.gdshader" id="2_6o2nj"]
 [ext_resource type="FontFile" uid="uid://cpeag4x8qdh26" path="res://assets/fonts/Instagram Sans/Instagram Sans Bold.ttf" id="2_komnj"]
 [ext_resource type="FontFile" uid="uid://ym2kf6e0tthc" path="res://assets/fonts/Instagram Sans/Instagram Sans.ttf" id="3_gx0wf"]
+[ext_resource type="Script" uid="uid://c7be754nilqcr" path="res://scripts/ui/bg_panel.gd" id="3_k7p00"]
 [ext_resource type="FontFile" uid="uid://b33tkubxajfji" path="res://assets/fonts/Instagram Sans/Instagram Sans Light.ttf" id="4_rb8hv"]
 [ext_resource type="FontFile" uid="uid://bapvk2ri2m1qw" path="res://assets/fonts/Instagram Sans/Instagram Sans Medium.ttf" id="5_a0lfd"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k7p00"]
 shader = ExtResource("2_6o2nj")
-shader_parameter/corner_radius = 40.0
+shader_parameter/corner_radius = 0.030000001425
+shader_parameter/aspect_ratio = 1.2
 
 [sub_resource type="Gradient" id="Gradient_xu1am"]
 offsets = PackedFloat32Array(0, 0.34745762, 0.6779661, 1)
@@ -98,6 +100,7 @@ offset_top = -300.0
 offset_right = 250.0
 offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_4fpvo")
+script = ExtResource("3_k7p00")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BGPanel"]
 layout_mode = 2
@@ -253,6 +256,7 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_rb8hv")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_a0lfd")
 text = "Shop"
 
+[connection signal="item_rect_changed" from="BGPanel" to="BGPanel" method="_on_item_rect_changed"]
 [connection signal="button_up" from="BGPanel/VBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_game"]
 [connection signal="button_down" from="BGPanel/VBoxContainer/VBoxContainer/HBoxContainer/Home" to="." method="_on_open_home"]
 [connection signal="button_down" from="BGPanel/VBoxContainer/VBoxContainer/HBoxContainer/Shop" to="." method="_on_open_shop"]
