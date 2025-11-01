@@ -1,10 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://c12omn3e0x2kr"]
+[gd_scene load_steps=25 format=3 uid="uid://c12omn3e0x2kr"]
 
 [ext_resource type="Script" uid="uid://fyhx4loxvbfm" path="res://scripts/ui/game_over_ui.gd" id="1_wdabr"]
+[ext_resource type="Shader" uid="uid://tmvuekddslvs" path="res://scripts/ui/game_over_ui.gdshader" id="2_6o2nj"]
 [ext_resource type="FontFile" uid="uid://cpeag4x8qdh26" path="res://assets/fonts/Instagram Sans/Instagram Sans Bold.ttf" id="2_komnj"]
 [ext_resource type="FontFile" uid="uid://ym2kf6e0tthc" path="res://assets/fonts/Instagram Sans/Instagram Sans.ttf" id="3_gx0wf"]
 [ext_resource type="FontFile" uid="uid://b33tkubxajfji" path="res://assets/fonts/Instagram Sans/Instagram Sans Light.ttf" id="4_rb8hv"]
 [ext_resource type="FontFile" uid="uid://bapvk2ri2m1qw" path="res://assets/fonts/Instagram Sans/Instagram Sans Medium.ttf" id="5_a0lfd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k7p00"]
+shader = ExtResource("2_6o2nj")
+shader_parameter/corner_radius = 40.0
 
 [sub_resource type="Gradient" id="Gradient_xu1am"]
 offsets = PackedFloat32Array(0, 0.34745762, 0.6779661, 1)
@@ -86,6 +91,7 @@ grow_vertical = 2
 script = ExtResource("1_wdabr")
 
 [node name="BGPanel" type="PanelContainer" parent="."]
+material = SubResource("ShaderMaterial_k7p00")
 layout_mode = 0
 offset_left = -250.0
 offset_top = -300.0
