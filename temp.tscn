@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=12 format=3 uid="uid://cegv7hhwbj0ou"]
 
 [ext_resource type="Script" uid="uid://bevchg1iuqg06" path="res://scripts/temp_spawning.gd" id="1_f68d1"]
-[ext_resource type="Script" path="res://scripts/camera_3d.gd" id="2_k81e3"]
+[ext_resource type="Script" uid="uid://d2et0n2c0tsps" path="res://scripts/camera_3d.gd" id="2_k81e3"]
 [ext_resource type="PackedScene" uid="uid://3v528pdt3rxf" path="res://scenes/obstacle_new.tscn" id="2_q51th"]
+[ext_resource type="PackedScene" uid="uid://dc0sml4jmoo30" path="res://scenes/obstacles/coin.tscn" id="3_q51th"]
 [ext_resource type="Texture2D" uid="uid://bny8jp4qv1vgg" path="res://assets/qwantani_noon_puresky_1k.exr" id="5_h2clf"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player.tscn" id="5_q51th"]
 
@@ -27,15 +28,16 @@ sky = SubResource("Sky_iyses")
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_f68d1")
 obstacle_scene = ExtResource("2_q51th")
+coin_scene = ExtResource("3_q51th")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.9998767, 0.015707226, 1.4328592e-07, -0.01224648, 0.77956975, 0.62619567, 0.009835686, -0.6261184, 0.77966595, 0.55039877, 2.2900481, 4.020508)
+transform = Transform3D(0.9998767, 0.015707226, 1.4328592e-07, -0.01224648, 0.77956975, 0.62619567, 0.009835686, -0.6261184, 0.77966595, 0, 2.29, 4.021)
 near = 0.001
 far = 3935.05
 script = ExtResource("2_k81e3")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.2600934, -0.42382813, -6.8824816)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.424, -6.882)
 use_collision = true
 size = Vector3(4.610962, 0.15234375, 21.799835)
 
@@ -44,20 +46,20 @@ transform = Transform3D(-1, 2.7510927e-08, -8.298127e-08, 0, 0.9491951, 0.314688
 light_energy = 1.056
 
 [node name="SpawnLocations" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.21114516, -2.3841858e-07, -15.611821)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -15.612)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnLocations"]
-transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 0.91445136, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 1.5, 0, 0)
 mesh = SubResource("CylinderMesh_q51th")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2clf")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="SpawnLocations"]
-transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, -0.39762688, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_q51th")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2clf")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="SpawnLocations"]
-transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, -1.821, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, -1.5, 0, 0)
 mesh = SubResource("CylinderMesh_q51th")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2clf")
 
@@ -67,8 +69,8 @@ autostart = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f68d1")
 
-[node name="Player" parent="." instance=ExtResource("5_q51th")]
-transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0.1774219, 0, 2.0078306)
+[node name="Player" parent="." groups=["player"] instance=ExtResource("5_q51th")]
+transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 2.008)
 
 [node name="PositionLeft" parent="Player" index="1"]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, -1.7078726, 0, 0)

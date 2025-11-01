@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc0sml4jmoo30"]
+
+[ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/coin.blend" id="1_0t63x"]
+[ext_resource type="Script" uid="uid://ci6qrhdn1dptp" path="res://coin.gd" id="2_d8g7e"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0t63x"]
+height = 0.07354736
+
+[node name="coin" instance=ExtResource("1_0t63x")]
+script = ExtResource("2_d8g7e")
+
+[node name="Area3D" type="Area3D" parent="Coin" index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin/Area3D" index="0"]
+transform = Transform3D(2.2, 0, 0, 0, 2.1999998, 0, 0, 0, 2.1999998, 0, 0, 0)
+shape = SubResource("CylinderShape3D_0t63x")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[connection signal="body_entered" from="Coin/Area3D" to="." method="_on_body_entered"]

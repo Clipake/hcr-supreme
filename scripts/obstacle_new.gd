@@ -1,15 +1,13 @@
-extends AnimatableBody3D
+extends Node3D
 
 
 @export var WAIT_DISTANCE = 15
 var root_node
-var start = Vector3.ZERO
+
 
 func initialize(start_pos: Vector3, passed_node: Node3D):
 	position = start_pos
 	print(position)
-	start = start_pos
-	root_node = passed_node
 	get_node("FlipUpTimer").wait_time = randf_range(WAIT_DISTANCE/(-passed_node.speed)*0.3, WAIT_DISTANCE/(-passed_node.speed)*0.7)
 func _physics_process(_delta: float) -> void:
 	global_position += Vector3(0, 0, root_node.speed*_delta)
