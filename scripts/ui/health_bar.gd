@@ -1,14 +1,12 @@
+@tool
 extends ProgressBar
 
-var progress_stylebox: StyleBoxFlat = self.get_theme_stylebox('fill')
+@onready var progress_stylebox: StyleBoxFlat = self.get_theme_stylebox('fill')
 
 func _ready() -> void:
 	# Connecting to signal bus
 	Events.set_player_health.connect(set_health)
-	
-	# Setting initial health bar style
-	add_theme_stylebox_override("fill", progress_stylebox)
-	set_health(value) # Updates initial colors
+
 
 func set_health(value: float) -> void:
 	"""
