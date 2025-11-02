@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var obstacle_scene: PackedScene
+@export var coin_scene: PackedScene
 @export var speed = 10
 @onready var timer = $Timer
 @export var DISTANCE = 10
@@ -42,7 +43,11 @@ func _on_timer_timeout() -> void:
 	var available = [0, 1, 2]
 	
 	for i in range(num_obstacles):
-		var obstacle = obstacle_scene.instantiate()
+		var obstacle
+		if randi_range(0, 2) == 1:
+			obstacle = coin_scene.instantiate()
+		else:
+			obstacle = obstacle_scene.instantiate()
 		var location_index = randi_range(0, len(available)-1)
 		obstacle.initialize(locations[available[location_index]].global_position, self)
 		available.remove_at(location_index)
