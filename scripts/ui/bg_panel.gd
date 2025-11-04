@@ -3,10 +3,14 @@ extends PanelContainer
 
 
 func _on_item_rect_changed() -> void:
+	"""
+	Auto-updates aspect ratio for proper corner rounding
+	"""
 	material.set_shader_parameter('aspect_ratio', size.y/size.x)
 
 func _input(e: InputEvent) -> void:
 	if e is InputEventMouseMotion:
+		# e.position is relative to screen, must convert to coordinates local to self
 		var local_position: Vector2 = e.position - get_global_transform().origin
 		var center: Vector2 = self.size/2.0
 		
@@ -18,6 +22,10 @@ func _input(e: InputEvent) -> void:
 
 
 func get_line(from: Vector2, to: Vector2) -> Array[Callable]:
+	"""
+	Calculates a linear equation in terms of x and y based on the two given points
+	:return: An array where array[0] is the line in terms of x, and array[1] is the line in terms of y
+	"""
 	var m: float = INF if to.x==from.x else (to.y-from.y)/(to.x-from.x)
 	var b: float = to.y-(to.x*m)
 	
@@ -29,6 +37,10 @@ func get_line(from: Vector2, to: Vector2) -> Array[Callable]:
 	return [terms_of_x, terms_of_y]
 
 func get_intersections(from: Vector2, to: Vector2) -> Array:
+	"""
+	:return: The two points around the edge of the UI that intersect with a line created by the
+	center of the UI and the mouse's position
+	"""
 	var result = []
 	var intersection: Vector2 = Vector2.ZERO
 	var intersection2: Vector2 = Vector2.ZERO
@@ -56,6 +68,7 @@ func get_intersections(from: Vector2, to: Vector2) -> Array:
 	if line2.call(size.y) <= size.x and line2.call(size.y) >= 0:
 		intersection2 = Vector2(line2.call(size.y)/size.x, 1.0)
 		
+	# Determines point orientation (which point is the 'from' vs. 'to' relative to mouse's position)
 	if (to.x > from.x and intersection2.x > intersection.x) \
 			or (to.y > from.y and intersection2.y > intersection.y):
 		result.append(intersection)
