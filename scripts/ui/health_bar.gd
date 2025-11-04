@@ -5,6 +5,7 @@ extends ProgressBar
 
 func _ready() -> void:
 	# Connecting to signal bus
+	if Engine.is_editor_hint(): return
 	Events.set_player_health.connect(set_health)
 
 
