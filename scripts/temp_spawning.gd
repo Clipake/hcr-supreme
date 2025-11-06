@@ -6,6 +6,8 @@ extends Node3D
 @onready var timer = $Timer
 @export var DISTANCE = 10
 
+
+
 var locations
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

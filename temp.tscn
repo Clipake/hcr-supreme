@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bevchg1iuqg06" path="res://scripts/temp_spawning.gd" id="1_f68d1"]
 [ext_resource type="Script" uid="uid://d2et0n2c0tsps" path="res://scripts/camera_3d.gd" id="2_k81e3"]
 [ext_resource type="PackedScene" uid="uid://3v528pdt3rxf" path="res://scenes/obstacle_new.tscn" id="2_q51th"]
-[ext_resource type="PackedScene" uid="uid://dc0sml4jmoo30" path="res://scenes/obstacles/coin.tscn" id="3_q51th"]
+[ext_resource type="PackedScene" uid="uid://dc0sml4jmoo30" path="res://scenes/interactables/coin.tscn" id="3_q51th"]
 [ext_resource type="Texture2D" uid="uid://bny8jp4qv1vgg" path="res://assets/qwantani_noon_puresky_1k.exr" id="5_h2clf"]
 [ext_resource type="PackedScene" uid="uid://qn4mowvn0vmt" path="res://scenes/player.tscn" id="5_q51th"]
 

@@ -2,6 +2,9 @@ extends Node
 
 # UI signals
 signal restart_game
+signal start_game
+
+
 signal open_home
 signal open_shop
 signal set_run_time(run_time: int) ## Sets game over UI's run time to run_time
