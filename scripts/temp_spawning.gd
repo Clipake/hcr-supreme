@@ -22,7 +22,7 @@ var tick_counter = 0
 func _physics_process(delta: float) -> void:
 	tick_counter += delta
 	speed += tick_counter/1000*0.1
-	timer.wait_time = float(DISTANCE)/(-speed)
+	timer.wait_time = float(DISTANCE)/(speed)
 	
 var chances = {
 	1: 1/3.0,
