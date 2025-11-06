@@ -24,16 +24,11 @@ func _physics_process(delta: float) -> void:
 		0.0,
 	).normalized()
 	
-	#player.velocity.x = input_vector.x * speed
-	
 	move_and_slide()
 	
 	apply_gravity(delta)
 	_jump()
-	#_hop()
 	move_columns(input_vector)
-	
-	#move_and_slide()
 	
 	pass
 
@@ -63,13 +58,10 @@ func move_columns(input_vector) -> void:
 	
 	match current_position:
 		0:
-			#player.position.x = column_left.position.x
 			smooth_move(column_left)
 		1:
-			#player.position.x = column_middle.position.x
 			smooth_move(column_middle)
 		2:
-			#player.position.x = column_right.position.x
 			smooth_move(column_right)
 
 func smooth_move(column: Node3D) -> void:
