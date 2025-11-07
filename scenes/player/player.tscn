@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5fg0ygbhuu4g"]
+
+[ext_resource type="Script" uid="uid://du5p20xxyny22" path="res://scripts/player/player_movement.gd" id="1_q0xif"]
+[ext_resource type="PackedScene" uid="uid://dj3c2n4pg2k0m" path="res://assets/thumbThumb1.blend" id="2_g2els"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pippe"]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+script = ExtResource("1_q0xif")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pippe")
+
+[node name="thumbThumb1" parent="CollisionShape3D" instance=ExtResource("2_g2els")]
+transform = Transform3D(-0.09, 0, -7.86805e-09, 0, 0.09, 0, 7.86805e-09, 0, -0.09, 0.10671961, 0.72676104, -1.875567e-08)
+
+[node name="PositionLeft" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 1.4922321, 0, -1.3988102e-07)
+
+[node name="PositionMiddle" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.21564054, 0, 9.425952e-09)
+
+[node name="PositionRight" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.6000524, 0, 1.3045508e-07)
