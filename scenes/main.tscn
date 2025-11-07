@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cegv7hhwbj0ou"]
 
-[ext_resource type="Script" uid="uid://bevchg1iuqg06" path="res://scripts/temp_spawning.gd" id="1_tbgi4"]
+[ext_resource type="Script" uid="uid://bevchg1iuqg06" path="res://scripts/interactables/temp_spawning.gd" id="1_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://3v528pdt3rxf" path="res://scenes/interactables/obstacle_new.tscn" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://dc0sml4jmoo30" path="res://scenes/interactables/coin.tscn" id="3_o6xl0"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="5_85g3d"]
@@ -78,7 +78,6 @@ mesh = SubResource("CylinderMesh_q51th")
 surface_material_override/0 = SubResource("StandardMaterial3D_h2clf")
 
 [node name="Timer" type="Timer" parent="."]
-autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f68d1")

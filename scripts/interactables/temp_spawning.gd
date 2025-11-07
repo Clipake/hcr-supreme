@@ -13,6 +13,10 @@ var locations
 func _ready() -> void:
 	locations = get_node("SpawnLocations").get_children()
 	
+	Events.start_game.connect(func():
+		timer.start()
+		pass)
+	
 	pass # Replace with function body.
 
 
