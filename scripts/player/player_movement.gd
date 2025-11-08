@@ -3,7 +3,7 @@ extends CharacterBody3D
 @onready var column_left: Node3D = %PositionLeft
 @onready var column_middle: Node3D = %PositionMiddle
 @onready var column_right: Node3D = %PositionRight
-@export var speed = 5
+@export var speed = 7
 
 var jump_velocity = 5
 var hop_velocity = 2

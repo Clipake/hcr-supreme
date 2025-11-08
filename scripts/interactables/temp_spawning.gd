@@ -7,15 +7,13 @@ extends Node3D
 @export var DISTANCE = 10
 
 
-
 var locations
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	locations = get_node("SpawnLocations").get_children()
 	
 	Events.start_game.connect(func():
-		timer.start()
-		pass)
+		timer.start())
 	
 	pass # Replace with function body.
 

@@ -5,7 +5,7 @@ var root_node: Node3D
 func _ready():
 	pass
 	
-func initialize(start_pos: Vector3, passed_node: Node3D):
+func init(start_pos: Vector3, passed_node: Node3D):
 	position = start_pos
 	root_node = passed_node
 func _physics_process(_delta: float) -> void:
