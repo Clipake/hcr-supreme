@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bfunr77q3ei3"
-path="res://.godot/imported/thumbThumb1.blend-2f97045ac8a2a42a396ff801c2609d3c.scn"
+uid="uid://dmlcqeaionp36"
+path="res://.godot/imported/petrSticker.blend-9bb594b8260c9a0b0832aa7c8226245a.scn"
 
 [deps]
 
-source_file="res://assets/models/thumbThumb1.blend"
-dest_files=["res://.godot/imported/thumbThumb1.blend-2f97045ac8a2a42a396ff801c2609d3c.scn"]
+source_file="res://assets/models/petrSticker.blend"
+dest_files=["res://.godot/imported/petrSticker.blend-9bb594b8260c9a0b0832aa7c8226245a.scn"]
 
 [params]
 

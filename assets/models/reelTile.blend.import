@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bjj8wtuh78mst"
-path="res://.godot/imported/neutralReelPad.blend-8a7443848fbfd66031350614840f2c78.scn"
+path="res://.godot/imported/reelTile.blend-baa6d0821888c2d3ad466795a3eccf69.scn"
 
 [deps]
 
-source_file="res://assets/models/neutralReelPad.blend"
-dest_files=["res://.godot/imported/neutralReelPad.blend-8a7443848fbfd66031350614840f2c78.scn"]
+source_file="res://assets/models/reelTile.blend"
+dest_files=["res://.godot/imported/reelTile.blend-baa6d0821888c2d3ad466795a3eccf69.scn"]
 
 [params]
 

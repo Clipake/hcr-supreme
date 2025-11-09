@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://s1dsxes13r3d"
-path="res://.godot/imported/runningTungTung.blend-7c2bf57d48d71fc2d295a68886e61f1e.scn"
+uid="uid://e0dy4758qic0"
+path="res://.godot/imported/thumbThumb.blend-ca82b48f127fcd5dc02fa4726c5fd411.scn"
 
 [deps]
 
-source_file="res://assets/models/runningTungTung.blend"
-dest_files=["res://.godot/imported/runningTungTung.blend-7c2bf57d48d71fc2d295a68886e61f1e.scn"]
+source_file="res://assets/models/thumbThumb.blend"
+dest_files=["res://.godot/imported/thumbThumb.blend-ca82b48f127fcd5dc02fa4726c5fd411.scn"]
 
 [params]
 
