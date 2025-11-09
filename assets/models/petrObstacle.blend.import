@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bjj8wtuh78mst"
-path="res://.godot/imported/neutralPad.blend-85e3665fb60f56354e23c00dd26aac71.scn"
+uid="uid://dmlcqeaionp36"
+path="res://.godot/imported/petrObstacle.blend-531512e24f921570d4461a6735b3964f.scn"
 
 [deps]
 
-source_file="res://assets/models/neutralPad.blend"
-dest_files=["res://.godot/imported/neutralPad.blend-85e3665fb60f56354e23c00dd26aac71.scn"]
+source_file="res://assets/models/petrObstacle.blend"
+dest_files=["res://.godot/imported/petrObstacle.blend-531512e24f921570d4461a6735b3964f.scn"]
 
 [params]
 
