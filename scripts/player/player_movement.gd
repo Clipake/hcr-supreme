@@ -29,7 +29,6 @@ func _input(event: InputEvent) -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_pressed('like_reel'):
 		if not like_ready:
-			print("Next reel doubled!")
 			like_ready = true
 			Events.like_reel.emit()
 
