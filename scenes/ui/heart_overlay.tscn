@@ -19,6 +19,3 @@ script = ExtResource("1_clny0")
 [node name="InstagramHeart" type="Sprite2D" parent="."]
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_kbjg8")
-
-[node name="DisappearTimer" type="Timer" parent="."]
-wait_time = 0.009999999999999998
