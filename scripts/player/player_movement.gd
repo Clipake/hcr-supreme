@@ -11,9 +11,23 @@ var gravity = 10
 
 var current_position = 1
 
+var like_ready = false ## Whether the reel like is waiting for the next reel effect to double
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Events.reel_effect_trigger.connect(_reel_effect_trigger)
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed('like_reel'):
+		if not like_ready:
+			like_ready = true
+			Events.like_reel.emit()
+
+
+func _reel_effect_trigger():
+	like_ready = false # Allows player to like the next reel again
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
