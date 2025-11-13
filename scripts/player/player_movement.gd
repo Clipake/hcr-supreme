@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var column_middle: Node3D = %PositionMiddle
 @onready var column_right: Node3D = %PositionRight
 @export var speed = 7
+@export var heart_overlay: PackedScene
 
 var jump_velocity = 5
 var hop_velocity = 2
@@ -18,9 +19,17 @@ func _ready() -> void:
 	Events.reel_effect_trigger.connect(_reel_effect_trigger)
 
 
+# Creates a like heart overlay everytime the user attempts to like a reel (even if already liked)
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("like_reel"):
+		add_child(heart_overlay.instantiate())
+
+
+# Prevents player from liking one reel multiple times
 func _process(delta: float) -> void:
 	if Input.is_action_pressed('like_reel'):
 		if not like_ready:
+			print("Next reel doubled!")
 			like_ready = true
 			Events.like_reel.emit()
 

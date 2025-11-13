@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://lu2t4t7io8ht"]
+
+[ext_resource type="Script" uid="uid://dqlyd1p1mmbck" path="res://scripts/ui/heart_overlay.gd" id="1_clny0"]
+[ext_resource type="Texture2D" uid="uid://cv5hff2ahif7p" path="res://assets/images/instagram_heart.png" id="1_kbjg8"]
+
+[node name="HeartOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_clny0")
+
+[node name="InstagramHeart" type="Sprite2D" parent="."]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_kbjg8")
+
+[node name="DisappearTimer" type="Timer" parent="."]
+wait_time = 0.009999999999999998
