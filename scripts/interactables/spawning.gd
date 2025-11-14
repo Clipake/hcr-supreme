@@ -57,7 +57,7 @@ func _on_timer_timeout() -> void:
 		var interactable_index = randi_range(0, len(interactables)-1)
 		var interactable_scene = interactables[interactable_index]
 		var interactable = interactable_scene.instantiate()
-		
+
 		var location_index = randi_range(0, len(available)-1)
 		interactable.init(spawn_locations[available[location_index]].global_position, self)
 
