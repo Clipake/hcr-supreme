@@ -10,11 +10,11 @@ extends Node3D
 var spawn_locations
 var interactables = []
 
+# This determines the chances of 0-3 obstacles spawning in a row
 var spawn_amount_chances = {
 	1: 1/3.0,
 	2: 1/4.0,
 	3: 1/10.0,
-	0: 1/20.0
 }
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,8 +22,6 @@ func _ready() -> void:
 		if (file.get_extension() == 'import'):
 			file = file.replace('.import', '')
 		interactables.append(load('res://scenes/interactables/'+file))
-	print(interactables)
-	print('run')
 	
 	spawn_locations = get_node("SpawnLocations").get_children()
 	
@@ -39,7 +37,6 @@ func _physics_process(delta: float) -> void:
 	spawn_timer.wait_time = float(DISTANCE)/(speed)
 	
 func _on_timer_timeout() -> void:	
-	
 	var rng = randf()
 	var num_obstacles = 0
 	for val in spawn_amount_chances:
@@ -47,6 +44,13 @@ func _on_timer_timeout() -> void:
 			num_obstacles = val
 			break
 	var available = [0, 1, 2]
+	
+	# Creates a reel tile at each spawn location, every time an obstacle spawns (every row)
+	for index in available:
+		var spawn_position = spawn_locations[index].global_position
+		var tile = reel_tile.instantiate()
+		tile.init(spawn_position+Vector3(0, -1, 0), self)
+		add_child(tile)
 	
 	for i in range(num_obstacles):
 		var interactable_index = randi_range(0, len(interactables)-1)
@@ -57,13 +61,6 @@ func _on_timer_timeout() -> void:
 		## The global position of the relevant spawn location object
 		var spawn_position = spawn_locations[available[location_index]].global_position
 		interactable.init(spawn_position, self)
-		
-		# Creates a reel tile at each spawn location, every time an obstacle spawns (every row)
-		for index in available:
-			spawn_position = spawn_locations[index].global_position
-			var tile = reel_tile.instantiate()
-			tile.init(spawn_position+Vector3(0, -1, 0), self)
-			add_child(tile)
 
 		available.remove_at(location_index)
 		add_child(interactable)
