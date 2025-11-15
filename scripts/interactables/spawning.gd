@@ -25,6 +25,16 @@ func _ready() -> void:
 	
 	spawn_locations = get_node("SpawnLocations").get_children()
 	
+	# Spawns 10 rows of initial tiles so that level is not empty on start
+	for row in range(1, 11):
+		for index in range(3): # Spawn 3 in a row
+			var tile = reel_tile.instantiate()
+			var side_scale_offset = Vector3(1.1, 1, 1)
+			var offset = Vector3(0, 0, -2+(speed/spawn_timer.wait_time)*row*1.3)
+			var spawn_position = spawn_locations[index].global_position*side_scale_offset+offset
+			tile.init(spawn_position+Vector3(0, -0.75, 0), self)
+			add_child(tile)
+	
 	Events.start_game.connect(func():
 		spawn_timer.start())
 		
@@ -47,9 +57,10 @@ func _on_timer_timeout() -> void:
 	
 	# Creates a reel tile at each spawn location, every time an obstacle spawns (every row)
 	for index in available:
-		var spawn_position = spawn_locations[index].global_position
+		var side_scale_offset = Vector3(1.1, 1, 1)
+		var spawn_position = spawn_locations[index].global_position*side_scale_offset
 		var tile = reel_tile.instantiate()
-		tile.init(spawn_position+Vector3(0, -1, 0), self)
+		tile.init(spawn_position+Vector3(0, -0.75, 0), self)
 		add_child(tile)
 	
 	for i in range(num_obstacles):

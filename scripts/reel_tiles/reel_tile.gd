@@ -8,19 +8,15 @@ var root_node
 func init(start_pos: Vector3, passed_node: Node3D):
 	position = start_pos
 	root_node = passed_node
+
+
 func _physics_process(_delta: float) -> void:
 	global_position += Vector3(0, 0, root_node.speed*_delta)
+	if global_position.z > 10:
+		queue_free() # Remove from scene after passing camera
 
 
-func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
-	queue_free()
-
-
-func _on_timer_timeout() -> void:
-	queue_free()
-	pass # Replace with function body.
-
-
-func _on_flip_up_timer_timeout() -> void:
-	get_node("AnimationPlayer").play("obstacle_flip_up")
-	pass # Replace with function body.
+func _on_collision_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group('player'):
+		Events.reel_tile_collided.emit()
+		print("Collided with reel")

@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0edohu5afmv2"]
+[gd_scene load_steps=4 format=3 uid="uid://c0edohu5afmv2"]
 
 [ext_resource type="PackedScene" uid="uid://bjj8wtuh78mst" path="res://assets/models/reelTile.blend" id="1_b6kt6"]
 [ext_resource type="Script" uid="uid://i0q1dg4xlt4d" path="res://scripts/reel_tiles/reel_tile.gd" id="2_ub1wn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7f6v2"]
+size = Vector3(0.6463623, 1, 0.92562866)
 
 [node name="reel_tile" instance=ExtResource("1_b6kt6")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -9,3 +12,12 @@ script = ExtResource("2_ub1wn")
 
 [node name="Cube_055" parent="." index="0"]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="CollisionArea" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38705134, 0)
+shape = SubResource("BoxShape3D_7f6v2")
+
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_collision_area_area_entered"]
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
