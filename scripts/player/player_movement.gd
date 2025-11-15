@@ -8,6 +8,7 @@ extends CharacterBody3D
 var jump_velocity = 10
 var hop_velocity = 2
 var gravity = 30
+var health = 100
 
 var current_position = 1
 
@@ -76,6 +77,11 @@ func smooth_move(column: Node3D) -> void:
 		velocity.x = 0
 		rotation = Vector3(0,0,0)
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	print(body.name)
-	pass # Replace with function body.
+func _on_area_3d_area_entered(body: Node3D) -> void:
+	if body.name == "CoinArea":
+		print("coin collected")
+	else:
+		Events.set_player_health.emit(health - 10/3)
+		health -= 10/3
+		if health <= 0:
+			print("WOOWW YOU DIEDDD")

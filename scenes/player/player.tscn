@@ -32,4 +32,4 @@ shape = SubResource("SphereShape3D_pippe")
 [node name="thumbThumb1" parent="CollisionShape3D" instance=ExtResource("2_g2els")]
 transform = Transform3D(-0.09, 0, -7.86805e-09, 0, 0.09, 0, 7.86805e-09, 0, -0.09, 0.10671961, 0.72676104, -1.875567e-08)
 
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

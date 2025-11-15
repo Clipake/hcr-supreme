@@ -2,17 +2,6 @@
 
 [ext_resource type="Script" uid="uid://brcpn0rfxrl6s" path="res://scripts/interactables/obstacle_new.gd" id="1_uyw5p"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q51th"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyw5p"]
-albedo_color = Color(0.24313726, 0.4392157, 1, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8owox"]
-albedo_color = Color(0.68691, 0.55744386, 0.9636794, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_iyses"]
-material = SubResource("StandardMaterial3D_8owox")
-
 [sub_resource type="Animation" id="Animation_8owox"]
 length = 0.001
 tracks/0/type = "value"
@@ -50,21 +39,20 @@ _data = {
 &"obstacle_flip_up": SubResource("Animation_uyw5p")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_q51th"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uyw5p"]
+albedo_color = Color(0.24313726, 0.4392157, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8owox"]
+albedo_color = Color(0.68691, 0.55744386, 0.9636794, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iyses"]
+material = SubResource("StandardMaterial3D_8owox")
+
 [node name="AnimatableBody3D" type="AnimatableBody3D"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 script = ExtResource("1_uyw5p")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_q51th")
-disabled = true
-
-[node name="Node3D" type="Node3D" parent="CollisionShape3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/Node3D"]
-transform = Transform3D(0.920938, 0, 0, 0, 0.2522815, 0, 0, 0, 1.7496384, 0, 0, -0.85797995)
-material_overlay = SubResource("StandardMaterial3D_uyw5p")
-mesh = SubResource("BoxMesh_iyses")
-skeleton = NodePath("")
 
 [node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
 aabb = AABB(-0.43611935, -0.129814, -0.9050548, 0.8722387, 0.259628, 1.8101096)
@@ -82,6 +70,23 @@ libraries = {
 [node name="FlipUpTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_q51th")
+disabled = true
+
+[node name="Node3D" type="Node3D" parent="CollisionShape3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D/Node3D"]
+transform = Transform3D(0.920938, 0, 0, 0, 0.2522815, 0, 0, 0, 1.7496384, 0, 0, -0.85797995)
+material_overlay = SubResource("StandardMaterial3D_uyw5p")
+mesh = SubResource("BoxMesh_iyses")
+skeleton = NodePath("")
+
+[node name="thingamajigger" type="Area3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="thingamajigger"]
+shape = SubResource("BoxShape3D_q51th")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="FlipUpTimer" to="." method="_on_flip_up_timer_timeout"]
