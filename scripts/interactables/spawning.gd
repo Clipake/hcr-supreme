@@ -2,8 +2,10 @@ extends Node3D
 
 
 @onready var spawn_timer = $SpawnTimer
-@export var speed = 10
-@export var DISTANCE = 10
+@export var speed: float = 2
+@export var DISTANCE: float = 4
+
+@export var reel_tile: PackedScene
 
 var spawn_locations
 var interactables = []
@@ -29,13 +31,6 @@ func _ready() -> void:
 		spawn_timer.start())
 		
 	Events.start_game.emit()
-
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 	
 var tick_counter = 0
 func _physics_process(delta: float) -> void:
@@ -59,7 +54,16 @@ func _on_timer_timeout() -> void:
 		var interactable = interactable_scene.instantiate()
 		
 		var location_index = randi_range(0, len(available)-1)
-		interactable.init(spawn_locations[available[location_index]].global_position, self)
+		## The global position of the relevant spawn location object
+		var spawn_position = spawn_locations[available[location_index]].global_position
+		interactable.init(spawn_position, self)
+		
+		# Creates a reel tile at each spawn location, every time an obstacle spawns (every row)
+		for index in available:
+			spawn_position = spawn_locations[index].global_position
+			var tile = reel_tile.instantiate()
+			tile.init(spawn_position+Vector3(0, -1, 0), self)
+			add_child(tile)
 
 		available.remove_at(location_index)
 		add_child(interactable)

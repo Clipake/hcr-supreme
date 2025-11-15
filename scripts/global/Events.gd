@@ -12,3 +12,4 @@ signal set_coins_collected(coins_collected: int) ## Sets game over UI's coins co
 signal set_difficulty_bonus(difficulty_bonus: float) ## Sets game over UI's difficulty bonus to difficulty_bonus
 signal set_total(total: int) ## Sets game over UI's total score to total
 signal set_player_health(health: int) ## Sets health UI to health
+signal coin_collected ## Emitted when the player picks up a coin

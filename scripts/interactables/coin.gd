@@ -15,3 +15,4 @@ func _on_body_entered(body):
 	# Check if the player is the one touching
 	if body.is_in_group("player"):
 		queue_free()  # Remove coin from scene
+		Events.coin_collected.emit() # Signals to everyone that a coin has been collected

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0edohu5afmv2"]
+
+[ext_resource type="PackedScene" uid="uid://bjj8wtuh78mst" path="res://assets/models/reelTile.blend" id="1_b6kt6"]
+[ext_resource type="Script" uid="uid://i0q1dg4xlt4d" path="res://scripts/reel_tiles/reel_tile.gd" id="2_ub1wn"]
+
+[node name="reel_tile" instance=ExtResource("1_b6kt6")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+script = ExtResource("2_ub1wn")
+
+[node name="Cube_055" parent="." index="0"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)

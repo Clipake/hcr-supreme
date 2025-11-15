@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=11 format=3 uid="uid://cegv7hhwbj0ou"]
 
 [ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="5_85g3d"]
@@ -39,7 +39,8 @@ sky = SubResource("Sky_iyses")
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_0wfyh")
-DISTANCE = 5
+DISTANCE = 3.0
+reel_tile = ExtResource("2_jyhfs")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9998767, 0.015707226, 1.4328592e-07, -0.01224648, 0.77956975, 0.62619567, 0.009835686, -0.6261184, 0.77966595, 0, 2.29, 4.021)
@@ -47,17 +48,13 @@ near = 0.001
 far = 3935.05
 script = SubResource("GDScript_4c57u")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.424, -6.882)
-use_collision = true
-size = Vector3(4.610962, 0.15234375, 21.799835)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 2.7510927e-08, -8.298127e-08, 0, 0.9491951, 0.31468832, 8.742278e-08, 0.31468832, -0.9491951, -0.33321542, 1.3283353, -3.9097257)
 light_energy = 1.056
 
 [node name="SpawnLocations" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -15.612)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnLocations"]
 transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 1.5, 0, 0)
@@ -90,6 +87,12 @@ transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 5.96
 
 [node name="PositionRight" parent="Player" index="3"]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 1.3844118, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.33807373, -0.9662529, 1.4237671)
+visible = false
+use_collision = true
+size = Vector3(10.098755, 1, 3.8475342)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 
