@@ -38,8 +38,15 @@ background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
 sky = SubResource("Sky_iyses")
 
 [node name="Node3D" type="Node3D"]
+<<<<<<< Updated upstream:scenes/main.tscn
 script = ExtResource("1_0wfyh")
 DISTANCE = 5
+=======
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1363858, 0.2973714, 0)
+script = ExtResource("1_f68d1")
+obstacle_scene = ExtResource("2_q51th")
+coin_scene = ExtResource("3_q51th")
+>>>>>>> Stashed changes:temp.tscn
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9998767, 0.015707226, 1.4328592e-07, -0.01224648, 0.77956975, 0.62619567, 0.009835686, -0.6261184, 0.77966595, 0, 2.29, 4.021)
