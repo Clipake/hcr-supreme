@@ -79,9 +79,9 @@ func smooth_move(column: Node3D) -> void:
 
 func _on_area_3d_area_entered(body: Node3D) -> void:
 	if body.name == "CoinArea":
-		print("coin collected")
+		print("coin collected") # replace with coin collection signal
 	else:
 		Events.set_player_health.emit(health - 10/3)
 		health -= 10/3
 		if health <= 0:
-			print("WOOWW YOU DIEDDD")
+			print("WOOWW YOU DIEDDD") # replace with death signal

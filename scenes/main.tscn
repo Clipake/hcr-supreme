@@ -93,6 +93,10 @@ transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 5.96
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 1.3844118, 0, 0)
 
 [node name="HealthBar" parent="." instance=ExtResource("3_sugp2")]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 385.0
+offset_bottom = 46.0
 value = 100.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
