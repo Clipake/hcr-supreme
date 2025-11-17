@@ -15,4 +15,4 @@ func _on_restart_pressed():
 	Events.restart_game.emit()
 
 func _on_quit_pressed():
-	Events.end_game.emit()
+	Events.open_home.emit()
