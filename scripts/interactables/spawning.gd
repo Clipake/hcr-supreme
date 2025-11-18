@@ -60,7 +60,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 	
 var tick_counter = 0
@@ -71,7 +71,6 @@ func _physics_process(delta: float) -> void:
 	
 func _on_timer_timeout() -> void:	
 	
-	var rng = randf()
 	var num_obstacles = get_weighted_chance(spawn_amount_chances, amount_fallback)
 	
 	var sorted_chances = spawn_amount_chances.keys()
