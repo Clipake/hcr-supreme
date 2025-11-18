@@ -9,20 +9,36 @@ var spawn_locations
 var interactables = {}
 
 var spawn_amount_chances = {
-	1: 1/3.0,
-	2: 1/4.0,
-	3: 1/20.0,
-	0: 1/25.0
+	1: 50,
+	2: 30,
+	3: 4,
+	0: 1,
 }
+var amount_fallback = 1
 
 var interactable_spawn_chances = {
-	"coin": 1/3.0,
-	"petr_sticker": 1/5.0,
-	"scooter": 1/7.0,
-	"six_seven": 1/7.0,
-	"tung_tung": 1/10.0,
+	"coin": 30,
+	"petr_sticker": 20,
+	"scooter": 20,
+	"six_seven": 20,
+	"tung_tung": 5,
 }
+var interactable_fallback = "coin"
 
+func get_weighted_chance(chances: Dictionary, fallback):
+	var total = 0.0
+	for chance in chances.values():
+		total += chance
+		
+	var rng = randf() * total
+	
+	var cumulative = 0.0
+	for value in chances:
+		cumulative += chances[value]
+		if rng <= cumulative:
+			return value
+	return fallback
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for file in DirAccess.get_files_at("res://scenes/interactables"):
@@ -56,18 +72,19 @@ func _physics_process(delta: float) -> void:
 func _on_timer_timeout() -> void:	
 	
 	var rng = randf()
-	var num_obstacles = 0
-	for val in spawn_amount_chances:
-		if rng >= spawn_amount_chances[val]:
-			num_obstacles = val
-			break
+	var num_obstacles = get_weighted_chance(spawn_amount_chances, amount_fallback)
+	
+	var sorted_chances = spawn_amount_chances.keys()
+	sorted_chances.sort()
+	sorted_chances.reverse()
+	
 	var available = [0, 1, 2]
+	
 	print(num_obstacles)
 	var chosen_interactables = []
 	for i in range(num_obstacles):
-		var keys = interactables.keys()
-		var interactable_index = randi_range(0, len(keys)-1)
-		chosen_interactables.append(keys[interactable_index])
+		var interactable = get_weighted_chance(interactable_spawn_chances, interactable_fallback)
+		chosen_interactables.append(interactable + '.tscn')
 		
 	if 'tung_tung.tscn' in chosen_interactables:
 		chosen_interactables = ['tung_tung.tscn']
