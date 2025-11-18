@@ -2,8 +2,8 @@ extends Node3D
 
 
 @onready var spawn_timer = $SpawnTimer
-@export var speed = 10
-@export var DISTANCE = 10
+@export var speed = 8
+@export var DISTANCE = 8
 
 var spawn_locations
 var interactables = {}
@@ -17,9 +17,9 @@ var spawn_amount_chances = {
 var amount_fallback = 1
 
 var interactable_spawn_chances = {
-	"coin": 30,
+	"coin": 40,
 	"petr_sticker": 20,
-	"scooter": 20,
+	"scooter": 10,
 	"six_seven": 20,
 	"tung_tung": 5,
 }
