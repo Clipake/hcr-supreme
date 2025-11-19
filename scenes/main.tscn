@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnoju0pr06nye"]
+[gd_scene load_steps=11 format=3 uid="uid://cegv7hhwbj0ou"]
 
 [ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_qu8xk"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="2_7pwm0"]
+[ext_resource type="PackedScene" uid="uid://qhxr8mkkvcyo" path="res://scenes/ui/pause_menu.tscn" id="3_sugp2"]
 
 [sub_resource type="GDScript" id="GDScript_4c57u"]
 script/source = "extends Camera3D
@@ -38,6 +39,7 @@ background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
 sky = SubResource("Sky_iyses")
 
 [node name="Node3D" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_qu8xk")
 DISTANCE = 5
 
@@ -90,6 +92,9 @@ transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 5.96
 
 [node name="PositionRight" parent="Player" index="3"]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 1.3844118, 0, 0)
+
+[node name="Pause Menu" parent="." instance=ExtResource("3_sugp2")]
+visible = false
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 

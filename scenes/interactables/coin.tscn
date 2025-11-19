@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc0sml4jmoo30"]
+[gd_scene load_steps=5 format=3 uid="uid://dc0sml4jmoo30"]
 
 [ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/models/coin.blend" id="1_0t63x"]
 [ext_resource type="Script" uid="uid://ci6qrhdn1dptp" path="res://scripts/interactables/coin.gd" id="2_d8g7e"]
+[ext_resource type="AudioStream" uid="uid://hg0sm2t0dr4h" path="res://audio/sfx/coin.wav" id="3_70hsc"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0t63x"]
 height = 0.07354736
@@ -11,7 +12,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2_d8g7e")
 
 [node name="Coin" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
 
 [node name="Area3D" type="Area3D" parent="Coin" index="2"]
 
@@ -19,5 +20,8 @@ transform = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0, 1, 0)
 transform = Transform3D(2.2, 0, 0, 0, 2.1999998, 0, 0, 0, 2.1999998, 0, 0, 0)
 shape = SubResource("CylinderShape3D_0t63x")
 debug_color = Color(0, 0, 0, 0.41960785)
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
+stream = ExtResource("3_70hsc")
 
 [connection signal="body_entered" from="Coin/Area3D" to="." method="_on_body_entered"]
