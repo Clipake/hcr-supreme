@@ -21,4 +21,4 @@ func _on_body_entered(body):
 		set_physics_process(false)
 		await $AudioStreamPlayer3D.finished
 		queue_free()  # Remove coin from scene
-    Events.coin_collected.emit()  # Signals to everyone that a coin has been collected
+		Events.coin_collected.emit()  # Signals to everyone that a coin has been collected
