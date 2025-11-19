@@ -19,4 +19,3 @@ func _physics_process(_delta: float) -> void:
 func _on_collision_area_body_entered(body: Node3D) -> void:
 	if body.is_in_group('player'):
 		Events.reel_tile_collided.emit()
-		print("Collided with reel")
