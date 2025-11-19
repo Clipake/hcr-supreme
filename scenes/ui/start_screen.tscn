@@ -343,7 +343,7 @@ offset_bottom = 300.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_ihgl4")
 
 [node name="Phone" type="Sprite2D" parent="BGPanel"]
-position = Vector2(247.00002, 240)
+position = Vector2(248, 240)
 scale = Vector2(0.43673468, 0.45)
 texture = ExtResource("2_kolwf")
 
@@ -351,11 +351,11 @@ texture = ExtResource("2_kolwf")
 position = Vector2(249.50002, 239.43752)
 scale = Vector2(0.31454542, 0.5388367)
 sprite_frames = SubResource("SpriteFrames_djday")
-frame_progress = 0.14235564
+frame_progress = 0.14654124
 speed_scale = 6.0
 
 [node name="Phone2" type="Sprite2D" parent="BGPanel"]
-position = Vector2(244, 241)
+position = Vector2(244.00002, 242)
 scale = Vector2(1.111111, 1.1555556)
 texture = ExtResource("5_adf7y")
 
@@ -397,3 +397,6 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_4dybt")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_s037r")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h7m14")
 text = "Shop"
+
+[connection signal="button_up" from="BGPanel/VBoxContainer/VBoxContainer/StartButton" to="." method="_on_start_game"]
+[connection signal="button_down" from="BGPanel/VBoxContainer/VBoxContainer/Shop" to="." method="_on_open_shop"]
