@@ -13,6 +13,8 @@ func _on_resume_pressed():
 
 func _on_restart_pressed():
 	Events.restart_game.emit()
+	get_tree().paused = false
+	get_tree().reload_current_scene()
 
 func _on_quit_pressed():
 	Events.open_home.emit()
