@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c50ckj6gwq7gl"]
+
+[ext_resource type="PackedScene" uid="uid://d11aw44wvtqcx" path="res://scenes/main.tscn" id="2_53ysu"]
+[ext_resource type="PackedScene" uid="uid://bvym73xbb83g1" path="res://scenes/start_screen_level.tscn" id="3_m24os"]
+
+[sub_resource type="GDScript" id="GDScript_on8op"]
+script/source = "extends Node
+
+@export var main_scene: PackedScene
+@export var start_scene: PackedScene
+
+func _ready() -> void:
+	Events.open_home.connect(_on_open_home)
+	Events.start_game.connect(_on_start_game)
+	
+func _on_open_home():
+	get_tree().change_scene_to_packed(start_scene)
+	get_tree().paused = false
+
+func _on_start_game():
+	get_tree().change_scene_to_packed(main_scene)
+	get_tree().paused = false
+"
+
+[node name="Node3D" type="Node3D"]
+script = SubResource("GDScript_on8op")
+main_scene = ExtResource("2_53ysu")
+start_scene = ExtResource("3_m24os")

@@ -38,13 +38,10 @@ func _ready() -> void:
 			tile.init(spawn_position+Vector3(0, -0.75, 0), self)
 			add_child(tile)
 	
-	Events.start_game.connect(func():
-		run_music_node.play() # Play run music, pause menu music & restart progress
-		menu_music_node.play()
-		menu_music_node.stream_paused = true
-		spawn_timer.start())
-		
-	Events.start_game.emit()
+	run_music_node.play() # Play run music, pause menu music & restart progress
+	menu_music_node.play()
+	menu_music_node.stream_paused = true
+	spawn_timer.start()
 	
 var tick_counter = 0
 func _physics_process(delta: float) -> void:
