@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvym73xbb83g1"]
+
+[ext_resource type="PackedScene" uid="uid://e0dy4758qic0" path="res://assets/models/thumbThumb.blend" id="1_6ev3i"]
+[ext_resource type="Script" uid="uid://bo1ctr4v1s6ir" path="res://scripts/start_screen_level/rotate_player.gd" id="2_v1hfh"]
+[ext_resource type="PackedScene" uid="uid://eie60s4uq7is" path="res://scenes/ui/start_screen.tscn" id="3_230g0"]
+[ext_resource type="AudioStream" uid="uid://dhgalvbp4vqds" path="res://assets/audio/ost/Lobby_Music.mp3" id="4_ru8d2"]
+[ext_resource type="Script" uid="uid://4x8mpjqqf825" path="res://scripts/start_screen_level/start_screen_audio_init.gd" id="5_lc1g1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jyhfs"]
+load_path = "res://.godot/imported/qwantani_noon_puresky_1k.exr 16-11-38-179.exr-1821ddc2a57a1f76f6d3990ba4f969c9.ctex"
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_q51th"]
+panorama = SubResource("CompressedTexture2D_jyhfs")
+
+[sub_resource type="Sky" id="Sky_iyses"]
+sky_material = SubResource("PanoramaSkyMaterial_q51th")
+radiance_size = 1
+
+[sub_resource type="Environment" id="Environment_6ev3i"]
+background_mode = 2
+background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
+sky = SubResource("Sky_iyses")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="thumbThumb" parent="." instance=ExtResource("1_6ev3i")]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 0, 0, 0)
+script = ExtResource("2_v1hfh")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 0.985, 1.792)
+
+[node name="thumbThumb2" parent="." instance=ExtResource("1_6ev3i")]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 1.8244524, 0, 0)
+script = ExtResource("2_v1hfh")
+
+[node name="thumbThumb3" parent="." instance=ExtResource("1_6ev3i")]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, -2.1006336, 0, 0)
+script = ExtResource("2_v1hfh")
+
+[node name="thumbThumb4" parent="." instance=ExtResource("1_6ev3i")]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, -1.1120214, 0, -1.7344148)
+script = ExtResource("2_v1hfh")
+
+[node name="thumbThumb5" parent="." instance=ExtResource("1_6ev3i")]
+transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, 1.3756897, 0, -1.8021793)
+script = ExtResource("2_v1hfh")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.1921992, 0)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1614738, 0)
+
+[node name="StartScreen" parent="." instance=ExtResource("3_230g0")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ru8d2")
+script = ExtResource("5_lc1g1")
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1579752, 2.3272152)
+
+[node name="BackgroundEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6ev3i")
