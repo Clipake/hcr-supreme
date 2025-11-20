@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://cgvj1db55ssmu"]
+[gd_scene load_steps=2 format=3 uid="uid://cgvj1db55ssmu"]
 
-[node name="run_summary" type="Control"]
+[ext_resource type="Script" uid="uid://brvrvrd3kevbc" path="res://scripts/ui/run_stats.gd" id="1_ojeox"]
+
+[node name="run_stats_jank_ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,17 +17,18 @@ offset_left = 20.0
 offset_top = 66.0
 offset_right = 170.0
 offset_bottom = 138.0
+script = ExtResource("1_ojeox")
 
 [node name="run_points" type="Label" parent="PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 18
-text = "0"
+text = "0 run points"
 vertical_alignment = 1
 
 [node name="coin_count" type="Label" parent="PanelContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 18
-text = "0"
+text = "0 coins"
 vertical_alignment = 1

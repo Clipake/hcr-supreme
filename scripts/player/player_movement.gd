@@ -9,6 +9,7 @@ var jump_velocity = 10
 var hop_velocity = 2
 var gravity = 30
 var health = 100
+var time_passed = 0
 
 var current_position = 1
 
@@ -30,6 +31,11 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	_jump()
 	move_columns(input_vector)
+	
+	time_passed += delta
+	if delta >= 1: # every second your algo score decreases a bit
+		Events.set_player_health.emit(health - 5/300)
+		time_passed = 0
 	
 	pass
 
@@ -79,8 +85,8 @@ func smooth_move(column: Node3D) -> void:
 
 func _on_area_3d_area_entered(body: Node3D) -> void:
 	if body.name == "CoinArea":
-		print("coin collected") # replace with coin collection signal
-	else:
+		print("coin collected") # idk the name of the coin collected signal but that would go here
+	else: # damage might be based on another signal but this is the damage amount
 		Events.set_player_health.emit(health - 10/3)
 		health -= 10/3
 		if health <= 0:
