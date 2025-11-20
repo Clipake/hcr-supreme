@@ -8,8 +8,8 @@ var points = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if Engine.is_editor_hint(): return
-	# Events.coin_pickup_signal.connect(update_coins)
-	# Events.run_points_interactable_update.connect(update_run_points)
+	Events.coin_collected.connect(update_coins)
+	Events.run_tile_collected.connect(update_run_points)
 		# unsure of these two's signal names
 
 func update_coins() -> void:
