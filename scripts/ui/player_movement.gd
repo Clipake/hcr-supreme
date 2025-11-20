@@ -7,7 +7,7 @@ extends CharacterBody3D
 
 var jump_velocity = 5
 var hop_velocity = 2
-var gravity = 10
+var gravity = 0
 
 var current_position = 1
 
@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	apply_gravity(delta)
+	
 	_jump()
 	move_columns(input_vector)
 	
@@ -72,3 +73,11 @@ func smooth_move(column: Node3D) -> void:
 	_hop()
 	if position.x < column.position.x + 0.05 and position.x > column.position.x - 0.05:
 		velocity.x = 0
+		
+
+
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	
+	pass # Replace with function body.

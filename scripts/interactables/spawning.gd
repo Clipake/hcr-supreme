@@ -22,9 +22,15 @@ var spawn_amount_chances = {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for file in DirAccess.get_files_at("res://scenes/interactables"):
-		if (file.get_extension() == 'import'):
-			file = file.replace('.import', '')
-		interactables.append(load('res://scenes/interactables/'+file))
+		var ext = file.get_extension().to_lower()
+		if ext == "tscn" and (file == "Runningtungtung.tscn" or file == "Scooter.tscn"):                     # ONLY load scenes
+			var scene = load("res://scenes/interactables/" + file)
+			if scene is PackedScene:          # DOUBLE CHECK
+				interactables.append(scene)
+			else:
+				push_warning("Skipped non-PackedScene: " + file)
+		else:
+			print("Ignored:", file)
 	
 	spawn_locations = get_node("SpawnLocations").get_children()
 	
@@ -75,10 +81,27 @@ func _on_timer_timeout() -> void:
 		## The global position of the relevant spawn location object
 		var spawn_position = spawn_locations[available[location_index]].global_position
 		interactable.init(spawn_position, self)
+		
+		interactable.connect("collected_signal", Callable(self, "_on_interactable_collected"))
 
 		available.remove_at(location_index)
 		add_child(interactable)
 		
 	pass # Replace with function body.
 
-		
+func _on_interactable_collected(effect_type: String):
+	match effect_type:
+		"67":
+			speed += 1.0  # Increase speed
+		"jobapp":
+			print(5)
+		"peter":
+			print("Bonus collected!")
+		"plsshower":
+			print("Unknown effect: ", effect_type)
+		"scooter":
+			print(6)
+		"coin":
+			print(7)
+		"tungtung":
+			print(8)

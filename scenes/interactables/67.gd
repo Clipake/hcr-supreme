@@ -1,10 +1,9 @@
 extends Node3D
 var root_node: Node3D
 var collected = false
-
 signal collected_signal(effect_type: String)
 
-@export var effect_type: String = "coin"
+@export var effect_type: String = "67"
 
 func _ready():
 	pass
@@ -18,12 +17,16 @@ func _physics_process(_delta: float) -> void:
 			
 func _on_body_entered(body):
 	# Check if the player is the one touching
+	print("hi")
 	if body.is_in_group("player") and not collected:
 		collected = true
-		$AudioStreamPlayer3D.play()
-		$Coin.visible = false
 		set_physics_process(false)
-		await $AudioStreamPlayer3D.finished
+		queue_free()  # Remove coin from scene
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and not collected:
+		collected = true
+		set_physics_process(false)
 		emit_signal("collected_signal", effect_type)  
 		queue_free()  # Remove coin from scene
-		Events.coin_collected.emit()  # Signals to everyone that a coin has been collected
