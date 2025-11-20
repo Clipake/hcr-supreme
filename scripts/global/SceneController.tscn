@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://c50ckj6gwq7gl"]
+
+[ext_resource type="Script" uid="uid://c3lvrl22fhpa2" path="res://scripts/global/SceneController.gd" id="1_t1qcc"]
+[ext_resource type="PackedScene" uid="uid://d11aw44wvtqcx" path="res://scenes/main.tscn" id="2_53ysu"]
+[ext_resource type="PackedScene" uid="uid://bvym73xbb83g1" path="res://scenes/start_screen.tscn" id="3_m24os"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_t1qcc")
+main_scene = ExtResource("2_53ysu")
+start_scene = ExtResource("3_m24os")
