@@ -115,6 +115,22 @@ stream = ExtResource("3_tefeu")
 process_mode = 3
 stream = ExtResource("4_o6xl0")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 111.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+offset_left = 2.0
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 69.0
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 
 [editable path="Player"]

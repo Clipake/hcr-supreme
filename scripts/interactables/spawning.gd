@@ -13,6 +13,12 @@ extends Node3D
 var spawn_locations
 var interactables = []
 
+@onready var score_label: Label = $CanvasLayer/ScoreLabel
+var score: int = 0
+
+@onready var coins_collected: Label = $CanvasLayer2/Label
+var coins: int = 0
+
 # This determines the chances of 0-3 obstacles spawning in a row
 var spawn_amount_chances = {
 	1: 1/3.0,
@@ -33,7 +39,12 @@ func _ready() -> void:
 			print("Ignored:", file)
 	
 	spawn_locations = get_node("SpawnLocations").get_children()
-
+	
+	if score_label:
+		score_label.text = "Score: 0"
+	
+	if coins_collected:
+		coins_collected.text = "Coins: 0"
 	
 	# Spawns 10 rows of initial tiles so that level is not empty on start
 	for row in range(1, 11):
@@ -93,18 +104,22 @@ func _on_timer_timeout() -> void:
 func _on_interactable_collected(effect_type: String):
 	match effect_type:
 		"67":
-			speed += 1.0  # Increase speed
+			score -= 676  # Increase speed
 		"jobapp":
 			print(5)
 		"peter":
-			print("Bonus collected!")
+			score += 500
 		"plsshower":
 			print("Unknown effect: ", effect_type)
 		"scooter":
 			print(6)
 		"coin":
-
-			print(5)
+			coins += 1
 		"tungtung":
 			print(8)
 	
+	if score_label:
+		score_label.text = "Score: " + str(score)
+	
+	if coins_collected:
+		coins_collected.text = "Coins: " + str(coins)
