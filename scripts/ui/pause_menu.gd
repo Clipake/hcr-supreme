@@ -7,39 +7,42 @@ extends Control
 
 @export var transition_timer: Timer
 
+var x = 0 ## Transition variable for managing switch from run to menu music
+var backwards = false ## Determines transition direction
+
 func toggle_pause():
 	get_tree().paused = not get_tree().paused
-	_transition()
+	transition_timer.start()
+	backwards = get_tree().paused
 	visible = not visible
 	
 func _transition():
 	# Does the volume transition
-	var x = 0
-	while x < 1:
-		x += transition_timer.wait_time
-		_transition_function(x)
+	x += transition_timer.wait_time if backwards else -transition_timer.wait_time
+	x = clamp(x, 0, 1)
+	_transition_function(x)
+	if 0 < x and x < 1:
 		transition_timer.start()
-		print(run_music_node.volume_linear)
-	
-	
 	
 func _transition_function(x: float):
-	# Calculates the current volume for the transition at time x
+	# Calculates the current volume for the transition at progress x (0-1)
 	run_music_node.stream_paused = false
 	menu_music_node.stream_paused = false
-	if x <= 0.5:
-		run_music_node.volume_linear = _volume_function(x)
-	elif x <= 1:
-		menu_music_node.volume_linear = _volume_function(x)
-		
-	if x >= 1:
-		run_music_node.stream_paused = true
-		run_music_node.volume_linear = 1.0
+	if x <= 0: # Fully transitioned to run
+		run_music_node.stream_paused = false
 		menu_music_node.stream_paused = true
-		menu_music_node.volume_linear = 1.0
+	elif x >= 1: # Fully transitioned to menu
+		run_music_node.stream_paused = true
+		menu_music_node.stream_paused = false
+	else: # In the middle of transitioning
+		run_music_node.volume_linear = _run_volume_transition(x)
+		menu_music_node.volume_linear = _menu_volume_transition(x)
 	
-func _volume_function(x: float): # Used to determine volume in transition
-	return pow(cos(PI*x), 2)
+func _run_volume_transition(x: float): # Used to determine run music volume in transition
+	return pow(cos(0.5*PI*x), 2)
+	
+func _menu_volume_transition(x: float): # Used to determine menu music  volume in transition
+	return pow(sin(0.5*PI*x), 2)
 	
 func _process(delta):
 	if Input.is_action_just_pressed('game_pause'):
