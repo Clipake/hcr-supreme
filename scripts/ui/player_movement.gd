@@ -7,9 +7,13 @@ extends CharacterBody3D
 
 var jump_velocity = 5
 var hop_velocity = 2
-var gravity = 0
+var gravity = 10
 
 var current_position = 1
+
+var is_invincible: bool = false
+@export var invincibility_time: float = 2.0  # seconds
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -75,9 +79,18 @@ func smooth_move(column: Node3D) -> void:
 		velocity.x = 0
 		
 
+func start_invincibility(time: float = invincibility_time):
+	if is_invincible:
+		return  # Already invincible, ignore
+	is_invincible = true
 
+	# Timer to end invincibility
+	var timer = Timer.new()
+	timer.wait_time = time
+	timer.one_shot = true
+	timer.connect("timeout", Callable(self, "_end_invincibility"))
+	add_child(timer)
+	timer.start()
 
-
-func _on_area_3d_body_entered(body: Node3D) -> void:
-	
-	pass # Replace with function body.
+func _end_invincibility():
+	is_invincible = false

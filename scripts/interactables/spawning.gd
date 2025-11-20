@@ -23,7 +23,7 @@ var spawn_amount_chances = {
 func _ready() -> void:
 	for file in DirAccess.get_files_at("res://scenes/interactables"):
 		var ext = file.get_extension().to_lower()
-		if ext == "tscn" and (file == "Runningtungtung.tscn" or file == "Scooter.tscn"):                     # ONLY load scenes
+		if ext == "tscn" and (file == "coin.tscn"):                     # ONLY load scenes
 			var scene = load("res://scenes/interactables/" + file)
 			if scene is PackedScene:          # DOUBLE CHECK
 				interactables.append(scene)
@@ -33,6 +33,7 @@ func _ready() -> void:
 			print("Ignored:", file)
 	
 	spawn_locations = get_node("SpawnLocations").get_children()
+
 	
 	# Spawns 10 rows of initial tiles so that level is not empty on start
 	for row in range(1, 11):
@@ -102,6 +103,8 @@ func _on_interactable_collected(effect_type: String):
 		"scooter":
 			print(6)
 		"coin":
-			print(7)
+
+			print(5)
 		"tungtung":
 			print(8)
+	
