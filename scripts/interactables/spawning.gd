@@ -7,6 +7,9 @@ extends Node3D
 
 @export var reel_tile: PackedScene
 
+@export var run_music_node: AudioStreamPlayer
+@export var menu_music_node: AudioStreamPlayer
+
 var spawn_locations
 var interactables = []
 
@@ -36,6 +39,9 @@ func _ready() -> void:
 			add_child(tile)
 	
 	Events.start_game.connect(func():
+		run_music_node.play() # Play run music, pause menu music & restart progress
+		menu_music_node.play()
+		menu_music_node.stream_paused = true
 		spawn_timer.start())
 		
 	Events.start_game.emit()

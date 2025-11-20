@@ -40,11 +40,13 @@ background_mode = 2
 background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
 sky = SubResource("Sky_iyses")
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("run_music_node", "menu_music_node")]
 process_mode = 1
 script = ExtResource("1_qu8xk")
 DISTANCE = 3.0
 reel_tile = ExtResource("2_jyhfs")
+run_music_node = NodePath("RunMusic")
+menu_music_node = NodePath("MenuMusic")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9998767, 0.015707226, 1.4328592e-07, -0.01224648, 0.77956975, 0.62619567, 0.009835686, -0.6261184, 0.77966595, 0, 2.29, 4.021)
@@ -97,8 +99,20 @@ transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 5.96
 [node name="PositionRight" parent="Player" index="3"]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 1.3844118, 0, 0)
 
-[node name="Pause Menu" parent="." instance=ExtResource("3_sugp2")]
+[node name="Pause Menu" parent="." node_paths=PackedStringArray("run_music_node", "menu_music_node") instance=ExtResource("3_sugp2")]
 visible = false
+menu_music = ExtResource("4_o6xl0")
+run_music = ExtResource("3_tefeu")
+run_music_node = NodePath("../RunMusic")
+menu_music_node = NodePath("../MenuMusic")
+
+[node name="RunMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_tefeu")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_o6xl0")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_tbgi4")
