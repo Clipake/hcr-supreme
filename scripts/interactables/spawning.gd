@@ -86,7 +86,7 @@ func _ready() -> void:
 var tick_counter = 0
 func _physics_process(delta: float) -> void:
 	tick_counter += delta
-	speed += tick_counter/1000*0.05
+	speed += tick_counter/1000*0.02
 	spawn_timer.wait_time = float(DISTANCE)/(speed)
 	
 func _on_timer_timeout() -> void:	
