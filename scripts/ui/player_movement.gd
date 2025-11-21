@@ -95,15 +95,15 @@ func smooth_move(column: Node3D) -> void:
 		velocity.x = 0
 		rotation = Vector3(0,0,0)
 
-func _on_area_3d_area_entered(body: Node3D) -> void:
-	if body.name == "CoinArea":
-		print("coin collected") # idk the name of the coin collected signal but that would go here
-	else: # damage might be based on another signal but this is the damage amount
-		Events.set_player_health.emit(health - 10/3)
-		health -= 10/3
-		if health <= 0:
-			print("WOOWW YOU DIEDDD") # replace with death signal
-		
+func _on_area_3d_area_entered(body: Node3D) -> void: #this is hitting the tiles i believe
+	#if body.name == "CoinArea":
+		#print("coin collected") # idk the name of the coin collected signal but that would go here
+	#else: # damage might be based on another signal but this is the damage amount
+		#Events.set_player_health.emit(health - 10/3)
+		#health -= 10/3
+		#if health <= 0:
+			#pass		
+	pass
 
 func start_invincibility(time: float = invincibility_time):
 	if is_invincible:

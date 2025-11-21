@@ -18,7 +18,7 @@ func _physics_process(_delta: float) -> void:
 			
 func _on_body_entered(body):
 	# Check if the player is the one touching
-	print("hi")
+	print(body)
 	if body.is_in_group("player") and not collected:
 		collected = true
 		set_physics_process(false)
