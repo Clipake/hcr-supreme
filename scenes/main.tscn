@@ -50,7 +50,7 @@ run_music_node = NodePath("RunMusic")
 menu_music_node = NodePath("MenuMusic")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.9998767, 0.015707226, 1.4328592e-07, -0.01224648, 0.77956975, 0.62619567, 0.009835686, -0.6261184, 0.77966595, 0, 2.29, 4.021)
+transform = Transform3D(0.9998766, 0.015707226, 1.4532603e-07, -0.013921518, 0.8861995, 0.4630949, 0.007273808, -0.4630378, 0.88630867, 0, 2.5607178, 4.467735)
 near = 0.001
 far = 3935.05
 script = SubResource("GDScript_4c57u")

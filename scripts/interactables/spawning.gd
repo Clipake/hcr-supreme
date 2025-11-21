@@ -11,7 +11,7 @@ extends Node3D
 @export var menu_music_node: AudioStreamPlayer
 
 var spawn_locations
-var interactables = []
+var interactables = {}
 
 @onready var score_label: Label = $CanvasLayer/ScoreLabel
 var score: int = 0
@@ -21,10 +21,36 @@ var coins: int = 0
 
 # This determines the chances of 0-3 obstacles spawning in a row
 var spawn_amount_chances = {
-	1: 1/3.0,
-	2: 1/4.0,
-	3: 1/10.0,
+	1: 50,
+	2: 30,
+	3: 4,
+	0: 1,
 }
+var amount_fallback = 1
+
+var interactable_spawn_chances = {
+	"coin": 40,
+	"petr_sticker": 20,
+	"scooter": 10,
+	"six_seven": 20,
+	"tung_tung": 5,
+}
+var interactable_fallback = "coin"
+
+func get_weighted_chance(chances: Dictionary, fallback):
+	var total = 0.0
+	for chance in chances.values():
+		total += chance
+		
+	var rng = randf() * total
+	
+	var cumulative = 0.0
+	for value in chances:
+		cumulative += chances[value]
+		if rng <= cumulative:
+			return value
+	return fallback
+	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for file in DirAccess.get_files_at("res://scenes/interactables"):
@@ -68,6 +94,17 @@ func _physics_process(delta: float) -> void:
 	spawn_timer.wait_time = float(DISTANCE)/(speed)
 	
 func _on_timer_timeout() -> void:	
+	
+	var num_obstacles = get_weighted_chance(spawn_amount_chances, amount_fallback)
+	
+	var sorted_chances = spawn_amount_chances.keys()
+	sorted_chances.sort()
+	sorted_chances.reverse()
+	
+	var available = [0, 1, 2]
+	
+	print(num_obstacles)
+	var chosen_interactables = []
 	var rng = randf()
 	var num_obstacles = 0
 	for val in spawn_amount_chances:
@@ -85,10 +122,17 @@ func _on_timer_timeout() -> void:
 		add_child(tile)
 	
 	for i in range(num_obstacles):
-		var interactable_index = randi_range(0, len(interactables)-1)
-		var interactable_scene = interactables[interactable_index]
+		var interactable = get_weighted_chance(interactable_spawn_chances, interactable_fallback)
+		chosen_interactables.append(interactable + '.tscn')
+		
+	if 'tung_tung.tscn' in chosen_interactables:
+		chosen_interactables = ['tung_tung.tscn']
+	
+	for chosen_interactable in chosen_interactables:
+		var interactable_scene = interactables[chosen_interactable]
 		var interactable = interactable_scene.instantiate()
 		
+
 		var location_index = randi_range(0, len(available)-1)
 		## The global position of the relevant spawn location object
 		var spawn_position = spawn_locations[available[location_index]].global_position
@@ -97,9 +141,7 @@ func _on_timer_timeout() -> void:
 		interactable.connect("collected_signal", Callable(self, "_on_interactable_collected"))
 
 		available.remove_at(location_index)
-		add_child(interactable)
 		
-	pass # Replace with function body.
 
 func _on_interactable_collected(effect_type: String):
 	match effect_type:
