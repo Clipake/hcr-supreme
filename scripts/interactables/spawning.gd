@@ -13,6 +13,12 @@ extends Node3D
 var spawn_locations
 var interactables = []
 
+@onready var score_label: Label = $CanvasLayer/ScoreLabel
+var score: int = 0
+
+@onready var coins_collected: Label = $CanvasLayer2/Label
+var coins: int = 0
+
 # This determines the chances of 0-3 obstacles spawning in a row
 var spawn_amount_chances = {
 	1: 1/3.0,
@@ -22,11 +28,23 @@ var spawn_amount_chances = {
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for file in DirAccess.get_files_at("res://scenes/interactables"):
-		if (file.get_extension() == 'import'):
-			file = file.replace('.import', '')
-		interactables.append(load('res://scenes/interactables/'+file))
+		var ext = file.get_extension().to_lower()
+		if ext == "tscn" and (file == "67.tscn" or file == "peter.tscn"):                     # ONLY load scenes
+			var scene = load("res://scenes/interactables/" + file)
+			if scene is PackedScene:          # DOUBLE CHECK
+				interactables.append(scene)
+			else:
+				push_warning("Skipped non-PackedScene: " + file)
+		else:
+			print("Ignored:", file)
 	
 	spawn_locations = get_node("SpawnLocations").get_children()
+	
+	if score_label:
+		score_label.text = "Score: 0"
+	
+	if coins_collected:
+		coins_collected.text = "Coins: 0"
 	
 	# Spawns 10 rows of initial tiles so that level is not empty on start
 	for row in range(1, 11):
@@ -75,10 +93,33 @@ func _on_timer_timeout() -> void:
 		## The global position of the relevant spawn location object
 		var spawn_position = spawn_locations[available[location_index]].global_position
 		interactable.init(spawn_position, self)
+		
+		interactable.connect("collected_signal", Callable(self, "_on_interactable_collected"))
 
 		available.remove_at(location_index)
 		add_child(interactable)
 		
 	pass # Replace with function body.
 
-		
+func _on_interactable_collected(effect_type: String):
+	match effect_type:
+		"67":
+			score -= 676  # Increase speed
+		"jobapp":
+			print(5)
+		"peter":
+			score += 500
+		"plsshower":
+			print("Unknown effect: ", effect_type)
+		"scooter":
+			print(6)
+		"coin":
+			coins += 1
+		"tungtung":
+			print(8)
+	
+	if score_label:
+		score_label.text = "Score: " + str(score)
+	
+	if coins_collected:
+		coins_collected.text = "Coins: " + str(coins)

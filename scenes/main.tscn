@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_qu8xk"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="2_7pwm0"]
 [ext_resource type="PackedScene" uid="uid://c0edohu5afmv2" path="res://scenes/reel_tiles/reel_tile.tscn" id="2_jyhfs"]
-[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://hrt1cy6skcvb" path="res://scenes/ui/pause_menu.tscn" id="3_sugp2"]
 [ext_resource type="AudioStream" uid="uid://bqns0d0raj5t5" path="res://assets/audio/ost/Tung_Tung.mp3" id="3_tefeu"]
 [ext_resource type="AudioStream" uid="uid://dhgalvbp4vqds" path="res://assets/audio/ost/Lobby_Music.mp3" id="4_o6xl0"]
 
@@ -114,6 +114,22 @@ stream = ExtResource("3_tefeu")
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("4_o6xl0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 111.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+offset_left = 2.0
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 69.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 
