@@ -13,10 +13,8 @@ extends Node3D
 var spawn_locations
 var interactables = {}
 
-@onready var score_label: Label = $CanvasLayer/ScoreLabel
 var score: int = 0
 
-@onready var coins_collected: Label = $CanvasLayer2/Label
 var coins: int = 0
 
 @onready var health_bar = $CanvasLayer/HealthBar
@@ -68,12 +66,6 @@ func _ready() -> void:
 			print("Ignored:", file)
 	
 	spawn_locations = get_node("SpawnLocations").get_children()
-	
-	if score_label:
-		score_label.text = "Score: 0"
-	
-	if coins_collected:
-		coins_collected.text = "Coins: 0"
 	
 	# Spawns 10 rows of initial tiles so that level is not empty on start
 	for row in range(1, 11):
@@ -134,6 +126,7 @@ func _on_timer_timeout() -> void:
 
 func _on_interactable_collected(effect_type: String):
 	print('signal fired: ', effect_type)
+	Events.touched_interactable.emit(effect_type)
 	match effect_type:
 		"67":
 			score -= 676  # Increase speed
@@ -148,13 +141,7 @@ func _on_interactable_collected(effect_type: String):
 		"coin":
 			coins += 1
 		"tungtung":
-			print("tungtung hit!")
-			health_bar.health -= 500
-			if health_bar.health <= 0:
-				print("GAME OVER")
-	
-	if score_label:
-		score_label.text = "Score: " + str(score)
-	
-	if coins_collected:
-		coins_collected.text = "Coins: " + str(coins)
+			print(8)
+
+	Events.set_total.emit(score)
+	Events.set_coins_collected.emit(coins)

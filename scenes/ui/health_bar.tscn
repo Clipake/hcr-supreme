@@ -7,7 +7,7 @@ content_margin_left = 2.0
 content_margin_top = 2.0
 content_margin_right = 2.0
 content_margin_bottom = 2.0
-bg_color = Color(0.6862745, 1, 0, 1)
+bg_color = Color(0.039215688, 1, 0, 1)
 corner_radius_top_left = 6
 corner_radius_top_right = 6
 corner_radius_bottom_right = 6
@@ -19,7 +19,7 @@ z_index = 1
 offset_right = 365.0
 offset_bottom = 26.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_1vcc2")
-value = 67.0
+value = 100.0
 show_percentage = false
 script = ExtResource("1_3vlme")
 

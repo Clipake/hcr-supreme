@@ -22,7 +22,7 @@ var controls_disabled: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	Events.touched_interactable.connect(on_touched_interactable)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -67,11 +67,9 @@ func move_columns(input_vector) -> void:
 	if Input.is_action_just_pressed('ui_left'):
 		current_position -= 1
 		velocity.x = input_vector.x * speed
-		rotate_y(35)
 	elif Input.is_action_just_pressed('ui_right'):
 		current_position += 1
 		velocity.x = input_vector.x * speed
-		rotate_y(-35)
 	if current_position < 0:
 		current_position = 0
 	elif current_position > 2:
@@ -95,14 +93,14 @@ func smooth_move(column: Node3D) -> void:
 		velocity.x = 0
 		rotation = Vector3(0,0,0)
 
-func _on_area_3d_area_entered(body: Node3D) -> void: #this is hitting the tiles i believe
-	#if body.name == "CoinArea":
-		#print("coin collected") # idk the name of the coin collected signal but that would go here
-	#else: # damage might be based on another signal but this is the damage amount
-		#Events.set_player_health.emit(health - 10/3)
-		#health -= 10/3
-		#if health <= 0:
-			#pass		
+func on_touched_interactable(interactable_name: String):
+	if interactable_name == "coin":
+		print("coin collected") # idk the name of the coin collected signal but that would go here
+	else: # damage might be based on another signal but this is the damage amount
+		Events.set_player_health.emit(health - 10/3)
+		health -= 10/3
+		if health <= 0:
+			pass		
 	pass
 
 func start_invincibility(time: float = invincibility_time):
