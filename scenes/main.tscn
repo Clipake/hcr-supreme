@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://d11aw44wvtqcx"]
+[gd_scene load_steps=15 format=3 uid="uid://d11aw44wvtqcx"]
 
 [ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_qu8xk"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="2_7pwm0"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://hrt1cy6skcvb" path="res://scenes/ui/pause_menu.tscn" id="3_sugp2"]
 [ext_resource type="AudioStream" uid="uid://bqns0d0raj5t5" path="res://assets/audio/ost/Tung_Tung.mp3" id="3_tefeu"]
 [ext_resource type="AudioStream" uid="uid://dhgalvbp4vqds" path="res://assets/audio/ost/Lobby_Music.mp3" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://ctd5ghnpyrd4p" path="res://scenes/ui/health_bar.tscn" id="7_o6xl0"]
 
 [sub_resource type="GDScript" id="GDScript_4c57u"]
 script/source = "extends Camera3D
@@ -90,7 +91,6 @@ environment = SubResource("Environment_f68d1")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_7pwm0")]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 2.008)
-script = null
 
 [node name="PositionLeft" parent="Player" index="1"]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, -1.7078726, 0, 0)
@@ -123,6 +123,14 @@ offset_left = 1.0
 offset_top = 3.0
 offset_right = 111.0
 offset_bottom = 40.0
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("7_o6xl0")]
+offset_left = 788.0
+offset_top = 1.0
+offset_right = 1153.0
+offset_bottom = 27.0
+max_health = null
+health = null
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 

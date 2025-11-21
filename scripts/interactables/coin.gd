@@ -27,3 +27,15 @@ func _on_body_entered(body):
 		emit_signal("collected_signal", effect_type)  
 		queue_free()  # Remove coin from scene
 		Events.coin_collected.emit()  # Signals to everyone that a coin has been collected
+
+
+func _on_coin_area_body_entered(body: Node3D) -> void:
+	if body.is_in_group("player") and not collected:
+		collected = true
+		$AudioStreamPlayer3D.play()
+		$Coin.visible = false
+		set_physics_process(false)
+		await $AudioStreamPlayer3D.finished
+		emit_signal("collected_signal", effect_type)  
+		queue_free()  # Remove coin from scene
+		Events.coin_collected.emit()

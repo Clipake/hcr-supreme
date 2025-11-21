@@ -1,21 +1,29 @@
 @tool
 extends ProgressBar
 
-@onready var progress_stylebox: StyleBoxFlat = self.get_theme_stylebox('fill')
+@export var max_health: float = 3000
+@export var health: float = 3000:
+	set(value):
+		health = clamp(value, 0, max_health)
+		self.value = health
+		_update_color()
+	get:
+		return health
+
+@onready var fill_style: StyleBoxFlat = get_theme_stylebox("fill").duplicate()
+
 
 func _ready() -> void:
-	# Connecting to signal bus
-	if Engine.is_editor_hint(): return
-	Events.set_player_health.connect(set_health)
+	max_value = max_health
+	value = health
+	add_theme_stylebox_override("fill", fill_style)
+	_update_color()
 
 
-func set_health(value: float) -> void:
-	"""
-	Calculates health bar color from current value
-	:param value: The new health value
-	"""
-	self.value = value
-	var green = min(255, (255/50)*(value)) # i used desmos to find the right line
-	var red = min(255, (-255/50)*(value)+510) # same here
-	
-	progress_stylebox.bg_color = Color.from_rgba8(red,green,0,255)
+func _update_color() -> void:
+	var t := health / max_health  # 1.0 = green, 0.0 = red
+
+	var red   = lerp(1.0, 0.0, t)
+	var green = lerp(0.0, 1.0, t)
+
+	fill_style.bg_color = Color(red, green, 0.0)
