@@ -30,10 +30,11 @@ var amount_fallback = 1
 
 var interactable_spawn_chances = {
 	"coin": 40,
-	"peter": 20,
+	"petr_sticker": 20,
 	"scooter": 10,
-	"67": 20,
-	"Runningtungtung": 5,
+	"six_seven": 10,
+	"please_shower": 5,
+	"tung_tung": 5,
 	"jobapplication": 10
 }
 var interactable_fallback = "coin"

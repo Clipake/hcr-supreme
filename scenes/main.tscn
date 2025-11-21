@@ -43,6 +43,18 @@ background_mode = 2
 background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
 sky = SubResource("Sky_iyses")
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
+
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("run_music_node", "menu_music_node")]
 process_mode = 1
 script = ExtResource("1_qu8xk")

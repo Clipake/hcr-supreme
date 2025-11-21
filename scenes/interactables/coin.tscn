@@ -20,6 +20,12 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1
 transform = Transform3D(2.2, 0, 0, 0, 2.1999998, 0, 0, 0, 2.1999998, 0, 0.0058253706, 0)
 shape = SubResource("CylinderShape3D_0t63x")
 
+[node name="CoinArea2" type="Area3D" parent="Coin" index="3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Coin/CoinArea2" index="0"]
+transform = Transform3D(2.2, 0, 0, 0, 2.1999998, 0, 0, 0, 2.1999998, 0, 0, 0)
+shape = SubResource("CylinderShape3D_0t63x")
+
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
 stream = ExtResource("3_70hsc")
 
