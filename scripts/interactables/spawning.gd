@@ -55,10 +55,10 @@ func get_weighted_chance(chances: Dictionary, fallback):
 func _ready() -> void:
 	for file in DirAccess.get_files_at("res://scenes/interactables"):
 		var ext = file.get_extension().to_lower()
-		if ext == "tscn" and (file == "67.tscn" or file == "peter.tscn"):                     # ONLY load scenes
+		if ext == "tscn":                     # ONLY load scenes
 			var scene = load("res://scenes/interactables/" + file)
 			if scene is PackedScene:          # DOUBLE CHECK
-				interactables.append(scene)
+				interactables[file] = scene
 			else:
 				push_warning("Skipped non-PackedScene: " + file)
 		else:
@@ -97,21 +97,10 @@ func _on_timer_timeout() -> void:
 	
 	var num_obstacles = get_weighted_chance(spawn_amount_chances, amount_fallback)
 	
-	var sorted_chances = spawn_amount_chances.keys()
-	sorted_chances.sort()
-	sorted_chances.reverse()
-	
 	var available = [0, 1, 2]
 	
 	print(num_obstacles)
 	var chosen_interactables = []
-	var rng = randf()
-	var num_obstacles = 0
-	for val in spawn_amount_chances:
-		if rng >= spawn_amount_chances[val]:
-			num_obstacles = val
-			break
-	var available = [0, 1, 2]
 	
 	# Creates a reel tile at each spawn location, every time an obstacle spawns (every row)
 	for index in available:
@@ -129,6 +118,7 @@ func _on_timer_timeout() -> void:
 		chosen_interactables = ['tung_tung.tscn']
 	
 	for chosen_interactable in chosen_interactables:
+		print('we spawing here????;')
 		var interactable_scene = interactables[chosen_interactable]
 		var interactable = interactable_scene.instantiate()
 		
@@ -137,7 +127,6 @@ func _on_timer_timeout() -> void:
 		## The global position of the relevant spawn location object
 		var spawn_position = spawn_locations[available[location_index]].global_position
 		interactable.init(spawn_position, self)
-		
 		interactable.connect("collected_signal", Callable(self, "_on_interactable_collected"))
 
 		available.remove_at(location_index)
