@@ -99,7 +99,6 @@ func _on_timer_timeout() -> void:
 	
 	var available = [0, 1, 2]
 	
-	print(num_obstacles)
 	var chosen_interactables = []
 	
 	# Creates a reel tile at each spawn location, every time an obstacle spawns (every row)
@@ -118,10 +117,8 @@ func _on_timer_timeout() -> void:
 		chosen_interactables = ['tung_tung.tscn']
 	
 	for chosen_interactable in chosen_interactables:
-		print('we spawing here????;')
 		var interactable_scene = interactables[chosen_interactable]
 		var interactable = interactable_scene.instantiate()
-		print(interactable)
 
 		var location_index = randi_range(0, len(available)-1)
 		## The global position of the relevant spawn location object
@@ -135,6 +132,7 @@ func _on_timer_timeout() -> void:
 		
 
 func _on_interactable_collected(effect_type: String):
+	print('signal fired: ', effect_type)
 	match effect_type:
 		"67":
 			score -= 676  # Increase speed

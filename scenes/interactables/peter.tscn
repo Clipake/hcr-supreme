@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg8dg0ymtdlqt"]
 
-[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scenes/interactables/peter.gd" id="1_he3rm"]
+[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/peter.gd" id="1_he3rm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2rvur"]
 
