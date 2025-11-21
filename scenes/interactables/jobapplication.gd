@@ -27,10 +27,11 @@ func _on_body_entered(body):
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and not collected:
+		var player = body as CharacterBody3D
 		if player.is_invincible:
 			return
 		collected = true
-		collected = true
+		player.disable_controls(5)
 		set_physics_process(false)
 		emit_signal("collected_signal", effect_type) 
 		queue_free()  # Remove coin from scene

@@ -29,7 +29,7 @@ var spawn_amount_chances = {
 func _ready() -> void:
 	for file in DirAccess.get_files_at("res://scenes/interactables"):
 		var ext = file.get_extension().to_lower()
-		if ext == "tscn" and (file == "coin.tscn"):                     # ONLY load scenes
+		if ext == "tscn" and (file == "67.tscn" or file == "peter.tscn"):                     # ONLY load scenes
 			var scene = load("res://scenes/interactables/" + file)
 			if scene is PackedScene:          # DOUBLE CHECK
 				interactables.append(scene)
