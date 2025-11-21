@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://74hpogf6j612"]
 
-[ext_resource type="PackedScene" uid="uid://biaqfrq8g6jwh" path="res://scenes/interactables/runningTungTung.blend" id="1_7stt8"]
+[ext_resource type="PackedScene" uid="uid://biaqfrq8g6jwh" path="res://assets/models/runningTungTung.blend" id="1_7stt8"]
 
 [sub_resource type="GDScript" id="GDScript_jo21x"]
 script/source = "extends Node3D

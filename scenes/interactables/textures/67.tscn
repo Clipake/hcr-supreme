@@ -1,11 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8kw8t2pv8bx0"]
+[gd_scene load_steps=3 format=3 uid="uid://buakmku57lgn1"]
 
-[ext_resource type="Script" uid="uid://bg0m47fjaxq75" path="res://scenes/interactables/67.gd" id="1_3asqs"]
+[ext_resource type="Script" uid="uid://bg0m47fjaxq75" path="res://scripts/interactables/six_seven.gd" id="1_lg85c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pecwp"]
 
 [node name="67" type="Node3D"]
-script = ExtResource("1_3asqs")
+script = ExtResource("1_lg85c")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 

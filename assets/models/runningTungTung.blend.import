@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://biaqfrq8g6jwh"
-path="res://.godot/imported/runningTungTung.blend-a5504e1524973c5571b1a7903e0bb317.scn"
+path="res://.godot/imported/runningTungTung.blend-7c2bf57d48d71fc2d295a68886e61f1e.scn"
 
 [deps]
 
-source_file="res://scenes/interactables/runningTungTung.blend"
-dest_files=["res://.godot/imported/runningTungTung.blend-a5504e1524973c5571b1a7903e0bb317.scn"]
+source_file="res://assets/models/runningTungTung.blend"
+dest_files=["res://.godot/imported/runningTungTung.blend-7c2bf57d48d71fc2d295a68886e61f1e.scn"]
 
 [params]
 

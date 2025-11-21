@@ -90,6 +90,7 @@ environment = SubResource("Environment_f68d1")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_7pwm0")]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 2.008)
+script = null
 
 [node name="PositionLeft" parent="Player" index="1"]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, -1.7078726, 0, 0)

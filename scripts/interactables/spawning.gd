@@ -121,15 +121,17 @@ func _on_timer_timeout() -> void:
 		print('we spawing here????;')
 		var interactable_scene = interactables[chosen_interactable]
 		var interactable = interactable_scene.instantiate()
-		
+		print(interactable)
 
 		var location_index = randi_range(0, len(available)-1)
 		## The global position of the relevant spawn location object
 		var spawn_position = spawn_locations[available[location_index]].global_position
 		interactable.init(spawn_position, self)
 		interactable.connect("collected_signal", Callable(self, "_on_interactable_collected"))
-
 		available.remove_at(location_index)
+		
+		add_child(interactable)
+
 		
 
 func _on_interactable_collected(effect_type: String):
