@@ -18,6 +18,7 @@ func _physics_process(_delta: float) -> void:
 			
 func _on_body_entered(body):
 	# Check if the player is the one touching
+	print('touched')
 	if body.is_in_group("player") and not collected:
 		collected = true
 		$AudioStreamPlayer3D.play()
@@ -26,4 +27,4 @@ func _on_body_entered(body):
 		await $AudioStreamPlayer3D.finished
 		emit_signal("collected_signal", effect_type)  
 		queue_free()  # Remove coin from scene
-		Events.coin_collected.emit()  # Signals to everyone that a coin has been collected
+		Events.touched_interactable.emit('coin')  # Signals to everyone that a coin has been collected
