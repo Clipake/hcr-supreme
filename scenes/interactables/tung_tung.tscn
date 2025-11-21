@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://yvfve2qduscp"]
+[gd_scene load_steps=4 format=3 uid="uid://bfmwh7atc7o30"]
 
 [ext_resource type="PackedScene" uid="uid://s1dsxes13r3d" path="res://assets/models/tungTung.blend" id="1_6hwmf"]
-[ext_resource type="Script" uid="uid://ivumr000otaq" path="res://scripts/interactables/tung_tung.gd" id="2_uhgnp"]
+[ext_resource type="Script" path="res://scripts/interactables/tung_tung.gd" id="2_uhgnp"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uhgnp"]
 height = 2.1055908

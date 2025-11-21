@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddmw6akei4m7"]
+[gd_scene load_steps=4 format=3 uid="uid://dph76odhrb2rp"]
 
 [ext_resource type="PackedScene" uid="uid://g56r8vygiqcj" path="res://assets/models/sixSeven.blend" id="1_eqi84"]
-[ext_resource type="Script" uid="uid://cj86prgdjvuv2" path="res://scripts/interactables/six_seven.gd" id="2_pl40i"]
+[ext_resource type="Script" path="res://scripts/interactables/six_seven.gd" id="2_pl40i"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eqi84"]
 size = Vector3(1.595398, 0.98498535, 0.44857788)

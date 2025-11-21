@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://fo1jwhjomdwq"]
+[gd_scene load_steps=4 format=3 uid="uid://cnt7d534a02r7"]
 
 [ext_resource type="PackedScene" uid="uid://djeh4xgbxv77h" path="res://assets/models/scooter.blend" id="1_x3koq"]
-[ext_resource type="Script" uid="uid://dtjeg0bubrpje" path="res://scripts/interactables/scooter.gd" id="2_2xld1"]
+[ext_resource type="Script" path="res://scripts/interactables/scooter.gd" id="2_2xld1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_xmto8"]
 radius = 8.714488
