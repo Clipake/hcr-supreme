@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8kw8t2pv8bx0"]
+
+[ext_resource type="Script" uid="uid://bg0m47fjaxq75" path="res://scenes/interactables/67.gd" id="1_3asqs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pecwp"]
+
+[node name="67" type="Node3D"]
+script = ExtResource("1_3asqs")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="." groups=["badinteractable"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_pecwp")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
