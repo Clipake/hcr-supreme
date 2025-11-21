@@ -17,6 +17,8 @@ var score: int = 0
 
 var coins: int = 0
 
+@onready var health_bar = $CanvasLayer/HealthBar
+
 # This determines the chances of 0-3 obstacles spawning in a row
 var spawn_amount_chances = {
 	1: 50,
@@ -28,10 +30,11 @@ var amount_fallback = 1
 
 var interactable_spawn_chances = {
 	"coin": 40,
-	"petr_sticker": 20,
+	"peter": 20,
 	"scooter": 10,
-	"six_seven": 20,
-	"tung_tung": 5,
+	"67": 20,
+	"Runningtungtung": 5,
+	"jobapplication": 10
 }
 var interactable_fallback = "coin"
 
