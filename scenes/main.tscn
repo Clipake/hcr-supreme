@@ -1,7 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://cegv7hhwbj0ou"]
+[gd_scene load_steps=14 format=3 uid="uid://d11aw44wvtqcx"]
 
-[ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_0wfyh"]
-[ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="5_85g3d"]
+[ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_qu8xk"]
+[ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="2_7pwm0"]
+[ext_resource type="PackedScene" uid="uid://c0edohu5afmv2" path="res://scenes/reel_tiles/reel_tile.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://hrt1cy6skcvb" path="res://scenes/ui/pause_menu.tscn" id="3_sugp2"]
+[ext_resource type="AudioStream" uid="uid://bqns0d0raj5t5" path="res://assets/audio/ost/Tung_Tung.mp3" id="3_tefeu"]
+[ext_resource type="AudioStream" uid="uid://dhgalvbp4vqds" path="res://assets/audio/ost/Lobby_Music.mp3" id="4_o6xl0"]
 
 [sub_resource type="GDScript" id="GDScript_4c57u"]
 script/source = "extends Camera3D
@@ -37,8 +41,13 @@ background_mode = 2
 background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
 sky = SubResource("Sky_iyses")
 
-[node name="Node3D" type="Node3D"]
-script = ExtResource("1_0wfyh")
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("run_music_node", "menu_music_node")]
+process_mode = 1
+script = ExtResource("1_qu8xk")
+DISTANCE = 3.0
+reel_tile = ExtResource("2_jyhfs")
+run_music_node = NodePath("RunMusic")
+menu_music_node = NodePath("MenuMusic")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9998766, 0.015707226, 1.4532603e-07, -0.013921518, 0.8861995, 0.4630949, 0.007273808, -0.4630378, 0.88630867, 0, 2.5607178, 4.467735)
@@ -48,6 +57,7 @@ script = SubResource("GDScript_4c57u")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, -0.424, -6.882)
+visible = false
 use_collision = true
 size = Vector3(4.610962, 0.15234375, 21.799835)
 
@@ -78,7 +88,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_h2clf")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f68d1")
 
-[node name="Player" parent="." groups=["player"] instance=ExtResource("5_85g3d")]
+[node name="Player" parent="." groups=["player"] instance=ExtResource("2_7pwm0")]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 2.008)
 
 [node name="PositionLeft" parent="Player" index="1"]
@@ -89,6 +99,37 @@ transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 5.96
 
 [node name="PositionRight" parent="Player" index="3"]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 1.3844118, 0, 0)
+
+[node name="Pause Menu" parent="." node_paths=PackedStringArray("run_music_node", "menu_music_node") instance=ExtResource("3_sugp2")]
+visible = false
+menu_music = ExtResource("4_o6xl0")
+run_music = ExtResource("3_tefeu")
+run_music_node = NodePath("../RunMusic")
+menu_music_node = NodePath("../MenuMusic")
+
+[node name="RunMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_tefeu")
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("4_o6xl0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 111.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+offset_left = 2.0
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 69.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 

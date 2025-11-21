@@ -2,12 +2,24 @@ extends Node3D
 
 
 @onready var spawn_timer = $SpawnTimer
-@export var speed = 8
-@export var DISTANCE = 8
+@export var speed: float = 2
+@export var DISTANCE: float = 4
+
+@export var reel_tile: PackedScene
+
+@export var run_music_node: AudioStreamPlayer
+@export var menu_music_node: AudioStreamPlayer
 
 var spawn_locations
 var interactables = {}
 
+@onready var score_label: Label = $CanvasLayer/ScoreLabel
+var score: int = 0
+
+@onready var coins_collected: Label = $CanvasLayer2/Label
+var coins: int = 0
+
+# This determines the chances of 0-3 obstacles spawning in a row
 var spawn_amount_chances = {
 	1: 50,
 	2: 30,
@@ -42,26 +54,38 @@ func get_weighted_chance(chances: Dictionary, fallback):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for file in DirAccess.get_files_at("res://scenes/interactables"):
-		if (file.get_extension() == 'import'):
-			file = file.replace('.import', '')
-		interactables[file] = load('res://scenes/interactables/'+file)
-		
-	print(interactables)
-	print('run')
+		var ext = file.get_extension().to_lower()
+		if ext == "tscn" and (file == "67.tscn" or file == "peter.tscn"):                     # ONLY load scenes
+			var scene = load("res://scenes/interactables/" + file)
+			if scene is PackedScene:          # DOUBLE CHECK
+				interactables.append(scene)
+			else:
+				push_warning("Skipped non-PackedScene: " + file)
+		else:
+			print("Ignored:", file)
 	
 	spawn_locations = get_node("SpawnLocations").get_children()
 	
-	Events.start_game.connect(func():
-		spawn_timer.start())
-		
-	Events.start_game.emit()
-
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
+	if score_label:
+		score_label.text = "Score: 0"
+	
+	if coins_collected:
+		coins_collected.text = "Coins: 0"
+	
+	# Spawns 10 rows of initial tiles so that level is not empty on start
+	for row in range(1, 11):
+		for index in range(3): # Spawn 3 in a row
+			var tile = reel_tile.instantiate()
+			var side_scale_offset = Vector3(1.1, 1, 1)
+			var offset = Vector3(0, 0, -2+(speed/spawn_timer.wait_time)*row*1.3)
+			var spawn_position = spawn_locations[index].global_position*side_scale_offset+offset
+			tile.init(spawn_position+Vector3(0, -0.75, 0), self)
+			add_child(tile)
+	
+	run_music_node.play() # Play run music, pause menu music & restart progress
+	menu_music_node.play()
+	menu_music_node.stream_paused = true
+	spawn_timer.start()
 	
 var tick_counter = 0
 func _physics_process(delta: float) -> void:
@@ -81,6 +105,22 @@ func _on_timer_timeout() -> void:
 	
 	print(num_obstacles)
 	var chosen_interactables = []
+	var rng = randf()
+	var num_obstacles = 0
+	for val in spawn_amount_chances:
+		if rng >= spawn_amount_chances[val]:
+			num_obstacles = val
+			break
+	var available = [0, 1, 2]
+	
+	# Creates a reel tile at each spawn location, every time an obstacle spawns (every row)
+	for index in available:
+		var side_scale_offset = Vector3(1.1, 1, 1)
+		var spawn_position = spawn_locations[index].global_position*side_scale_offset
+		var tile = reel_tile.instantiate()
+		tile.init(spawn_position+Vector3(0, -0.75, 0), self)
+		add_child(tile)
+	
 	for i in range(num_obstacles):
 		var interactable = get_weighted_chance(interactable_spawn_chances, interactable_fallback)
 		chosen_interactables.append(interactable + '.tscn')
@@ -94,10 +134,34 @@ func _on_timer_timeout() -> void:
 		
 
 		var location_index = randi_range(0, len(available)-1)
-		interactable.init(spawn_locations[available[location_index]].global_position, self)
-		add_child(interactable)
+		## The global position of the relevant spawn location object
+		var spawn_position = spawn_locations[available[location_index]].global_position
+		interactable.init(spawn_position, self)
+		
+		interactable.connect("collected_signal", Callable(self, "_on_interactable_collected"))
 
 		available.remove_at(location_index)
 		
 
-		
+func _on_interactable_collected(effect_type: String):
+	match effect_type:
+		"67":
+			score -= 676  # Increase speed
+		"jobapp":
+			print(5)
+		"peter":
+			score += 500
+		"plsshower":
+			print("Unknown effect: ", effect_type)
+		"scooter":
+			print(6)
+		"coin":
+			coins += 1
+		"tungtung":
+			print(8)
+	
+	if score_label:
+		score_label.text = "Score: " + str(score)
+	
+	if coins_collected:
+		coins_collected.text = "Coins: " + str(coins)
