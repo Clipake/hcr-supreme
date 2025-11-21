@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dph76odhrb2rp"]
+
+[ext_resource type="PackedScene" uid="uid://g56r8vygiqcj" path="res://assets/models/sixSeven.blend" id="1_eqi84"]
+[ext_resource type="Script" uid="uid://bg0m47fjaxq75" path="res://scripts/interactables/six_seven.gd" id="2_pl40i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eqi84"]
+size = Vector3(1.595398, 0.98498535, 0.44857788)
+
+[node name="sixSeven" instance=ExtResource("1_eqi84")]
+script = ExtResource("2_pl40i")
+
+[node name="Text" parent="." index="0"]
+transform = Transform3D(1.736, 0, 0, 0, -7.5882966e-08, -1.48, 0, 1.736, -6.4692856e-08, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04006958, 0.53082275, -0.18592834)
+shape = SubResource("BoxShape3D_eqi84")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

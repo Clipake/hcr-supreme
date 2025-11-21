@@ -1,6 +1,6 @@
 [gd_scene load_steps=54 format=3 uid="uid://eie60s4uq7is"]
 
-[ext_resource type="Script" uid="uid://xywmp86fqg03" path="res://scripts/ui/start_screen.gd" id="1_m7t1o"]
+[ext_resource type="Script" path="res://scripts/ui/start_screen.gd" id="1_m7t1o"]
 [ext_resource type="Texture2D" uid="uid://c0rrov3emu64u" path="res://assets/phone.webp" id="2_kolwf"]
 [ext_resource type="FontFile" uid="uid://bapvk2ri2m1qw" path="res://assets/fonts/Instagram Sans/Instagram Sans Medium.ttf" id="2_m7t1o"]
 [ext_resource type="Texture2D" uid="uid://cd6ohvnn47l6g" path="res://assets/tungTungSwing-ezgif.com-gif-to-sprite-converter.png" id="3_adf7y"]

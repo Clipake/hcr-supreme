@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://d11aw44wvtqcx"]
+[gd_scene load_steps=15 format=3 uid="uid://d11aw44wvtqcx"]
 
 [ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_qu8xk"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="2_7pwm0"]
 [ext_resource type="PackedScene" uid="uid://c0edohu5afmv2" path="res://scenes/reel_tiles/reel_tile.tscn" id="2_jyhfs"]
-[ext_resource type="PackedScene" path="res://scenes/ui/pause_menu.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://hrt1cy6skcvb" path="res://scenes/ui/pause_menu.tscn" id="3_sugp2"]
 [ext_resource type="AudioStream" uid="uid://bqns0d0raj5t5" path="res://assets/audio/ost/Tung_Tung.mp3" id="3_tefeu"]
 [ext_resource type="AudioStream" uid="uid://dhgalvbp4vqds" path="res://assets/audio/ost/Lobby_Music.mp3" id="4_o6xl0"]
+[ext_resource type="PackedScene" uid="uid://ctd5ghnpyrd4p" path="res://scenes/ui/health_bar.tscn" id="7_o6xl0"]
 
 [sub_resource type="GDScript" id="GDScript_4c57u"]
 script/source = "extends Camera3D
@@ -50,7 +51,7 @@ run_music_node = NodePath("RunMusic")
 menu_music_node = NodePath("MenuMusic")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.9998767, 0.015707226, 1.4328592e-07, -0.01224648, 0.77956975, 0.62619567, 0.009835686, -0.6261184, 0.77966595, 0, 2.29, 4.021)
+transform = Transform3D(0.9998766, 0.015707226, 1.4532603e-07, -0.013921518, 0.8861995, 0.4630949, 0.007273808, -0.4630378, 0.88630867, 0, 2.5607178, 4.467735)
 near = 0.001
 far = 3935.05
 script = SubResource("GDScript_4c57u")
@@ -114,6 +115,30 @@ stream = ExtResource("3_tefeu")
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("4_o6xl0")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 111.0
+offset_bottom = 40.0
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("7_o6xl0")]
+offset_left = 788.0
+offset_top = 1.0
+offset_right = 1153.0
+offset_bottom = 27.0
+max_health = null
+health = null
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer2"]
+offset_left = 2.0
+offset_top = 40.0
+offset_right = 77.0
+offset_bottom = 69.0
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]
 

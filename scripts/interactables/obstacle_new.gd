@@ -1,5 +1,8 @@
 extends Node3D
 
+@export var effect_type: String = "test"
+signal collected_signal(effect_type: String)
+
 
 @export var WAIT_DISTANCE = 15
 var root_node

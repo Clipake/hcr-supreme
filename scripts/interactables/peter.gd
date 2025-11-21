@@ -4,7 +4,7 @@ var collected = false
 
 signal collected_signal(effect_type: String)
 
-@export var effect_type: String = "coin"
+@export var effect_type: String = "peter"
 
 func _ready():
 	pass
@@ -20,22 +20,13 @@ func _on_body_entered(body):
 	# Check if the player is the one touching
 	if body.is_in_group("player") and not collected:
 		collected = true
-		$AudioStreamPlayer3D.play()
-		$Coin.visible = false
 		set_physics_process(false)
-		await $AudioStreamPlayer3D.finished
-		emit_signal("collected_signal", effect_type)  
 		queue_free()  # Remove coin from scene
-		Events.coin_collected.emit()  # Signals to everyone that a coin has been collected
 
 
-func _on_coin_area_body_entered(body: Node3D) -> void:
+func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and not collected:
 		collected = true
-		$AudioStreamPlayer3D.play()
-		$Coin.visible = false
 		set_physics_process(false)
-		await $AudioStreamPlayer3D.finished
-		emit_signal("collected_signal", effect_type)  
+		emit_signal("collected_signal", effect_type) 
 		queue_free()  # Remove coin from scene
-		Events.coin_collected.emit()
