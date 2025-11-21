@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxsi0jd134ynp"]
+
+[ext_resource type="PackedScene" uid="uid://dmlcqeaionp36" path="res://assets/models/petrSticker.blend" id="1_qnbqe"]
+[ext_resource type="Script" path="res://scripts/petr_sticker.gd" id="2_oh54k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnbqe"]
+size = Vector3(1.6344604, 1.9512329, 0.12548828)
+
+[node name="petrSticker" instance=ExtResource("1_qnbqe")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+script = ExtResource("2_oh54k")
+
+[node name="Area3D" type="Area3D" parent="Cube_001" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.11349493, -0.054199275, 0.00031793118)
+shape = SubResource("BoxShape3D_qnbqe")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://yvfve2qduscp"]
+
+[ext_resource type="PackedScene" uid="uid://s1dsxes13r3d" path="res://assets/models/tungTung.blend" id="1_6hwmf"]
+[ext_resource type="Script" uid="uid://ivumr000otaq" path="res://scripts/interactables/tung_tung.gd" id="2_uhgnp"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uhgnp"]
+height = 2.1055908
+radius = 0.42919922
+
+[node name="tungTung" instance=ExtResource("1_6hwmf")]
+script = ExtResource("2_uhgnp")
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.88932204, 0)
+
+[node name="Area3D" type="Area3D" parent="." index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98394775, 0.21246803)
+shape = SubResource("CylinderShape3D_uhgnp")
