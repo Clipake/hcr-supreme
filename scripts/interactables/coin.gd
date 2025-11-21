@@ -24,7 +24,7 @@ func _on_body_entered(body):
 		$AudioStreamPlayer3D.play()
 		$Coin.visible = false
 		set_physics_process(false)
-		await $AudioStreamPlayer3D.finished
-		emit_signal("collected_signal", effect_type)  
+		emit_signal("collected_signal", effect_type)
+		Events.touched_interactable.emit('coin')  # Signals to everyone that a coin has been collected 
+		await $AudioStreamPlayer3D.finished # Wait for sound to finish before destroying object
 		queue_free()  # Remove coin from scene
-		Events.touched_interactable.emit('coin')  # Signals to everyone that a coin has been collected
