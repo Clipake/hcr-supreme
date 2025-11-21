@@ -90,15 +90,13 @@ func _ready() -> void:
 var tick_counter = 0
 func _physics_process(delta: float) -> void:
 	tick_counter += delta
-	speed += tick_counter/1000*0.1
+	speed += tick_counter/1000*0.05
 	spawn_timer.wait_time = float(DISTANCE)/(speed)
 	
 func _on_timer_timeout() -> void:	
 	
 	var num_obstacles = get_weighted_chance(spawn_amount_chances, amount_fallback)
-	
 	var available = [0, 1, 2]
-	
 	var chosen_interactables = []
 	
 	# Creates a reel tile at each spawn location, every time an obstacle spawns (every row)
@@ -148,7 +146,7 @@ func _on_interactable_collected(effect_type: String):
 			coins += 1
 		"tungtung":
 			print(8)
-	
+		
 	if score_label:
 		score_label.text = "Score: " + str(score)
 	
