@@ -14,6 +14,7 @@ var spawn_locations
 var interactables = {}
 
 var score: int = 0
+var score_timer := 0.0
 
 var coins: int = 0
 
@@ -88,6 +89,12 @@ func _physics_process(delta: float) -> void:
 	tick_counter += delta
 	speed += tick_counter/1000*0.02
 	spawn_timer.wait_time = float(DISTANCE)/(speed)
+		
+	score_timer += delta
+	if score_timer >= 1.0:
+		score += 100
+		score_timer = 0
+		Events.set_total.emit(score)
 	
 func _on_timer_timeout() -> void:	
 	
@@ -142,7 +149,7 @@ func _on_interactable_collected(effect_type: String):
 		"coin":
 			coins += 1
 		"tungtung":
-			print(8)
+			health_bar.health -=500
 
 	Events.set_total.emit(score)
 	Events.set_coins_collected.emit(coins)
