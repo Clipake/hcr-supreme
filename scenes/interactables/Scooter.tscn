@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://djeh4xgbxv77h" path="res://assets/models/scooter.blend" id="1_x3koq"]
 [ext_resource type="Script" uid="uid://dtjeg0bubrpje" path="res://scripts/interactables/scooter.gd" id="2_2xld1"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_xmto8"]
-radius = 8.714488
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3koq"]
+radius = 3.8320313
+height = 17.97522
 
 [node name="scooter" instance=ExtResource("1_x3koq")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
@@ -17,7 +18,7 @@ transform = Transform3D(0, 6.7443455e-09, 0.11315134, -0.11315134, 6.7443455e-09
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Scooter/Area3D" index="0"]
-transform = Transform3D(1, 0, 2.1175824e-22, 0, 1, 7.1054274e-15, 0, 0, 1, -8.025261, 4.783428e-07, 0)
-shape = SubResource("SphereShape3D_xmto8")
+transform = Transform3D(-4.371139e-08, -1, 1.03312075e-07, 1, -4.3711356e-08, 1.0331604e-07, -1.0331604e-07, 1.03316026e-07, 1, -7.6771746, 4.9355805e-07, -5.9604645e-08)
+shape = SubResource("CapsuleShape3D_x3koq")
 
 [connection signal="body_entered" from="Scooter/Area3D" to="." method="_on_area_3d_body_entered"]

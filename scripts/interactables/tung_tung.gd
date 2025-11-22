@@ -10,6 +10,8 @@ func _ready():
 func init(start_pos: Vector3, passed_node: Node3D):
 	position = start_pos
 	root_node = passed_node
+	
+	get_node("AnimationPlayer").play('SideStep')
 func _physics_process(_delta: float) -> void:
 	global_position += Vector3(0, 0, root_node.speed*_delta)
 			
