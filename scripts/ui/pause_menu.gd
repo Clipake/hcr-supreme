@@ -10,6 +10,11 @@ extends Control
 var x = 0 ## Transition variable for managing switch from run to menu music
 var backwards = false ## Determines transition direction
 
+func _ready() -> void:
+	Events.game_over.connect(func():
+		queue_free()
+	)
+
 func toggle_pause():
 	get_tree().paused = not get_tree().paused
 	transition_timer.start()

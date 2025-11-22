@@ -103,7 +103,7 @@ func on_touched_interactable(interactable_name: String):
 		Events.set_player_health.emit(health - 10/3)
 		health -= 10/3
 		if health <= 0:
-			pass		
+			Events.game_over.emit()
 	pass
 
 func start_invincibility(time: float = invincibility_time):
