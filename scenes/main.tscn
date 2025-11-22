@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d11aw44wvtqcx"]
+[gd_scene load_steps=16 format=3 uid="uid://d11aw44wvtqcx"]
 
 [ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_qu8xk"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="2_7pwm0"]
@@ -41,6 +41,18 @@ radiance_size = 1
 background_mode = 2
 background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
 sky = SubResource("Sky_iyses")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 1, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 6
 
 [node name="Node3D" type="Node3D" node_paths=PackedStringArray("run_music_node", "menu_music_node")]
 process_mode = 1
@@ -111,10 +123,14 @@ menu_music_node = NodePath("../MenuMusic")
 [node name="RunMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("3_tefeu")
+volume_db = 5.819
+parameters/looping = true
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("4_o6xl0")
+volume_db = 8.734
+parameters/looping = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -129,8 +145,9 @@ offset_left = 788.0
 offset_top = 1.0
 offset_right = 1153.0
 offset_bottom = 27.0
-max_health = null
-health = null
+theme_override_styles/fill = SubResource("StyleBoxFlat_o6xl0")
+max_value = 3000.0
+value = 3000.0
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
