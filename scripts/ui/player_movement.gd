@@ -97,7 +97,7 @@ func smooth_move(column: Node3D) -> void:
 		rotation = Vector3(0,0,0)
 
 func on_touched_interactable(interactable_name: String):
-	if interactable_name == "coin":
+	if interactable_name == "coin" or interactable_name=='scooter' or interactable_name=='petr_sticker':
 		print("coin collected") # idk the name of the coin collected signal but that would go here
 	else: # damage might be based on another signal but this is the damage amount
 		Events.set_player_health.emit(health - 10/3)

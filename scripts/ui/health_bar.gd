@@ -18,6 +18,10 @@ func _ready() -> void:
 		queue_free() # Remove UI on game over
 	)
 	
+	Events.set_player_health.connect(func(health: int):
+		self.health = health*30
+	)
+	
 	max_value = max_health
 	value = health
 	add_theme_stylebox_override("fill", fill_style)
