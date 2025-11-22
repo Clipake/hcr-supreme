@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dwolwiky7qfgs"]
+[gd_scene load_steps=5 format=3 uid="uid://dwolwiky7qfgs"]
 
 [ext_resource type="PackedScene" uid="uid://dmlcqeaionp36" path="res://assets/models/petrSticker.blend" id="1_qnbqe"]
 [ext_resource type="Script" uid="uid://bgkpxc0aypqc1" path="res://scripts/petr_sticker.gd" id="2_oh54k"]
+[ext_resource type="AudioStream" uid="uid://scwc3tec17lg" path="res://assets/audio/sfx/anime-wow-sound-effect.mp3" id="3_jg1i8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qnbqe"]
 size = Vector3(1.6344604, 1.9512329, 0.12548828)
@@ -15,5 +16,8 @@ script = ExtResource("2_oh54k")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Cube_001/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.11349493, -0.054199275, 0.00031793118)
 shape = SubResource("BoxShape3D_qnbqe")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="1"]
+stream = ExtResource("3_jg1i8")
 
 [connection signal="body_entered" from="Cube_001/Area3D" to="." method="_on_area_3d_body_entered"]
