@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://74hpogf6j612"]
 
 [ext_resource type="PackedScene" uid="uid://biaqfrq8g6jwh" path="res://assets/models/runningTungTung.blend" id="1_7stt8"]
-[ext_resource type="AudioStream" uid="uid://b7d71411eba4j" path="res://assets/audio/sfx/ouch.wav" id="2_jo21x"]
+[ext_resource type="AudioStream" uid="uid://d3xiju088rwl8" path="res://assets/audio/sfx/tung-tung-tung-sahur_TUujI1V.mp3" id="2_jo21x"]
 
 [sub_resource type="GDScript" id="GDScript_jo21x"]
 script/source = "extends Node3D
@@ -44,7 +44,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		emit_signal(\"collected_signal\", effect_type) 
 		await $AudioStreamPlayer3D.finished
 		queue_free()  # Remove coin from scene
-		
 "
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_itrrr"]
@@ -69,5 +68,6 @@ shape = SubResource("CylinderShape3D_itrrr")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_jo21x")
+pitch_scale = 2.0
 
 [connection signal="body_entered" from="runningTungTung/Area3D" to="." method="_on_area_3d_body_entered"]
