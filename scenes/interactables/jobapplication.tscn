@@ -11,7 +11,7 @@ transform = Transform3D(0.75138825, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_4qa4h")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9975872, -0.014901817)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.9975872, -0.014901817)
 size = Vector3(1.9609375, 2.0054932, 0.1899414)
 
 [node name="Decal" type="Decal" parent="CSGBox3D"]
@@ -21,7 +21,7 @@ texture_albedo = ExtResource("2_sv8kx")
 [node name="Area3D" type="Area3D" parent="." groups=["badinteractable"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05834961, 0.7893677, -0.0140686035)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.05834961, 0.7893677, -0.0140686035)
 shape = SubResource("BoxShape3D_sv8kx")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
