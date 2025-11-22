@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://xod6clc7btow"]
+
+[ext_resource type="PackedScene" uid="uid://e0dy4758qic0" path="res://assets/models/thumbThumb.blend" id="1_njasu"]
+
+[node name="thumbThumb" instance=ExtResource("1_njasu")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(-1.8282693e-16, -3.2702315, -0.6793494)
+bones/0/rotation = Quaternion(0.15835674, 0, 0, 0.98738205)
+bones/2/rotation = Quaternion(-0.12425639, 0, 0, 0.99225014)
+bones/3/rotation = Quaternion(0.057164058, -0.044632368, -0.7767855, 0.6255753)
+bones/4/rotation = Quaternion(0.19535807, -0.15713248, -0.27605864, 0.92786646)
+bones/5/rotation = Quaternion(0.31845003, -0.009044581, -0.026911523, 0.9475145)
+bones/6/rotation = Quaternion(0.057164058, 0.044632368, 0.7767855, 0.6255753)
+bones/7/rotation = Quaternion(0.19535807, 0.15713248, 0.27605867, 0.92786646)
+bones/8/rotation = Quaternion(0.31845003, 0.009044613, 0.02691153, 0.9475145)
+bones/9/position = Vector3(3.792561e-08, -3.2702315, -0.6793494)
+bones/9/rotation = Quaternion(0.61793274, 0.34374306, 0.61793256, -0.3437431)
+bones/10/rotation = Quaternion(-0.33230042, -0.13336067, -0.16899325, 0.91827697)
+bones/11/rotation = Quaternion(-0.017716534, 0.1391451, 0.4485352, 0.88268965)
+bones/12/position = Vector3(-3.792561e-08, -3.2702315, -0.6793494)
+bones/12/rotation = Quaternion(0.61793274, -0.34374306, -0.61793256, -0.3437431)
+bones/13/rotation = Quaternion(-0.33230045, 0.1333607, 0.16899328, 0.91827697)
+bones/14/rotation = Quaternion(-0.017716533, -0.13914509, -0.44853514, 0.8826897)
