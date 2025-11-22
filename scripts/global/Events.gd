@@ -4,6 +4,7 @@ extends Node
 signal restart_game ## Signal for restart game by game over UI and pause UI
 signal start_game ## Signal for start of game by start UI
 signal pause_game ## Triggered by pause UI
+signal game_over ## Signal when the game is over by death
 signal unpause_game ## Triggered by pause UI
 
 # UI signals
