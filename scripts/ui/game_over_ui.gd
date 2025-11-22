@@ -10,6 +10,12 @@ func _ready() -> void:
 	Events.set_coins_collected.connect(set_coins_collected)
 	Events.set_difficulty_bonus.connect(set_difficulty_bonus)
 	Events.set_total.connect(set_total)
+	Events.game_over.connect(activate)
+
+
+func activate():
+	visible = true
+	get_tree().paused = true
 
 
 func set_run_time(run_time: int) -> void:

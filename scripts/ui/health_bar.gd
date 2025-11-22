@@ -14,6 +14,10 @@ extends ProgressBar
 
 
 func _ready() -> void:
+	Events.game_over.connect(func():
+		queue_free() # Remove UI on game over
+	)
+	
 	max_value = max_health
 	value = health
 	add_theme_stylebox_override("fill", fill_style)

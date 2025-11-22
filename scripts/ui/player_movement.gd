@@ -19,11 +19,12 @@ var is_invincible: bool = false
 var controls_disabled: bool = false
 @export var disabled_time: float = 2.0
 
+@onready var animation_player = get_node("CollisionShape3D/thumbThumb/AnimationPlayer")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.touched_interactable.connect(on_touched_interactable)
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var input_direction: Vector2 = Vector2.ZERO
@@ -58,7 +59,7 @@ func apply_gravity(delta):
 func _jump() -> void:
 	if is_on_floor() and Input.is_action_pressed('jump'):
 		velocity.y = jump_velocity
-		
+		animation_player.play('Jump')
 func _hop() -> void:
 	if is_on_floor() and velocity.x != 0:
 		velocity.y = hop_velocity
@@ -67,9 +68,11 @@ func move_columns(input_vector) -> void:
 	if Input.is_action_just_pressed('ui_left'):
 		current_position -= 1
 		velocity.x = input_vector.x * speed
+		animation_player.play('DodgeLeft')
 	elif Input.is_action_just_pressed('ui_right'):
 		current_position += 1
 		velocity.x = input_vector.x * speed
+		animation_player.play('DodgeRight')
 	if current_position < 0:
 		current_position = 0
 	elif current_position > 2:
@@ -100,7 +103,7 @@ func on_touched_interactable(interactable_name: String):
 		Events.set_player_health.emit(health - 10/3)
 		health -= 10/3
 		if health <= 0:
-			pass		
+			Events.game_over.emit()
 	pass
 
 func start_invincibility(time: float = invincibility_time):

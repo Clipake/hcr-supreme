@@ -3,6 +3,9 @@ extends Control
 func _ready() -> void:
 	Events.set_coins_collected.connect(_set_coins_collected)
 	Events.set_total.connect(_set_score)
+	Events.game_over.connect(func():
+		queue_free() # Remove UI on game over
+	)
 	
 func _set_coins_collected(coins: int):
 	$VBoxContainer/CoinLabel.text = 'Coins: ' + str(coins)

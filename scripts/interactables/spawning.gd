@@ -21,10 +21,10 @@ var coins: int = 0
 
 # This determines the chances of 0-3 obstacles spawning in a row
 var spawn_amount_chances = {
-	1: 50,
+	1: 40,
 	2: 30,
-	3: 4,
-	0: 1,
+	3: 10,
+	0: 20,
 }
 var amount_fallback = 1
 
