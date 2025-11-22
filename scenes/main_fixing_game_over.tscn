@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dmkx373tlwkj2"]
+[gd_scene load_steps=20 format=3 uid="uid://dmkx373tlwkj2"]
 
 [ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_g1grj"]
 [ext_resource type="PackedScene" uid="uid://c0edohu5afmv2" path="res://scenes/reel_tiles/reel_tile.tscn" id="2_8uuko"]
@@ -6,8 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://hrt1cy6skcvb" path="res://scenes/ui/pause_menu.tscn" id="4_316c2"]
 [ext_resource type="AudioStream" uid="uid://dhgalvbp4vqds" path="res://assets/audio/ost/Lobby_Music.mp3" id="5_dufo2"]
 [ext_resource type="AudioStream" uid="uid://bqns0d0raj5t5" path="res://assets/audio/ost/Tung_Tung.mp3" id="6_l7mxh"]
+[ext_resource type="Script" uid="uid://obbwx1cmq2jk" path="res://scripts/music/run_music.gd" id="7_8uuko"]
 [ext_resource type="PackedScene" uid="uid://ctd5ghnpyrd4p" path="res://scenes/ui/health_bar.tscn" id="7_aaisi"]
 [ext_resource type="PackedScene" uid="uid://gypdv2b5f43h" path="res://scenes/ui/current_run_ui.tscn" id="8_kavmp"]
+[ext_resource type="Script" uid="uid://bvvd44fawcujm" path="res://scripts/music/menu_music.gd" id="8_njr82"]
 [ext_resource type="PackedScene" uid="uid://c12omn3e0x2kr" path="res://scenes/ui/game_over_ui.tscn" id="9_vvmpc"]
 
 [sub_resource type="GDScript" id="GDScript_4c57u"]
@@ -125,10 +127,12 @@ menu_music_node = NodePath("../MenuMusic")
 [node name="RunMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("6_l7mxh")
+script = ExtResource("7_8uuko")
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("5_dufo2")
+script = ExtResource("8_njr82")
 
 [node name="HealthBar" parent="." instance=ExtResource("7_aaisi")]
 theme_override_styles/fill = SubResource("StyleBoxFlat_lwlpc")

@@ -15,6 +15,7 @@ func _ready() -> void:
 
 func activate():
 	visible = true
+	get_tree().paused = true
 
 
 func set_run_time(run_time: int) -> void:

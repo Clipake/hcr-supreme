@@ -12,7 +12,7 @@ var backwards = false ## Determines transition direction
 
 func _ready() -> void:
 	Events.game_over.connect(func():
-		queue_free() # Remove UI on game over
+		queue_free()
 	)
 
 func toggle_pause():
