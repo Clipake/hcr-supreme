@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnt7d534a02r7"]
 
 [ext_resource type="PackedScene" uid="uid://djeh4xgbxv77h" path="res://assets/models/scooter.blend" id="1_x3koq"]
-[ext_resource type="Script" uid="uid://dtjeg0bubrpje" path="res://scripts/interactables/scooter.gd" id="2_2xld1"]
+[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_2xld1"]
 [ext_resource type="AudioStream" uid="uid://dnnlmrt62d81d" path="res://assets/audio/sfx/lets-go-dude-2.mp3" id="3_2xld1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3koq"]
