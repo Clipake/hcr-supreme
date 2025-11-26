@@ -21,11 +21,9 @@ var controls_disabled: bool = false
 
 @onready var animation_player = get_node("CollisionShape3D/thumbThumb/AnimationPlayer")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.touched_interactable.connect(on_touched_interactable)
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if !controls_disabled:
 		move_columns()
@@ -51,11 +49,21 @@ func move_columns() -> void:
 	
 	match current_position:
 		0:
-			position.x = column_left.position.x
+			smooth_move(column_left)
 		1:
-			position.x = column_middle.position.x
+			smooth_move(column_middle)
 		2:
-			position.x = column_right.position.x
+			smooth_move(column_right)
+
+func smooth_move(column: Node3D):
+	'''
+	Creates tweens to animate "moving" between two columns.
+	'''
+	var target = Vector3(column.position.x, position.y, position.z)
+	var duration = 0.2
+	
+	var tween = create_tween()
+	tween.tween_property(self, 'position', target, duration)
 
 func on_touched_interactable(interactable_name: String):
 	if interactable_name == "coin":
