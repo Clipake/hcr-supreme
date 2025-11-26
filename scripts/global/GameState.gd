@@ -11,5 +11,6 @@ var score: int = 0:
 	set(value):
 		score = value
 		Events.set_total.emit(score)
+
 var stunned: bool = false
 var invincible: bool = false

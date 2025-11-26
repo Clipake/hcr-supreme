@@ -15,9 +15,6 @@ var gravity := 30
 var time_passed := 0
 var current_position := 1
 
-var is_invincible: bool = false
-var controls_disabled: bool = false
-
 
 func _ready() -> void:
 	Events.touched_interactable.connect(on_touched_interactable)
@@ -26,7 +23,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var input_direction := Vector2.ZERO
 
-	if !controls_disabled:
+	if !GameState.stunned:
 		input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 		_jump()
 
@@ -88,17 +85,31 @@ func smooth_move(column: Node3D) -> void:
 
 
 func on_touched_interactable(interactable_name: String):
-	if interactable_name == 'Coin':
-		print('Coin Collected: No functionality implemented yet')
-	else:
-		GameState.health -= 100
+	match interactable_name:
+		'coin':
+			GameState.score += 100
+		'job_application':
+			disable_controls(invincibility_time)
+		'petr_sticker':
+			GameState.score += 500
+		'please_shower':
+			start_invincibility(invincibility_time)
+			disable_controls(invincibility_time)
+		'scooter':
+			start_invincibility(invincibility_time)
+		'six_seven':
+			GameState.score -= 676
+			GameState.health -= 67
+		'tung_tung':
+			GameState.score -= -500
+			GameState.health -= 500
 
 
 func start_invincibility(time: float = invincibility_time):
-	if is_invincible:
+	if GameState.invincible:
 		return
 
-	is_invincible = true
+	GameState.invincible = true
 	var timer := Timer.new()
 	timer.wait_time = time
 	timer.one_shot = true
@@ -108,14 +119,14 @@ func start_invincibility(time: float = invincibility_time):
 
 
 func _end_invincibility():
-	is_invincible = false
+	GameState.invincible = false
 
 
 func disable_controls(time: float = disabled_time):
-	if controls_disabled:
+	if GameState.stunned:
 		return
 
-	controls_disabled = true
+	GameState.stunned = true
 	var timer := Timer.new()
 	timer.wait_time = time
 	timer.one_shot = true
@@ -125,4 +136,4 @@ func disable_controls(time: float = disabled_time):
 
 
 func _end_disabled():
-	controls_disabled = false
+	GameState.stunned = false

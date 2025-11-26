@@ -7,6 +7,7 @@
 
 [node name="PleaseShower" type="Node3D"]
 script = ExtResource("1_ecjel")
+interactable_name = "please_shower"
 
 [node name="Area3D" type="Area3D" parent="."]
 

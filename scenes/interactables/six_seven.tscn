@@ -9,6 +9,7 @@ size = Vector3(1.595398, 0.98498535, 0.44857788)
 
 [node name="SixSeven" instance=ExtResource("1_eqi84")]
 script = ExtResource("2_pl40i")
+interactable_name = "six_seven"
 
 [node name="Text" parent="." index="0"]
 transform = Transform3D(1.736, 0, 0, 0, -7.5882966e-08, -1.48, 0, 1.736, -6.4692856e-08, 0, 0, 0)
