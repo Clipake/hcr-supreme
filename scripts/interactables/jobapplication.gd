@@ -31,7 +31,10 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		if player.is_invincible:
 			return
 		collected = true
+		$AudioStreamPlayer3D.play()
+		visible = false
 		player.disable_controls(5)
 		set_physics_process(false)
 		emit_signal("collected_signal", effect_type) 
+		await $AudioStreamPlayer3D.finished
 		queue_free()  # Remove coin from scene
