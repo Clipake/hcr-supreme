@@ -121,7 +121,7 @@ func on_touched_interactable(interactable_name: String):
 			GameState.score -= -500 * effect_multiplier
 			GameState.health -= 500 * effect_multiplier
 
-		like_ready = false # Allows player to like the next reel again
+	like_ready = false # Allows player to like the next reel again
 
 
 func start_invincibility(time: float = invincibility_time):
