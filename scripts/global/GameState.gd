@@ -4,6 +4,8 @@ var health: int = 3000:
 	set(value):
 		health = clamp(value, 0, 3000)
 		Events.set_player_health.emit(health)
+		if health <= 0:
+			Events.game_over.emit()
 		
 var score: int = 0:
 	set(value):

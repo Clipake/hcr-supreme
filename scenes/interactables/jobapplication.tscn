@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://cd0q3688r5ypy"]
 
-[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="1_4qa4h"]
+[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="1_4qa4h"]
 [ext_resource type="Texture2D" uid="uid://dn01owjyrorxw" path="res://assets/textures/employment-application-template-791x1024-247736084.jpeg" id="2_sv8kx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sv8kx"]
 size = Vector3(2.065918, 2.5787354, 0.4072876)
 
-[node name="Jobapplication" type="Node3D"]
+[node name="JobApplication" type="Node3D"]
 transform = Transform3D(0.75138825, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_4qa4h")
 

@@ -7,9 +7,10 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0t63x"]
 height = 0.10994434
 
-[node name="coin" instance=ExtResource("1_0t63x")]
+[node name="Coin" instance=ExtResource("1_0t63x")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2_d8g7e")
+interactable_name = "coin"
 
 [node name="Coin" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
