@@ -1,16 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnt7d534a02r7"]
 
 [ext_resource type="PackedScene" uid="uid://djeh4xgbxv77h" path="res://assets/models/scooter.blend" id="1_x3koq"]
-[ext_resource type="Script" uid="uid://dtjeg0bubrpje" path="res://scripts/interactables/scooter.gd" id="2_2xld1"]
+[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_2xld1"]
 [ext_resource type="AudioStream" uid="uid://dnnlmrt62d81d" path="res://assets/audio/sfx/lets-go-dude-2.mp3" id="3_2xld1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x3koq"]
 radius = 3.8320313
 height = 17.97522
 
-[node name="scooter" instance=ExtResource("1_x3koq")]
+[node name="Scooter" instance=ExtResource("1_x3koq")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
 script = ExtResource("2_2xld1")
+interactable_name = "scooter"
 
 [node name="Scooter" parent="." index="0"]
 transform = Transform3D(0, 6.7443455e-09, 0.11315134, -0.11315134, 6.7443455e-09, -4.0199432e-16, -6.7443455e-09, -0.11315134, 6.744345e-09, -0.5, 0, 0)
