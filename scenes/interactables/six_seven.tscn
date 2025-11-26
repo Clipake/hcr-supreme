@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dph76odhrb2rp"]
 
 [ext_resource type="PackedScene" uid="uid://g56r8vygiqcj" path="res://assets/models/sixSeven.blend" id="1_eqi84"]
-[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_pl40i"]
+[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_pl40i"]
 [ext_resource type="AudioStream" uid="uid://dje574rucgi0k" path="res://assets/audio/sfx/67_SQlv2Xv.mp3" id="3_j6td2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eqi84"]

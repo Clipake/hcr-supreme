@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfmwh7atc7o30"]
 
 [ext_resource type="PackedScene" uid="uid://s1dsxes13r3d" path="res://assets/models/tungTung.blend" id="1_6hwmf"]
-[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_uhgnp"]
+[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_uhgnp"]
 [ext_resource type="AudioStream" uid="uid://d3xiju088rwl8" path="res://assets/audio/sfx/tung-tung-tung-sahur_TUujI1V.mp3" id="3_nf2k6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uhgnp"]
