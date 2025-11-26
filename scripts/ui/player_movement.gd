@@ -27,19 +27,8 @@ func _ready() -> void:
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	var input_direction: Vector2 = Vector2.ZERO
 	if !controls_disabled:
-		input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		
-	var input_vector = Vector3(
-		input_direction.x,
-		0.0,
-		0.0,
-	).normalized()
-
-	move_columns(input_vector)
-	
-	# move_and_slide()
+		move_columns()
 	
 	time_passed += delta
 	if delta >= 1: # every second your algo score decreases a bit
@@ -48,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	
 	pass
 		
-func move_columns(input_vector) -> void:
+func move_columns() -> void:
 	if Input.is_action_just_pressed('ui_left'):
 		current_position -= 1
 		animation_player.play('DodgeLeft')
