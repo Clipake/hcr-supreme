@@ -1,5 +1,6 @@
 extends Node
 
+@export var run_speed: float = 3.0
 var health: int = 3000:
 	set(value):
 		health = clamp(value, 0, 3000)
