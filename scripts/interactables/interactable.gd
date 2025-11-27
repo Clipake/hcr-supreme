@@ -1,7 +1,8 @@
 extends Node3D
 var collected = false
 
-@export var interactable_name: String	
+@export var interactable_name: String
+@export var affected_by_invincibility: bool = true
 
 
 func init(start_pos: Vector3):
@@ -14,7 +15,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player") and not collected:
-		if GameState.invincible:
+		if GameState.invincible and affected_by_invincibility:
 			return
 		collected = true
 		$AudioStreamPlayer3D.play()

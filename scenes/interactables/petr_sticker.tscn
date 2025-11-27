@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dwolwiky7qfgs"]
 
 [ext_resource type="PackedScene" uid="uid://dmlcqeaionp36" path="res://assets/models/petrSticker.blend" id="1_qnbqe"]
-[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_jg1i8"]
+[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_jg1i8"]
 [ext_resource type="AudioStream" uid="uid://scwc3tec17lg" path="res://assets/audio/sfx/anime-wow-sound-effect.mp3" id="3_jg1i8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qnbqe"]
@@ -11,6 +11,7 @@ size = Vector3(1.6344604, 1.9512329, 0.12548828)
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 script = ExtResource("2_jg1i8")
 interactable_name = "petr_sticker"
+affected_by_invincibility = false
 
 [node name="Area3D" type="Area3D" parent="Cube_001" index="0"]
 
