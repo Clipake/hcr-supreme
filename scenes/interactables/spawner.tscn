@@ -54,6 +54,9 @@ transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.15, -2.3, -15)
 [node name="reel_tile6" parent="SpawnLocations/MeshInstance3D" instance=ExtResource("2_6xnie")]
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.15, -2.3, -18)
 
+[node name="reel_tile7" parent="SpawnLocations/MeshInstance3D" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.15, -2.3, 0)
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="SpawnLocations"]
 transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CylinderMesh_fkmhu")
@@ -77,6 +80,9 @@ transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.3, -15)
 [node name="reel_tile6" parent="SpawnLocations/MeshInstance3D2" instance=ExtResource("2_6xnie")]
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.3, -18)
 
+[node name="reel_tile7" parent="SpawnLocations/MeshInstance3D2" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.3, 0)
+
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="SpawnLocations"]
 transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, -1.5, 0, 0)
 mesh = SubResource("CylinderMesh_fkmhu")
@@ -99,3 +105,6 @@ transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.15, -2.3, -15)
 
 [node name="reel_tile6" parent="SpawnLocations/MeshInstance3D3" instance=ExtResource("2_6xnie")]
 transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.15, -2.3, -18)
+
+[node name="reel_tile7" parent="SpawnLocations/MeshInstance3D3" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.15, -2.3, 0)
