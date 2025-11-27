@@ -67,6 +67,10 @@ transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, 1.38
 
 [node name="HealthBar" parent="." instance=ExtResource("7_o6xl0")]
 
+[node name="CurrentRunUI" parent="." instance=ExtResource("9_85g3d")]
+
+[node name="OutlineUI" parent="." instance=ExtResource("10_choun")]
+
 [node name="Pause Menu" parent="." node_paths=PackedStringArray("run_music_node", "menu_music_node") instance=ExtResource("3_sugp2")]
 visible = false
 menu_music = ExtResource("4_o6xl0")
@@ -76,10 +80,6 @@ menu_music_node = NodePath("../MenuMusic")
 
 [node name="GameOverUI" parent="." instance=ExtResource("8_tipki")]
 visible = false
-
-[node name="CurrentRunUI" parent="." instance=ExtResource("9_85g3d")]
-
-[node name="OutlineUI" parent="." instance=ExtResource("10_choun")]
 
 [node name="RunMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
