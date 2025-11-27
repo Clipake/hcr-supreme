@@ -18,3 +18,7 @@ signal set_total(total: int) ## Sets game over UI's total score to total
 signal set_player_health(health: int) ## Sets health UI to health
 signal touched_interactable(interactable_name: String) ## Triggered every time the player touches an interactable
 signal reel_tile_collided ## Emitted when the player touches a reel (even multiple in same row)
+
+## Placeholder signal for reel liking mechanic
+signal reel_effect_trigger() ## Triggered by every reel
+signal like_reel() ## Triggered when the player likes a reel

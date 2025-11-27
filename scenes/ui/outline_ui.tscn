@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2vdeyywese2f"]
+
+[ext_resource type="Script" uid="uid://nm8ejnm05qej" path="res://scripts/ui/outline_ui.gd" id="1_dnpr4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8bif"]
+bg_color = Color(1, 1, 1, 1)
+draw_center = false
+border_width_left = 45
+border_width_top = 45
+border_width_right = 45
+border_width_bottom = 45
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+
+[node name="OutlineUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dnpr4")
+
+[node name="Outline" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_x8bif")

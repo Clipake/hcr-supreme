@@ -1,16 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc0sml4jmoo30"]
+[gd_scene load_steps=6 format=3 uid="uid://dc0sml4jmoo30"]
 
 [ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/models/coin.blend" id="1_0t63x"]
-[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_d8g7e"]
+[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_d8g7e"]
 [ext_resource type="AudioStream" uid="uid://hg0sm2t0dr4h" path="res://assets/audio/sfx/coin.wav" id="3_70hsc"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0t63x"]
 height = 0.10994434
 
+[sub_resource type="GDScript" id="GDScript_70hsc"]
+script/source = "extends AnimationPlayer
+
+func _ready() -> void:
+	play(\"Spin\")
+"
+
 [node name="Coin" instance=ExtResource("1_0t63x")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 script = ExtResource("2_d8g7e")
 interactable_name = "coin"
+affected_by_invincibility = false
 
 [node name="Coin" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1, 0)
@@ -20,6 +28,9 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Coin/CoinArea" index="0"]
 transform = Transform3D(2.2, 0, 0, 0, 2.1999998, 0, 0, 0, 2.1999998, 0, 0.0058253706, 0)
 shape = SubResource("CylinderShape3D_0t63x")
+
+[node name="AnimationPlayer" parent="." index="1"]
+script = SubResource("GDScript_70hsc")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
 stream = ExtResource("3_70hsc")

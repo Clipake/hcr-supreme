@@ -1,0 +1,101 @@
+[gd_scene load_steps=12 format=3 uid="uid://bubfuo4d6h7mf"]
+
+[ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_1xkmm"]
+[ext_resource type="PackedScene" uid="uid://c0edohu5afmv2" path="res://scenes/reel_tiles/reel_tile.tscn" id="2_6xnie"]
+[ext_resource type="PackedScene" uid="uid://dc0sml4jmoo30" path="res://scenes/interactables/coin.tscn" id="2_kskn0"]
+[ext_resource type="PackedScene" uid="uid://cd0q3688r5ypy" path="res://scenes/interactables/jobapplication.tscn" id="3_4tdmh"]
+[ext_resource type="PackedScene" uid="uid://dwolwiky7qfgs" path="res://scenes/interactables/petr_sticker.tscn" id="4_2oais"]
+[ext_resource type="PackedScene" uid="uid://ykd5pfmlyc7l" path="res://scenes/interactables/please_shower.tscn" id="5_58fal"]
+[ext_resource type="PackedScene" uid="uid://cnt7d534a02r7" path="res://scenes/interactables/scooter.tscn" id="6_58fal"]
+[ext_resource type="PackedScene" uid="uid://dph76odhrb2rp" path="res://scenes/interactables/six_seven.tscn" id="7_gkmm0"]
+[ext_resource type="PackedScene" uid="uid://bfmwh7atc7o30" path="res://scenes/interactables/tung_tung.tscn" id="8_ryhsv"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fkmhu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqtlj"]
+albedo_color = Color(0.5429866, 0.80717915, 0.7696345, 1)
+
+[node name="Spawner" type="Node3D"]
+script = ExtResource("1_1xkmm")
+interactables = Dictionary[PackedScene, int]({
+ExtResource("2_kskn0"): 40,
+ExtResource("3_4tdmh"): 10,
+ExtResource("4_2oais"): 20,
+ExtResource("5_58fal"): 5,
+ExtResource("6_58fal"): 10,
+ExtResource("7_gkmm0"): 10,
+ExtResource("8_ryhsv"): 5
+})
+reel_tile = ExtResource("2_6xnie")
+
+[node name="SpawnLocations" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -15.612)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 1.5, 0, 0)
+mesh = SubResource("CylinderMesh_fkmhu")
+surface_material_override/0 = SubResource("StandardMaterial3D_xqtlj")
+
+[node name="reel_tile" parent="SpawnLocations/MeshInstance3D" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.15, -2.3, -3)
+
+[node name="reel_tile2" parent="SpawnLocations/MeshInstance3D" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.15, -2.3, -6)
+
+[node name="reel_tile3" parent="SpawnLocations/MeshInstance3D" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.15, -2.3, -9)
+
+[node name="reel_tile4" parent="SpawnLocations/MeshInstance3D" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.15, -2.3, -12)
+
+[node name="reel_tile5" parent="SpawnLocations/MeshInstance3D" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.15, -2.3, -15)
+
+[node name="reel_tile6" parent="SpawnLocations/MeshInstance3D" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0.15, -2.3, -18)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_fkmhu")
+surface_material_override/0 = SubResource("StandardMaterial3D_xqtlj")
+
+[node name="reel_tile" parent="SpawnLocations/MeshInstance3D2" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.3, -3)
+
+[node name="reel_tile2" parent="SpawnLocations/MeshInstance3D2" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.3, -6)
+
+[node name="reel_tile3" parent="SpawnLocations/MeshInstance3D2" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.3, -9)
+
+[node name="reel_tile4" parent="SpawnLocations/MeshInstance3D2" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.3, -12)
+
+[node name="reel_tile5" parent="SpawnLocations/MeshInstance3D2" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.3, -15)
+
+[node name="reel_tile6" parent="SpawnLocations/MeshInstance3D2" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, 0, -2.3, -18)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, -1.5, 0, 0)
+mesh = SubResource("CylinderMesh_fkmhu")
+surface_material_override/0 = SubResource("StandardMaterial3D_xqtlj")
+
+[node name="reel_tile" parent="SpawnLocations/MeshInstance3D3" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.15, -2.3, -3)
+
+[node name="reel_tile2" parent="SpawnLocations/MeshInstance3D3" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.15, -2.3, -6)
+
+[node name="reel_tile3" parent="SpawnLocations/MeshInstance3D3" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.15, -2.3, -9)
+
+[node name="reel_tile4" parent="SpawnLocations/MeshInstance3D3" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.15, -2.3, -12)
+
+[node name="reel_tile5" parent="SpawnLocations/MeshInstance3D3" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.15, -2.3, -15)
+
+[node name="reel_tile6" parent="SpawnLocations/MeshInstance3D3" instance=ExtResource("2_6xnie")]
+transform = Transform3D(1, 0, 0, 0, 3, 0, 0, 0, 1, -0.15, -2.3, -18)

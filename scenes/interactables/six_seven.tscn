@@ -1,18 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://dph76odhrb2rp"]
+[gd_scene load_steps=6 format=3 uid="uid://dph76odhrb2rp"]
 
 [ext_resource type="PackedScene" uid="uid://g56r8vygiqcj" path="res://assets/models/sixSeven.blend" id="1_eqi84"]
 [ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_pl40i"]
 [ext_resource type="AudioStream" uid="uid://dje574rucgi0k" path="res://assets/audio/sfx/67_SQlv2Xv.mp3" id="3_j6td2"]
 
+[sub_resource type="GDScript" id="GDScript_j6td2"]
+script/source = "extends AnimationPlayer
+
+func _ready() -> void:
+	play(\"Idle\")
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_eqi84"]
 size = Vector3(1.595398, 0.98498535, 0.44857788)
 
 [node name="SixSeven" instance=ExtResource("1_eqi84")]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("2_pl40i")
 interactable_name = "six_seven"
 
 [node name="Text" parent="." index="0"]
-transform = Transform3D(1.736, 0, 0, 0, -7.5882966e-08, -1.48, 0, 1.736, -6.4692856e-08, 0, 0, 0)
+transform = Transform3D(2.0656319, 0, 0, 0, -9.0291636e-08, -1.7611454, 0, 2.0656319, -7.698211e-08, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="." index="1"]
+script = SubResource("GDScript_j6td2")
 
 [node name="Area3D" type="Area3D" parent="." index="2"]
 

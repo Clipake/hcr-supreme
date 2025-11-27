@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bospv42is4nl0"]
+[gd_scene load_steps=17 format=3 uid="uid://dld24qxbpud8v"]
 
 [ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_uwjpu"]
 [ext_resource type="PackedScene" uid="uid://c0edohu5afmv2" path="res://scenes/reel_tiles/reel_tile.tscn" id="2_6kmyt"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="3_3f5ru"]
+[ext_resource type="PackedScene" path="res://scenes/ui/heart_overlay.tscn" id="4_4a5e4"]
 [ext_resource type="PackedScene" uid="uid://hrt1cy6skcvb" path="res://scenes/ui/pause_menu.tscn" id="5_wcfm1"]
 [ext_resource type="AudioStream" uid="uid://dhgalvbp4vqds" path="res://assets/audio/ost/Lobby_Music.mp3" id="6_okle8"]
 [ext_resource type="AudioStream" uid="uid://bqns0d0raj5t5" path="res://assets/audio/ost/Tung_Tung.mp3" id="7_xe3io"]
@@ -92,6 +93,7 @@ environment = SubResource("Environment_f68d1")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("3_3f5ru")]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 2.008)
+heart_overlay = ExtResource("4_4a5e4")
 
 [node name="PositionLeft" parent="Player" index="1"]
 transform = Transform3D(1, 0, -1.4210855e-14, 0, 1, 0, 1.4210855e-14, 0, 1, -1.7078726, 0, 0)

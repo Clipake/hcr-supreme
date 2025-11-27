@@ -3,11 +3,16 @@ extends CharacterBody3D
 @onready var column_left: Node3D = %PositionLeft
 @onready var column_middle: Node3D = %PositionMiddle
 @onready var column_right: Node3D = %PositionRight
+
 @onready var animation_player = get_node("CollisionShape3D/thumbThumb/AnimationPlayer")
 
 @export var speed := 15
 @export var invincibility_time: float = 2.0
 @export var disabled_time: float = 2.0
+
+@export var heart_overlay: PackedScene
+
+var like_ready = false ## Whether the reel like is waiting for the next reel effect to double
 
 var jump_velocity := 10
 var hop_velocity := 2
@@ -19,6 +24,16 @@ var current_position := 1
 func _ready() -> void:
 	Events.touched_interactable.connect(on_touched_interactable)
 
+# Prevents player from liking one reel multiple times
+func _process(delta: float) -> void:
+	if Input.is_action_pressed('like_reel'):
+		if not like_ready:
+			like_ready = true
+			Events.like_reel.emit()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("like_reel"):
+		add_child(heart_overlay.instantiate())
 
 func _physics_process(delta: float) -> void:
 	var input_direction := Vector2.ZERO
@@ -85,24 +100,28 @@ func smooth_move(column: Node3D) -> void:
 
 
 func on_touched_interactable(interactable_name: String):
+	var effect_multiplier = 2 if like_ready else 1
+
 	match interactable_name:
 		'coin':
-			GameState.score += 100
+			GameState.score += 100 * effect_multiplier
 		'job_application':
-			disable_controls(invincibility_time)
+			disable_controls(invincibility_time * effect_multiplier)
 		'petr_sticker':
-			GameState.score += 500
+			GameState.score += 500 * effect_multiplier
 		'please_shower':
-			start_invincibility(invincibility_time)
-			disable_controls(invincibility_time)
+			start_invincibility(invincibility_time * effect_multiplier)
+			disable_controls(invincibility_time * effect_multiplier)
 		'scooter':
-			start_invincibility(invincibility_time)
+			start_invincibility(invincibility_time * effect_multiplier)
 		'six_seven':
-			GameState.score -= 676
-			GameState.health -= 67
+			GameState.score -= 676 * effect_multiplier
+			GameState.health -= 67 * effect_multiplier
 		'tung_tung':
-			GameState.score -= -500
-			GameState.health -= 500
+			GameState.score -= -500 * effect_multiplier
+			GameState.health -= 500 * effect_multiplier
+
+	like_ready = false # Allows player to like the next reel again
 
 
 func start_invincibility(time: float = invincibility_time):

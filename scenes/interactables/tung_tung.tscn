@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfmwh7atc7o30"]
+[gd_scene load_steps=6 format=3 uid="uid://bfmwh7atc7o30"]
 
 [ext_resource type="PackedScene" uid="uid://s1dsxes13r3d" path="res://assets/models/tungTung.blend" id="1_6hwmf"]
 [ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_uhgnp"]
 [ext_resource type="AudioStream" uid="uid://d3xiju088rwl8" path="res://assets/audio/sfx/tung-tung-tung-sahur_TUujI1V.mp3" id="3_nf2k6"]
+
+[sub_resource type="GDScript" id="GDScript_nf2k6"]
+script/source = "extends AnimationPlayer
+
+func _ready() -> void:
+	play(\"SideStep\")
+"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uhgnp"]
 height = 2.1055908
@@ -36,6 +43,9 @@ bones/17/position = Vector3(0, -0.47333062, 0)
 bones/18/rotation = Quaternion(0.54589087, 0.2628922, 0.0005185015, 0.7955442)
 bones/19/rotation = Quaternion(0.14005521, 0.024858283, 0.26639855, 0.9533092)
 bones/20/rotation = Quaternion(-0.37268844, 0.11773626, -0.63766325, 0.6637975)
+
+[node name="AnimationPlayer" parent="." index="1"]
+script = SubResource("GDScript_nf2k6")
 
 [node name="Area3D" type="Area3D" parent="." index="2"]
 
