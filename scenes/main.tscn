@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://d11aw44wvtqcx"]
+[gd_scene load_steps=16 format=3 uid="uid://d11aw44wvtqcx"]
 
+[ext_resource type="PackedScene" uid="uid://fnc3aitmqoep" path="res://scenes/backgrounds/main_background.tscn" id="1_ya4ey"]
 [ext_resource type="PackedScene" uid="uid://b5fg0ygbhuu4g" path="res://scenes/player/player.tscn" id="2_7pwm0"]
 [ext_resource type="PackedScene" uid="uid://hrt1cy6skcvb" path="res://scenes/ui/pause_menu.tscn" id="3_sugp2"]
 [ext_resource type="AudioStream" uid="uid://bqns0d0raj5t5" path="res://assets/audio/ost/Tung_Tung.mp3" id="3_tefeu"]
@@ -29,12 +30,15 @@ sky = SubResource("Sky_iyses")
 [node name="Node3D" type="Node3D"]
 process_mode = 1
 
+[node name="MainBackground" parent="." instance=ExtResource("1_ya4ey")]
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.9998766, 0.015707226, 1.4532603e-07, -0.013921518, 0.8861995, 0.4630949, 0.007273808, -0.4630378, 0.88630867, 0, 2.5607178, 4.467735)
 near = 0.001
 far = 3935.05
 
 [node name="Spawner" parent="." node_paths=PackedStringArray("run_music_node", "menu_music_node") instance=ExtResource("11_ya4ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.099454165, 0)
 run_music_node = NodePath("../RunMusic")
 menu_music_node = NodePath("../MenuMusic")
 
@@ -47,9 +51,6 @@ size = Vector3(4.610962, 0.15234375, 21.799835)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-1, 2.7510927e-08, -8.298127e-08, 0, 0.9491951, 0.31468832, 8.742278e-08, 0.31468832, -0.9491951, -0.33321542, 1.3283353, -3.9097257)
 light_energy = 1.056
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_f68d1")
 
 [node name="Player" parent="." groups=["player"] instance=ExtResource("2_7pwm0")]
 transform = Transform3D(1, 0, 1.7484555e-07, 0, 1, 0, -1.7484555e-07, 0, 1, 0, 0, 2.008)
@@ -78,6 +79,8 @@ visible = false
 
 [node name="CurrentRunUI" parent="." instance=ExtResource("9_85g3d")]
 
+[node name="OutlineUI" parent="." instance=ExtResource("10_choun")]
+
 [node name="RunMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("3_tefeu")
@@ -90,7 +93,8 @@ stream = ExtResource("4_o6xl0")
 volume_db = 8.734
 parameters/looping = true
 
-[node name="OutlineUI" parent="." instance=ExtResource("10_choun")]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f68d1")
 
 [editable path="Player"]
 [editable path="Player/CollisionShape3D/thumbThumb"]
