@@ -12,8 +12,6 @@ extends CharacterBody3D
 
 @export var heart_overlay: PackedScene
 
-var like_ready = false ## Whether the reel like is waiting for the next reel effect to double
-
 var jump_velocity := 10
 var hop_velocity := 2
 var gravity := 30
@@ -24,16 +22,18 @@ var current_position := 1
 func _ready() -> void:
 	Events.touched_interactable.connect(on_touched_interactable)
 
-# Prevents player from liking one reel multiple times
+
 func _process(delta: float) -> void:
+	# Prevents player from liking one reel multiple times
 	if Input.is_action_pressed('like_reel'):
-		if not like_ready:
-			like_ready = true
-			Events.like_reel.emit()
+		if not GameState.like_ready:
+			GameState.like_ready = true
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("like_reel"):
 		add_child(heart_overlay.instantiate())
+
 
 func _physics_process(delta: float) -> void:
 	var input_direction := Vector2.ZERO
@@ -100,7 +100,7 @@ func smooth_move(column: Node3D) -> void:
 
 
 func on_touched_interactable(interactable_name: String):
-	var effect_multiplier = 2 if like_ready else 1
+	var effect_multiplier = 2 if GameState.like_ready else 1
 
 	match interactable_name:
 		'coin':
@@ -121,7 +121,7 @@ func on_touched_interactable(interactable_name: String):
 			GameState.score -= -500 * effect_multiplier
 			GameState.health -= 500 * effect_multiplier
 
-	like_ready = false # Allows player to like the next reel again
+	GameState.like_ready = false # Allows player to like the next reel again
 
 
 func start_invincibility(time: float = invincibility_time):
