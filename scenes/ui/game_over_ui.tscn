@@ -82,6 +82,7 @@ bg_color = Color(0.24383616, 0.27300194, 0.7088674, 1)
 corner_radius_bottom_right = 16
 
 [node name="GameOverUI" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5

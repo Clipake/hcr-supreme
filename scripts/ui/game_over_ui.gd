@@ -59,7 +59,7 @@ func set_total(total: int) -> void:
 Helper functions to connect UI buttons to signal bus
 """
 func _on_restart_game() -> void:
-	Events.restart_game.emit()
+	Events.start_game.emit()
 func _on_open_home() -> void:
 	Events.open_home.emit()
 func _on_open_shop() -> void:
@@ -68,7 +68,7 @@ func _on_open_shop() -> void:
 
 func _format_number(number: float) -> String:
 	"""
-	Formats a number into thousands (K), millions (M), or B (billions)
+	Formats a number into thousands (K), millions (M), or billions (B)
 	
 	Numbers less than 10K are plain. Anything else is condensed down to one decimal place.
 	"""
