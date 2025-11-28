@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv5hff2ahif7p"
-path.s3tc="res://.godot/imported/instagram_heart.png-7fc6d0e4df6f607980406aadcc19d537.s3tc.ctex"
+uid="uid://xmh7onhj4b35"
+path.s3tc="res://.godot/imported/poster.png-741b5492da862ee0bb14708e70a6a11d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/instagram_heart.png"
-dest_files=["res://.godot/imported/instagram_heart.png-7fc6d0e4df6f607980406aadcc19d537.s3tc.ctex"]
+source_file="res://assets/images/poster.png"
+dest_files=["res://.godot/imported/poster.png-741b5492da862ee0bb14708e70a6a11d.s3tc.ctex"]
 
 [params]
 

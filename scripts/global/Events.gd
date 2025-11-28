@@ -1,8 +1,7 @@
 extends Node
 
 # General game signals
-signal restart_game ## Signal for restart game by game over UI and pause UI
-signal start_game ## Signal for start of game by start UI
+signal start_game ## Starts/restarts the main game
 signal pause_game ## Triggered by pause UI
 signal game_over ## Signal when the game is over by death
 signal unpause_game ## Triggered by pause UI
@@ -18,7 +17,3 @@ signal set_total(total: int) ## Sets game over UI's total score to total
 signal set_player_health(health: int) ## Sets health UI to health
 signal touched_interactable(interactable_name: String) ## Triggered every time the player touches an interactable
 signal reel_tile_collided ## Emitted when the player touches a reel (even multiple in same row)
-
-## Placeholder signal for reel liking mechanic
-signal reel_effect_trigger() ## Triggered by every reel
-signal like_reel() ## Triggered when the player likes a reel

@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3st0b5vsw0n1"]
+
+[ext_resource type="AudioStream" uid="uid://bqns0d0raj5t5" path="res://assets/audio/ost/Tung_Tung.mp3" id="1_mtjmj"]
+[ext_resource type="AudioStream" uid="uid://dhgalvbp4vqds" path="res://assets/audio/ost/Lobby_Music.mp3" id="2_eqkfr"]
+
+[sub_resource type="GDScript" id="GDScript_mlfrq"]
+script/source = "extends Node3D
+
+var _x: float = 0 ## Progress where 0 is run music & 1 is menu music
+
+
+func _ready() -> void:
+	# Connecting to all events that should affect music
+	Events.pause_game.connect(func(): transition(true))
+	Events.unpause_game.connect(func(): transition(false))
+	Events.start_game.connect(play_run_music)
+	Events.open_home.connect(play_menu_music)
+	Events.open_shop.connect(play_menu_music)
+	
+	# Game starts off in run
+	play_run_music()
+
+
+func play_menu_music() -> void:
+	\"\"\"
+	Sets to menu music without transition
+	\"\"\"
+	_x = 1
+	transition(true)
+	
+func play_run_music() -> void:
+	\"\"\"
+	Sets to run music without transition
+	\"\"\"
+	_x = 0
+	transition(false)
+
+
+func transition(to_menu_music: bool):
+	\"\"\"
+	Transitions between the menu and run music
+	:param to_menu_music: Determines the direction of transition
+	\"\"\"
+	_x += $TransitionTimer.wait_time if to_menu_music else -$TransitionTimer.wait_time
+	_x = clamp(_x, 0, 1)
+	_transition_function(_x)
+	$TransitionTimer.start()
+	await $TransitionTimer.timeout
+	if not _x <= 0 and not _x >= 1:
+		transition(to_menu_music)
+
+	
+func _transition_function(x: float):
+	\"\"\"
+	A helper function to calculate the current volume for the transition at progress x (0-1)
+	\"\"\"
+	$RunMusic.stream_paused = false
+	$MenuMusic.stream_paused = false
+	if x <= 0: # Fully transitioned to run
+		$RunMusic.stream_paused = false
+		$RunMusic.volume_linear = 1
+		$MenuMusic.stream_paused = true
+	elif x >= 1: # Fully transitioned to menu
+		$RunMusic.stream_paused = true
+		$MenuMusic.stream_paused = false
+		$MenuMusic.volume_linear = 1
+	else: # In the middle of transitioning
+		$RunMusic.volume_linear = _run_volume_transition(x)
+		$MenuMusic.volume_linear = _menu_volume_transition(x)
+	
+func _run_volume_transition(x: float):
+	\"\"\"
+	The mathematical function used to determine the run music volume during transition
+	\"\"\"
+	return pow(cos(0.5*PI*x), 2)
+	
+func _menu_volume_transition(x: float):
+	\"\"\"
+	The mathematical function used to determine the menu music volume during transition
+	\"\"\"
+	return pow(sin(0.5*PI*x), 2)
+"
+
+[node name="MusicController" type="Node3D"]
+process_mode = 3
+script = SubResource("GDScript_mlfrq")
+
+[node name="RunMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("1_mtjmj")
+volume_db = 5.819
+autoplay = true
+parameters/looping = true
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_eqkfr")
+volume_db = 8.734
+autoplay = true
+parameters/looping = true
+
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 0.05

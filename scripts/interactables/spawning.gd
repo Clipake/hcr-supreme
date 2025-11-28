@@ -20,10 +20,6 @@ extends Node3D
 var time_elapsed: float = 0 ## Used as a timer for spawning
 
 
-func _ready() -> void:
-	_spawn_initial_tiles()
-	_start_run_music()
-
 func _physics_process(delta: float) -> void:
 	GameState.run_speed += delta * ramp_up_speed
 	time_elapsed += GameState.run_speed * delta
@@ -41,15 +37,6 @@ func _on_timer_timeout() -> void:
 		chosen.append(_get_weighted(interactables))
 	_spawn_reel_row(chosen)
 
-func _spawn_initial_tiles():
-	for row in 10:
-		for lane in 3:
-			_spawn_reel_tile(lane)
-
-func _start_run_music():
-	run_music_node.play()
-	menu_music_node.play()
-	menu_music_node.stream_paused = true
 
 func _get_weighted(items: Dictionary) -> Variant:
 	var total_weight := 0

@@ -1,38 +1,35 @@
 [gd_scene load_steps=6 format=3 uid="uid://dph76odhrb2rp"]
 
 [ext_resource type="PackedScene" uid="uid://g56r8vygiqcj" path="res://assets/models/sixSeven.blend" id="1_eqi84"]
-[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_pl40i"]
+[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_pl40i"]
 [ext_resource type="AudioStream" uid="uid://dje574rucgi0k" path="res://assets/audio/sfx/67_SQlv2Xv.mp3" id="3_j6td2"]
 
-[sub_resource type="GDScript" id="GDScript_j6td2"]
-script/source = "extends AnimationPlayer
+[sub_resource type="BoxShape3D" id="BoxShape3D_pl40i"]
+size = Vector3(1.9838867, 1.2277832, 0.44848633)
+
+[sub_resource type="GDScript" id="GDScript_rvm7j"]
+script/source = "extends Node3D
 
 func _ready() -> void:
-	play(\"Idle\")
+	$AnimationPlayer.play('Idle')
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eqi84"]
-size = Vector3(1.595398, 0.98498535, 0.44857788)
-
-[node name="SixSeven" instance=ExtResource("1_eqi84")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+[node name="Node3D" type="Node3D"]
 script = ExtResource("2_pl40i")
 interactable_name = "six_seven"
 
-[node name="Text" parent="." index="0"]
-transform = Transform3D(2.0656319, 0, 0, 0, -9.0291636e-08, -1.7611454, 0, 2.0656319, -7.698211e-08, 0, 0, 0)
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
-[node name="AnimationPlayer" parent="." index="1"]
-script = SubResource("GDScript_j6td2")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04711914, 0.5934448, -0.20659935)
+shape = SubResource("BoxShape3D_pl40i")
 
-[node name="Area3D" type="Area3D" parent="." index="2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04006958, 0.53082275, -0.18592834)
-shape = SubResource("BoxShape3D_eqi84")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_j6td2")
-volume_db = -6.214
+
+[node name="sixSeven" parent="." instance=ExtResource("1_eqi84")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+script = SubResource("GDScript_rvm7j")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
