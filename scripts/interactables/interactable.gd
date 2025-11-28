@@ -14,7 +14,7 @@ func init(start_pos: Vector3):
 	heart_sprite = Sprite3D.new()
 	heart_sprite.position = Vector3(0, 2, 0)
 	heart_sprite.scale = Vector3(0.075, 0.075, 0.075)
-	heart_sprite.texture = load('res://assets/images/instagram_heart.png') # TODO don't hardcode path
+	heart_sprite.texture = load('res://assets/images/blank_heart.png') # TODO don't hardcode path
 	heart_sprite.visible = false
 	add_child(heart_sprite)
 
