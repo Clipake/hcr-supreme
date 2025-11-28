@@ -13,7 +13,7 @@ interactable_name = "petr_sticker"
 affected_by_invincibility = false
 
 [node name="Cube_001" parent="." index="0"]
-transform = Transform3D(0.7, 0, 0, 0, -4.6989744e-08, -0.974, 0, 1.075, -4.2574893e-08, 0, 0, 0)
+transform = Transform3D(0.7, 0, 0, 0, -4.6989744e-08, -0.974, 0, 1.075, -4.2574893e-08, -0.09512615, 0.6658845, 0)
 
 [node name="Area3D" type="Area3D" parent="Cube_001" index="0"]
 
@@ -22,6 +22,7 @@ transform = Transform3D(1, 0, 0, 0, -4.3711665e-08, 1, 0, -1, -4.3711392e-08, 0.
 shape = SubResource("BoxShape3D_qnbqe")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029269695, 0.6658845, 0)
 stream = ExtResource("3_jg1i8")
 
 [connection signal="body_entered" from="Cube_001/Area3D" to="." method="_on_area_3d_body_entered"]

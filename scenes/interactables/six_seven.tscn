@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dph76odhrb2rp"]
 
 [ext_resource type="PackedScene" uid="uid://g56r8vygiqcj" path="res://assets/models/sixSeven.blend" id="1_eqi84"]
-[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_pl40i"]
+[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_pl40i"]
 [ext_resource type="AudioStream" uid="uid://dje574rucgi0k" path="res://assets/audio/sfx/67_SQlv2Xv.mp3" id="3_j6td2"]
 
 [sub_resource type="GDScript" id="GDScript_j6td2"]
@@ -12,26 +12,27 @@ func _ready() -> void:
 "
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_eqi84"]
-size = Vector3(1.595398, 0.98498535, 0.44857788)
+size = Vector3(1.3229218, 0.8189392, 0.44857788)
 
 [node name="SixSeven" instance=ExtResource("1_eqi84")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 script = ExtResource("2_pl40i")
 interactable_name = "six_seven"
 
 [node name="Text" parent="." index="0"]
-transform = Transform3D(2.0656319, 0, 0, 0, -9.0291636e-08, -1.7611454, 0, 2.0656319, -7.698211e-08, 0, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, -6.556708e-08, -1.279, 0, 1.5, -5.5906867e-08, 0, 0, 0)
 
 [node name="AnimationPlayer" parent="." index="1"]
 script = SubResource("GDScript_j6td2")
 
 [node name="Area3D" type="Area3D" parent="." index="2"]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04006958, 0.53082275, -0.18592834)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.9999999, 0.019721972, 0.40345746, -0.18592831)
 shape = SubResource("BoxShape3D_eqi84")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.279, 0, 0, 0)
 stream = ExtResource("3_j6td2")
 volume_db = -6.214
 
