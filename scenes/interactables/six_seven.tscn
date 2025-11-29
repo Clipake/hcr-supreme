@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://dje574rucgi0k" path="res://assets/audio/sfx/67_SQlv2Xv.mp3" id="3_j6td2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pl40i"]
-size = Vector3(1.9838867, 1.2277832, 0.44848633)
+size = Vector3(1.7710571, 1.2277832, 0.44848633)
 
 [sub_resource type="GDScript" id="GDScript_rvm7j"]
 script/source = "extends Node3D
@@ -22,7 +22,7 @@ interactable_name = "six_seven"
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04711914, 0.5934448, -0.20659935)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007171631, 0.5934448, -0.20659937)
 shape = SubResource("BoxShape3D_pl40i")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
