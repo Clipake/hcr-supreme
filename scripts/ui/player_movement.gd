@@ -36,49 +36,20 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var input_direction := Vector2.ZERO
-
 	if !GameState.stunned:
-		input_direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-		_jump()
-
-	var input_vector := Vector3(input_direction.x, 0.0, 0.0).normalized()
-
-	move_columns(input_vector)
-	move_and_slide()
-	apply_gravity(delta)
+		move_columns()
 
 	time_passed += delta
 	if delta >= 1:
 		GameState.health -= 20
 		time_passed = 0
 
-
-func apply_gravity(delta):
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-
-
-func _jump() -> void:
-	if is_on_floor() and Input.is_action_pressed("jump"):
-		velocity.y = jump_velocity
-		animation_player.play("Jump")
-
-
-func _hop() -> void:
-	if is_on_floor() and velocity.x != 0:
-		velocity.y = hop_velocity
-
-
-func move_columns(input_vector) -> void:
+func move_columns() -> void:
 	if Input.is_action_just_pressed("ui_left"):
 		current_position -= 1
-		velocity.x = input_vector.x * speed
 		animation_player.play("DodgeLeft")
-
 	elif Input.is_action_just_pressed("ui_right"):
 		current_position += 1
-		velocity.x = input_vector.x * speed
 		animation_player.play("DodgeRight")
 
 	if current_position < 0:
@@ -92,11 +63,15 @@ func move_columns(input_vector) -> void:
 		2: smooth_move(column_right)
 
 
-func smooth_move(column: Node3D) -> void:
-	# stop when close to target column
-	if position.x < column.position.x + 0.15 and position.x > column.position.x - 0.15:
-		velocity.x = 0
-		rotation = Vector3.ZERO
+func smooth_move(column: Node3D):
+	'''
+	Creates tweens to animate "moving" between two columns.
+	'''
+	var target = Vector3(column.position.x, position.y, position.z)
+	var duration = 5.0/speed
+	
+	var tween = create_tween()
+	tween.tween_property(self, 'position', target, duration)
 
 
 func on_touched_interactable(interactable_name: String):
