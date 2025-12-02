@@ -25,13 +25,13 @@ background_mode = 2
 background_color = Color(0.20943646, 0.20943646, 0.20943646, 1)
 sky = SubResource("Sky_iyses")
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" node_paths=PackedStringArray("run_music_node", "menu_music_node")]
 process_mode = 1
 
 [node name="MainBackground" parent="." instance=ExtResource("1_ya4ey")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.9998766, 0.015707226, 1.4532603e-07, -0.013921518, 0.8861995, 0.4630949, 0.007273808, -0.4630378, 0.88630867, 0, 2.5607178, 4.467735)
+transform = Transform3D(1, 0, 0, 0, 0.8660255, 0.49999997, 0, -0.50000006, 0.8660253, 0, 3, 4.468)
 near = 0.001
 far = 3935.05
 
