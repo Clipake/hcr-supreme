@@ -1,0 +1,89 @@
+[gd_scene load_steps=7 format=3 uid="uid://fnc3aitmqoep"]
+
+[ext_resource type="Texture2D" uid="uid://cv5hff2ahif7p" path="res://assets/images/instagram_heart.png" id="1_agndi"]
+[ext_resource type="Script" uid="uid://dnv2o8e8limrm" path="res://scripts/backgrounds/generic_sprite.gd" id="2_mqo06"]
+[ext_resource type="PackedScene" uid="uid://bubfuo4d6h7mf" path="res://scenes/interactables/spawner.tscn" id="3_7gywf"]
+[ext_resource type="Texture2D" uid="uid://xmh7onhj4b35" path="res://assets/images/poster.png" id="4_7gywf"]
+[ext_resource type="Texture2D" uid="uid://0fs5dhui71jj" path="res://assets/images/poster2.png" id="5_y3srr"]
+[ext_resource type="Texture2D" uid="uid://30edn2m2c8ir" path="res://assets/images/poster3.png" id="6_hbdnm"]
+
+[node name="MainBackground" type="Node3D"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="TEMP REFERENCE" parent="." instance=ExtResource("3_7gywf")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.012796928, 0.099454165, -0.10181522)
+script = null
+
+[node name="Hearts" type="Node3D" parent="."]
+
+[node name="Heart" type="Sprite3D" parent="Hearts"]
+transform = Transform3D(0.24581373, 0, 0.045558877, 0, 0.25, 0, -0.045558877, 0, 0.24581373, 14.9294815, 0, 31.189783)
+texture = ExtResource("1_agndi")
+script = ExtResource("2_mqo06")
+
+[node name="Heart2" type="Sprite3D" parent="Hearts"]
+transform = Transform3D(0.21927397, 0, -0.12007884, 0, 0.25, 0, 0.12007884, 0, 0.21927397, -17.800259, 4.4915953, 38.334145)
+texture = ExtResource("1_agndi")
+script = ExtResource("2_mqo06")
+
+[node name="Heart3" type="Sprite3D" parent="Hearts"]
+transform = Transform3D(0.22749937, -0.049475055, -0.0910838, 0, 0.21968345, -0.11932804, 0.10365346, 0.10858821, 0.19991139, -12.833279, -10.492662, 31.189783)
+texture = ExtResource("1_agndi")
+script = ExtResource("2_mqo06")
+
+[node name="Heart4" type="Sprite3D" parent="Hearts"]
+transform = Transform3D(0.25, 0, 0, 0, 0.24808244, 0.0309047, 0, -0.0309047, 0.24808244, -2.0060425, 5.1174736, 26.558687)
+texture = ExtResource("1_agndi")
+script = ExtResource("2_mqo06")
+
+[node name="Heart5" type="Sprite3D" parent="Hearts"]
+transform = Transform3D(0.23874077, 0.0360317, 0.06484267, -0.018574743, 0.24060296, -0.065308586, -0.07181806, 0.057549547, 0.23244402, 6.510748, -6.9838505, 26.558687)
+texture = ExtResource("1_agndi")
+script = ExtResource("2_mqo06")
+
+[node name="Heart6" type="Sprite3D" parent="Hearts"]
+transform = Transform3D(0.18810199, 0.061646104, 0.15270035, 0.03222832, 0.21355757, -0.12591462, -0.16148984, 0.11442426, 0.15273543, 13.011052, -9.341089, 18.17688)
+texture = ExtResource("1_agndi")
+script = ExtResource("2_mqo06")
+
+[node name="Heart7" type="Sprite3D" parent="Hearts"]
+transform = Transform3D(0.20827992, -0.0921926, -0.103053294, 0.03222832, 0.21355757, -0.12591462, 0.13446483, 0.09161701, 0.1898039, -26.704039, -9.341089, 18.176876)
+texture = ExtResource("1_agndi")
+script = ExtResource("2_mqo06")
+
+[node name="Heart8" type="Sprite3D" parent="Hearts"]
+transform = Transform3D(0.22729245, -0.035489146, -0.09787059, -0.051978286, 0.16495001, -0.18052633, 0.09020192, 0.18447773, 0.14258896, -11.731969, -9.404602, 9.048553)
+texture = ExtResource("1_agndi")
+script = ExtResource("2_mqo06")
+
+[node name="Reels" type="Node3D" parent="."]
+
+[node name="Poster" type="Sprite3D" parent="Reels"]
+transform = Transform3D(-0.49162745, 1.0993198e-08, -0.09111776, 0.022915678, 0.48392928, -0.12364188, 0.0881891, -0.12574753, -0.47582585, 7.7210712, 7.878065, 31.189781)
+texture = ExtResource("4_7gywf")
+script = ExtResource("2_mqo06")
+
+[node name="Poster2" type="Sprite3D" parent="Reels"]
+transform = Transform3D(-0.42514864, 0.099416696, 0.24364926, 0.15831539, 0.46642473, 0.08593156, -0.21020201, 0.15021425, -0.428078, -25.851446, -3.442584, 31.18978)
+texture = ExtResource("5_y3srr")
+script = ExtResource("2_mqo06")
+
+[node name="Poster3" type="Sprite3D" parent="Reels"]
+transform = Transform3D(-0.48141664, 0.008457774, 0.13478307, -0.0010500533, 0.49876884, -0.035048828, -0.1350441, -0.034029234, -0.48021355, -11.348837, 0.895278, 39.7689)
+texture = ExtResource("6_hbdnm")
+script = ExtResource("2_mqo06")
+
+[node name="Poster4" type="Sprite3D" parent="Reels"]
+transform = Transform3D(-0.45955598, -0.115833975, 0.15934493, 0.015745923, 0.38154018, 0.32276812, -0.19636798, 0.30167818, -0.3470302, -22.286562, -14.499105, 21.957592)
+texture = ExtResource("4_7gywf")
+script = ExtResource("2_mqo06")
+
+[node name="Poster5" type="Sprite3D" parent="Reels"]
+transform = Transform3D(-0.3828785, -0.00066981354, -0.32156426, -0.109173834, 0.47057143, 0.12901029, 0.302465, 0.16900338, -0.36048964, 19.177217, -2.9176526, 14.868288)
+texture = ExtResource("5_y3srr")
+script = ExtResource("2_mqo06")
+
+[node name="Poster6" type="Sprite3D" parent="Reels"]
+transform = Transform3D(-0.4339028, 0.14843237, -0.19923878, -0.07908776, 0.29758605, 0.39393845, 0.23552787, 0.37337673, -0.23476852, 16.574747, -19.133762, 17.458254)
+texture = ExtResource("6_hbdnm")
+script = ExtResource("2_mqo06")

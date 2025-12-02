@@ -1,14 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfmwh7atc7o30"]
+[gd_scene load_steps=6 format=3 uid="uid://bfmwh7atc7o30"]
 
 [ext_resource type="PackedScene" uid="uid://s1dsxes13r3d" path="res://assets/models/tungTung.blend" id="1_6hwmf"]
-[ext_resource type="Script" uid="uid://ivumr000otaq" path="res://scripts/interactables/tung_tung.gd" id="2_uhgnp"]
+[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_uhgnp"]
+[ext_resource type="AudioStream" uid="uid://d3xiju088rwl8" path="res://assets/audio/sfx/tung-tung-tung-sahur_TUujI1V.mp3" id="3_nf2k6"]
+
+[sub_resource type="GDScript" id="GDScript_nf2k6"]
+script/source = "extends AnimationPlayer
+
+func _ready() -> void:
+	play(\"SideStep\")
+"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_uhgnp"]
 height = 2.1055908
 radius = 0.42919922
 
-[node name="tungTung" instance=ExtResource("1_6hwmf")]
+[node name="TungTung" instance=ExtResource("1_6hwmf")]
 script = ExtResource("2_uhgnp")
+interactable_name = "tung_tung"
 
 [node name="Armature" parent="." index="0"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.88932204, 0)
@@ -35,10 +44,17 @@ bones/18/rotation = Quaternion(0.54589087, 0.2628922, 0.0005185015, 0.7955442)
 bones/19/rotation = Quaternion(0.14005521, 0.024858283, 0.26639855, 0.9533092)
 bones/20/rotation = Quaternion(-0.37268844, 0.11773626, -0.63766325, 0.6637975)
 
+[node name="AnimationPlayer" parent="." index="1"]
+script = SubResource("GDScript_nf2k6")
+
 [node name="Area3D" type="Area3D" parent="." index="2"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.98394775, 0.21246803)
 shape = SubResource("CylinderShape3D_uhgnp")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource("3_nf2k6")
+pitch_scale = 2.01
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

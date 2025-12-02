@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://fe77dg2q0xue" path="res://assets/textures/HealthIcon.png" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://den15w8kea2d3" path="res://assets/textures/HealthRing.png" id="4_lvxji"]
 [ext_resource type="Texture2D" uid="uid://cjqi3kmhkx5ll" path="res://assets/textures/Droplet3.png" id="5_p47bc"]
+[ext_resource type="AudioStream" uid="uid://b4ek1huqkyj0y" path="res://assets/audio/sfx/swipe.wav" id="3_gmlin"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pippe"]
 
@@ -69,7 +70,26 @@ script = ExtResource("1_q0xif")
 shape = SubResource("SphereShape3D_pippe")
 
 [node name="thumbThumb" parent="CollisionShape3D" instance=ExtResource("2_g2els")]
-transform = Transform3D(-0.09, 0, -7.86805e-09, 0, 0.09, 0, 7.86805e-09, 0, -0.09, 0.10671961, 0.72676104, -1.875567e-08)
+transform = Transform3D(-0.09, 0, -7.86805e-09, 0, 0.09, 0, 7.86805e-09, 0, -0.09, 0.046037212, 0.72676104, -1.3450647e-08)
+
+[node name="Skeleton3D" parent="CollisionShape3D/thumbThumb/Armature" index="0"]
+bones/0/position = Vector3(-1.8282693e-16, -3.2702315, -0.6793494)
+bones/0/rotation = Quaternion(0.15835674, 0, 0, 0.98738205)
+bones/2/rotation = Quaternion(-0.12425639, 0, 0, 0.99225014)
+bones/3/rotation = Quaternion(0.057164058, -0.044632368, -0.7767855, 0.6255753)
+bones/4/rotation = Quaternion(0.19535807, -0.15713248, -0.27605864, 0.92786646)
+bones/5/rotation = Quaternion(0.31845003, -0.009044581, -0.026911523, 0.9475145)
+bones/6/rotation = Quaternion(0.057164058, 0.044632368, 0.7767855, 0.6255753)
+bones/7/rotation = Quaternion(0.19535807, 0.15713248, 0.27605867, 0.92786646)
+bones/8/rotation = Quaternion(0.31845003, 0.009044613, 0.02691153, 0.9475145)
+bones/9/position = Vector3(3.792561e-08, -3.2702315, -0.6793494)
+bones/9/rotation = Quaternion(0.61793274, 0.34374306, 0.61793256, -0.3437431)
+bones/10/rotation = Quaternion(-0.33230042, -0.13336067, -0.16899325, 0.91827697)
+bones/11/rotation = Quaternion(-0.017716534, 0.1391451, 0.4485352, 0.88268965)
+bones/12/position = Vector3(-3.792561e-08, -3.2702315, -0.6793494)
+bones/12/rotation = Quaternion(0.61793274, -0.34374306, -0.61793256, -0.3437431)
+bones/13/rotation = Quaternion(-0.33230045, 0.1333607, 0.16899328, 0.91827697)
+bones/14/rotation = Quaternion(-0.017716533, -0.13914509, -0.44853514, 0.8826897)
 
 [node name="HealthIconParticles" type="CPUParticles3D" parent="CollisionShape3D"]
 transform = Transform3D(1.8764114, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.06906405, 0.7205541, -6.037771e-09)
@@ -141,6 +161,13 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -1.6
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_pippe")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pippe")
+
+[node name="SwipeSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_gmlin")
+volume_db = 42.718
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 

@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3st0b5vsw0n1"]
+
+[ext_resource type="AudioStream" uid="uid://bqns0d0raj5t5" path="res://assets/audio/ost/Tung_Tung.mp3" id="1_mtjmj"]
+[ext_resource type="AudioStream" uid="uid://dhgalvbp4vqds" path="res://assets/audio/ost/Lobby_Music.mp3" id="2_eqkfr"]
+
+[sub_resource type="GDScript" id="GDScript_mlfrq"]
+script/source = "extends Node3D
+
+var _x: float = 0
+var _backwards := false
+
+
+func transition(to_menu_music: bool):
+	# Does the volume transition
+	_backwards = not to_menu_music
+	
+	_x += $TransitionTimer.wait_time if _backwards else -$TransitionTimer.wait_time
+	while not _x <= 0 and not _x >= 1:
+		_x += $TransitionTimer.wait_time if _backwards else -$TransitionTimer.wait_time
+		_x = clamp(_x, 0, 1)
+		_transition_function(_x)
+		$TransitionTimer.start()
+		await $TransitionTimer.timeout
+	
+func _transition_function(x: float):
+	# Calculates the current volume for the transition at progress x (0-1)
+	$RunMusic.stream_paused = false
+	$MenuMusic.stream_paused = false
+	if x <= 0: # Fully transitioned to run
+		$RunMusic.stream_paused = false
+		$MenuMusic.stream_paused = true
+	elif x >= 1: # Fully transitioned to menu
+		$RunMusic.stream_paused = true
+		$MenuMusic.stream_paused = false
+	else: # In the middle of transitioning
+		print('TRANSITION: ' + str(x))
+		$RunMusic.volume_linear = _run_volume_transition(x)
+		$MenuMusic.volume_linear = _menu_volume_transition(x)
+	
+func _run_volume_transition(x: float): # Used to determine run music volume in transition
+	return pow(cos(0.5*PI*x), 2)
+	
+func _menu_volume_transition(x: float): # Used to determine menu music  volume in transition
+	return pow(sin(0.5*PI*x), 2)
+"
+
+[node name="MusicController" type="Node3D"]
+process_mode = 3
+script = SubResource("GDScript_mlfrq")
+
+[node name="RunMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("1_mtjmj")
+volume_db = 5.819
+parameters/looping = true
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_eqkfr")
+volume_db = 8.734
+parameters/looping = true
+
+[node name="TransitionTimer" type="Timer" parent="."]
+wait_time = 0.05

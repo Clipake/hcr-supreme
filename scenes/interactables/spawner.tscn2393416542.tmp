@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dggx3dvce34mp"]
+
+[ext_resource type="Script" uid="uid://c3mmk3kuukqsj" path="res://scripts/interactables/spawning.gd" id="1_1xkmm"]
+[ext_resource type="PackedScene" uid="uid://c0edohu5afmv2" path="res://scenes/reel_tiles/reel_tile.tscn" id="2_6xnie"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_fkmhu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqtlj"]
+albedo_color = Color(0.5429866, 0.80717915, 0.7696345, 1)
+
+[node name="Spawner" type="Node3D"]
+script = ExtResource("1_1xkmm")
+ramp_up_speed = null
+distance = null
+reel_tile = ExtResource("2_6xnie")
+
+[node name="SpawnLocations" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -15.612)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 1.5, 0, 0)
+mesh = SubResource("CylinderMesh_fkmhu")
+surface_material_override/0 = SubResource("StandardMaterial3D_xqtlj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_fkmhu")
+surface_material_override/0 = SubResource("StandardMaterial3D_xqtlj")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 0.29711223, 0, 0, 0, 1, -1.5, 0, 0)
+mesh = SubResource("CylinderMesh_fkmhu")
+surface_material_override/0 = SubResource("StandardMaterial3D_xqtlj")
