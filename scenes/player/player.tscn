@@ -2,17 +2,15 @@
 
 [ext_resource type="Script" uid="uid://du5p20xxyny22" path="res://scripts/ui/player_movement.gd" id="1_q0xif"]
 [ext_resource type="PackedScene" uid="uid://e0dy4758qic0" path="res://assets/models/thumbThumb.blend" id="2_g2els"]
-[ext_resource type="Texture2D" uid="uid://fe77dg2q0xue" path="res://assets/textures/HealthIcon.png" id="3_gmlin"]
+[ext_resource type="AudioStream" uid="uid://b4ek1huqkyj0y" path="res://assets/audio/sfx/swipe.wav" id="3_gmlin"]
 [ext_resource type="Texture2D" uid="uid://den15w8kea2d3" path="res://assets/textures/HealthRing.png" id="4_lvxji"]
 [ext_resource type="Texture2D" uid="uid://cjqi3kmhkx5ll" path="res://assets/textures/Droplet3.png" id="5_p47bc"]
-[ext_resource type="AudioStream" uid="uid://b4ek1huqkyj0y" path="res://assets/audio/sfx/swipe.wav" id="3_gmlin"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pippe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvxji"]
 transparency = 1
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("3_gmlin")
 emission_enabled = true
 emission = Color(0.47619498, 0.906828, 0.49704605, 1)
 billboard_mode = 1

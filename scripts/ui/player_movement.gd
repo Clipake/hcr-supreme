@@ -122,6 +122,7 @@ func _end_invincibility():
 func disable_controls(time: float = disabled_time):
 	if GameState.stunned:
 		return
+	$CollisionShape3D/SweatParticles.emitting = true
 
 	GameState.stunned = true
 	var timer := Timer.new()
@@ -133,4 +134,5 @@ func disable_controls(time: float = disabled_time):
 
 
 func _end_disabled():
+	$CollisionShape3D/SweatParticles.emitting = false
 	GameState.stunned = false

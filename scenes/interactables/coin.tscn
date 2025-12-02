@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dc0sml4jmoo30"]
 
 [ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/models/coin.blend" id="1_0t63x"]
-[ext_resource type="Script" path="res://scripts/interactables/peter.gd" id="2_d8g7e"]
+[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_d8g7e"]
 [ext_resource type="Texture2D" uid="uid://b6kaglwq0ugy7" path="res://assets/textures/star.png" id="3_7a01s"]
 [ext_resource type="AudioStream" uid="uid://hg0sm2t0dr4h" path="res://assets/audio/sfx/coin.wav" id="3_70hsc"]
 [ext_resource type="Texture2D" uid="uid://8ory7264sxtr" path="res://assets/textures/CoinRing.png" id="4_82bjw"]

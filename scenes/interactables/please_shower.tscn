@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ykd5pfmlyc7l"]
 
-[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="1_ecjel"]
+[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="1_ecjel"]
 [ext_resource type="Texture2D" uid="uid://dbe3rri5js7qe" path="res://assets/textures/attention-please-shower-aluminum-sign-18-x-12.png" id="2_q75k1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q75k1"]
