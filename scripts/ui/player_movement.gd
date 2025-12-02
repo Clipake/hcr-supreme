@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+@onready var swipe_sound: AudioStreamPlayer3D = $SwipeSound
+
 @onready var column_left: Node3D = %PositionLeft
 @onready var column_middle: Node3D = %PositionMiddle
 @onready var column_right: Node3D = %PositionRight
@@ -47,9 +49,11 @@ func move_columns() -> void:
 	if Input.is_action_just_pressed("ui_left"):
 		current_position -= 1
 		animation_player.play("DodgeLeft")
+		swipe_sound.play()
 	elif Input.is_action_just_pressed("ui_right"):
 		current_position += 1
 		animation_player.play("DodgeRight")
+		swipe_sound.play()
 
 	if current_position < 0:
 		current_position = 0
