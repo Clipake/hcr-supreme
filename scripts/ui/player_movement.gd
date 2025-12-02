@@ -6,7 +6,6 @@ extends CharacterBody3D
 
 @onready var animation_player = get_node("CollisionShape3D/thumbThumb/AnimationPlayer")
 
-@export var speed := 15
 @export var invincibility_time: float = 2.0
 @export var disabled_time: float = 2.0
 
@@ -68,7 +67,7 @@ func smooth_move(column: Node3D):
 	Creates tweens to animate "moving" between two columns.
 	'''
 	var target = Vector3(column.position.x, position.y, position.z)
-	var duration = 5.0/speed
+	var duration = 1.0/GameState.run_speed
 	
 	var tween = create_tween()
 	tween.tween_property(self, 'position', target, duration)
