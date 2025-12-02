@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dc0sml4jmoo30"]
+[gd_scene load_steps=15 format=3 uid="uid://dc0sml4jmoo30"]
 
 [ext_resource type="PackedScene" uid="uid://h5nta5pwdcnh" path="res://assets/models/coin.blend" id="1_0t63x"]
-[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_d8g7e"]
+[ext_resource type="Script" path="res://scripts/interactables/peter.gd" id="2_d8g7e"]
+[ext_resource type="Texture2D" uid="uid://b6kaglwq0ugy7" path="res://assets/textures/star.png" id="3_7a01s"]
 [ext_resource type="AudioStream" uid="uid://hg0sm2t0dr4h" path="res://assets/audio/sfx/coin.wav" id="3_70hsc"]
+[ext_resource type="Texture2D" uid="uid://8ory7264sxtr" path="res://assets/textures/CoinRing.png" id="4_82bjw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0t63x"]
 height = 0.10994434
@@ -14,11 +16,48 @@ func _ready() -> void:
 	play(\"Spin\")
 "
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82bjw"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_7a01s")
+emission_enabled = true
+emission = Color(0.94134283, 0.82166153, 0.1378175, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_hec2q"]
+material = SubResource("StandardMaterial3D_82bjw")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Curve" id="Curve_hec2q"]
+_limits = [0.6629214, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.6629214), 0.0, 0.0, 0, 0, Vector2(0.35294116, 0.99343514), 0.7821534, 0.7821534, 0, 0, Vector2(1, 1.1737155), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_ghit0"]
+offsets = PackedFloat32Array(0, 0.4245283, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.7019608, 1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ghit0"]
+transparency = 1
+cull_mode = 2
+albedo_texture = ExtResource("4_82bjw")
+emission_enabled = true
+emission = Color(0.90310925, 0.7481068, 0.13837713, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ft18d"]
+material = SubResource("StandardMaterial3D_ghit0")
+size = Vector2(1.2, 1.2)
+
+[sub_resource type="Curve" id="Curve_4u1jn"]
+_data = [Vector2(0, 0.19439721), 0.0, 0.0, 0, 0, Vector2(0.49999997, 0.50561804), 3.0084286, 3.0084286, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Coin" instance=ExtResource("1_0t63x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15603578, 0)
 script = ExtResource("2_d8g7e")
-interactable_name = "coin"
-affected_by_invincibility = false
 
 [node name="Coin" parent="." index="0"]
 transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0.22730228, 0)
@@ -35,5 +74,37 @@ script = SubResource("GDScript_70hsc")
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22730228, 0)
 stream = ExtResource("3_70hsc")
+
+[node name="SparklesParticles" type="CPUParticles3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.19100285, 0)
+emitting = false
+amount = 12
+lifetime = 0.4
+one_shot = true
+preprocess = 0.05
+explosiveness = 0.68
+mesh = SubResource("QuadMesh_hec2q")
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 8.0
+initial_velocity_max = 10.0
+linear_accel_min = -20.0
+linear_accel_max = -12.0
+scale_amount_curve = SubResource("Curve_hec2q")
+color_ramp = SubResource("Gradient_ghit0")
+
+[node name="RingParticle" type="CPUParticles3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.19100279, -0.05560398)
+emitting = false
+amount = 1
+lifetime = 0.4
+one_shot = true
+mesh = SubResource("QuadMesh_ft18d")
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_amount_curve = SubResource("Curve_4u1jn")
+color_ramp = SubResource("Gradient_ghit0")
 
 [connection signal="body_entered" from="Coin/CoinArea" to="." method="_on_area_3d_body_entered"]

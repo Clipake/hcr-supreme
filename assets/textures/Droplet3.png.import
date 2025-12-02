@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbe3rri5js7qe"
-path.s3tc="res://.godot/imported/attention-please-shower-aluminum-sign-18-x-12.png-ab1fea814b3b6d96352903230d449e2c.s3tc.ctex"
+uid="uid://cjqi3kmhkx5ll"
+path.s3tc="res://.godot/imported/Droplet3.png-5224c1a1268ed2ab677cb811df1db292.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/textures/attention-please-shower-aluminum-sign-18-x-12.png"
-dest_files=["res://.godot/imported/attention-please-shower-aluminum-sign-18-x-12.png-ab1fea814b3b6d96352903230d449e2c.s3tc.ctex"]
+source_file="res://assets/textures/Droplet3.png"
+dest_files=["res://.godot/imported/Droplet3.png-5224c1a1268ed2ab677cb811df1db292.s3tc.ctex"]
 
 [params]
 
