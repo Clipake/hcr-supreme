@@ -77,7 +77,7 @@ func smooth_move(column: Node3D):
 	tween.tween_property(self, 'position', target, duration)
 
 
-func on_touched_interactable(interactable_name: String):
+func on_touched_interactable(interactable_name: String, interactable):
 	var effect_multiplier = 2 if GameState.like_ready else 1
 
 	match interactable_name:

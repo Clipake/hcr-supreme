@@ -36,6 +36,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		$AudioStreamPlayer3D.play()
 		visible = false
 		set_physics_process(false)
-		Events.touched_interactable.emit(interactable_name)
+		Events.touched_interactable.emit(interactable_name, self)
 		await $AudioStreamPlayer3D.finished
 		queue_free()  # Remove coin from scene
