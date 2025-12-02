@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bfmwh7atc7o30"]
 
 [ext_resource type="PackedScene" uid="uid://s1dsxes13r3d" path="res://assets/models/tungTung.blend" id="1_6hwmf"]
-[ext_resource type="Script" path="res://scripts/interactables/interactable.gd" id="2_uhgnp"]
+[ext_resource type="Script" uid="uid://t0tcg6moq0d7" path="res://scripts/interactables/interactable.gd" id="2_uhgnp"]
 [ext_resource type="AudioStream" uid="uid://d3xiju088rwl8" path="res://assets/audio/sfx/tung-tung-tung-sahur_TUujI1V.mp3" id="3_nf2k6"]
 
 [sub_resource type="GDScript" id="GDScript_nf2k6"]
@@ -55,5 +55,6 @@ shape = SubResource("CylinderShape3D_uhgnp")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
 stream = ExtResource("3_nf2k6")
+pitch_scale = 2.01
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
