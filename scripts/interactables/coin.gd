@@ -22,7 +22,10 @@ func _on_body_entered(body):
 	if body.is_in_group("player") and not collected:
 		collected = true
 		$AudioStreamPlayer3D.play()
+		$SparklesParticles.emitting = true
+		$RingParticle.emitting = true
 		$Coin.visible = false
+		
 		set_physics_process(false)
 		emit_signal("collected_signal", effect_type)
 		Events.touched_interactable.emit('coin')  # Signals to everyone that a coin has been collected 

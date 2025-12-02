@@ -1,18 +1,65 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5fg0ygbhuu4g"]
+[gd_scene load_steps=17 format=3 uid="uid://b5fg0ygbhuu4g"]
 
 [ext_resource type="Script" uid="uid://du5p20xxyny22" path="res://scripts/ui/player_movement.gd" id="1_q0xif"]
 [ext_resource type="PackedScene" uid="uid://e0dy4758qic0" path="res://assets/models/thumbThumb.blend" id="2_g2els"]
-[ext_resource type="Texture2D" uid="uid://ca4pbnyr8dq85" path="res://assets/models/textures/image.png" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://fe77dg2q0xue" path="res://assets/textures/HealthIcon.png" id="3_gmlin"]
+[ext_resource type="Texture2D" uid="uid://den15w8kea2d3" path="res://assets/textures/HealthRing.png" id="4_lvxji"]
+[ext_resource type="Texture2D" uid="uid://cjqi3kmhkx5ll" path="res://assets/textures/Droplet3.png" id="5_p47bc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pippe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lvxji"]
+transparency = 1
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("3_gmlin")
+emission_enabled = true
+emission = Color(0.47619498, 0.906828, 0.49704605, 1)
 billboard_mode = 1
+grow = true
+grow_amount = 0.13
+proximity_fade_distance = 1025.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_p47bc"]
 material = SubResource("StandardMaterial3D_lvxji")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.3, 0.3)
+
+[sub_resource type="Curve" id="Curve_p47bc"]
+_data = [Vector2(0.22268906, 0.41573036), 0.0, 0.0, 0, 0, Vector2(0.8193277, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_gmlin"]
+offsets = PackedFloat32Array(0, 0.16037735, 0.41509435, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_75vfm"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_lvxji")
+emission_enabled = true
+emission = Color(0.62324995, 0.9890272, 0.50224555, 1)
+emission_energy_multiplier = 3.07
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0owmy"]
+material = SubResource("StandardMaterial3D_75vfm")
+
+[sub_resource type="Gradient" id="Gradient_qek5x"]
+offsets = PackedFloat32Array(0, 0.2688679, 0.6179245, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.2901961, 0.88235295, 0.88235295, 0.88235295, 0.29411766, 1, 1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0owmy"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_p47bc")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qek5x"]
+material = SubResource("StandardMaterial3D_0owmy")
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="Gradient" id="Gradient_5gtgg"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
@@ -24,18 +71,59 @@ shape = SubResource("SphereShape3D_pippe")
 [node name="thumbThumb" parent="CollisionShape3D" instance=ExtResource("2_g2els")]
 transform = Transform3D(-0.09, 0, -7.86805e-09, 0, 0.09, 0, 7.86805e-09, 0, -0.09, 0.10671961, 0.72676104, -1.875567e-08)
 
-[node name="CPUParticles3D" type="CPUParticles3D" parent="CollisionShape3D"]
-transform = Transform3D(1.8764114, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
-amount = 3
-lifetime = 0.41000000000000003
+[node name="HealthIconParticles" type="CPUParticles3D" parent="CollisionShape3D"]
+transform = Transform3D(1.8764114, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.06906405, 0.7205541, -6.037771e-09)
+emitting = false
+amount = 23
+lifetime = 0.8
+one_shot = true
+preprocess = 0.2
+explosiveness = 0.71
+randomness = 0.28
+lifetime_randomness = 0.12
 mesh = SubResource("QuadMesh_p47bc")
-direction = Vector3(0, 1, 0)
-spread = 24.23
+direction = Vector3(0, 0, 0)
+spread = 180.0
 gravity = Vector3(0, 0, 0)
-initial_velocity_min = 0.5
-initial_velocity_max = 1.0
-scale_amount_min = 0.1
-scale_amount_max = 0.2
+initial_velocity_min = 1.5
+initial_velocity_max = 2.0
+linear_accel_min = -2.0
+linear_accel_max = -2.0
+scale_amount_min = 1.25
+scale_amount_max = 1.25
+scale_amount_curve = SubResource("Curve_p47bc")
+color_ramp = SubResource("Gradient_gmlin")
+
+[node name="HealthRingParticles" type="CPUParticles3D" parent="CollisionShape3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.97110844, 0)
+emitting = false
+amount = 3
+lifetime = 0.5
+one_shot = true
+preprocess = 0.2
+explosiveness = 0.09
+mesh = SubResource("PlaneMesh_0owmy")
+direction = Vector3(0, 1, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+color_ramp = SubResource("Gradient_qek5x")
+
+[node name="SweatParticles" type="CPUParticles3D" parent="CollisionShape3D"]
+transform = Transform3D(-4.371138e-08, 0, -1, 0, 1, 0, 1, 0, -4.371138e-08, 0.05589953, 1.3821659, -4.8868922e-09)
+emitting = false
+amount = 21
+lifetime = 0.5
+randomness = 0.2
+mesh = SubResource("QuadMesh_qek5x")
+particle_flag_align_y = true
+direction = Vector3(0, 5, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 3.0
+initial_velocity_max = 4.0
+color_ramp = SubResource("Gradient_5gtgg")
 
 [node name="PositionLeft" type="Node3D" parent="."]
 unique_name_in_owner = true
