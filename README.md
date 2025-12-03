@@ -1,2 +1,2 @@
 # hcr-supreme
-__DONTREADME__
+__DOREADME__
